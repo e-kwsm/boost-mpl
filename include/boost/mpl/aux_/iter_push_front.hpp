@@ -25,10 +25,10 @@ template<
     >
 struct iter_push_front
 {
-    typedef typename push_front<
+    using type = typename push_front<
           Sequence
         , typename deref<Iterator>::type
-        >::type type;
+        >::type;
 };
 
 }}}

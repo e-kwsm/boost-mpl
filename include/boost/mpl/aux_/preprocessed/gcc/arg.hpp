@@ -23,7 +23,7 @@ template<> struct arg< -1 >
         >
     struct apply
     {
-        typedef U1 type;
+        using type = U1;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -31,7 +31,7 @@ template<> struct arg< -1 >
 template<> struct arg<1>
 {
     BOOST_STATIC_CONSTANT(int, value  = 1);
-    typedef arg<2> next;
+    using next = arg<2>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -41,7 +41,7 @@ template<> struct arg<1>
         >
     struct apply
     {
-        typedef U1 type;
+        using type = U1;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -49,7 +49,7 @@ template<> struct arg<1>
 template<> struct arg<2>
 {
     BOOST_STATIC_CONSTANT(int, value  = 2);
-    typedef arg<3> next;
+    using next = arg<3>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -59,7 +59,7 @@ template<> struct arg<2>
         >
     struct apply
     {
-        typedef U2 type;
+        using type = U2;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -67,7 +67,7 @@ template<> struct arg<2>
 template<> struct arg<3>
 {
     BOOST_STATIC_CONSTANT(int, value  = 3);
-    typedef arg<4> next;
+    using next = arg<4>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -77,7 +77,7 @@ template<> struct arg<3>
         >
     struct apply
     {
-        typedef U3 type;
+        using type = U3;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -85,7 +85,7 @@ template<> struct arg<3>
 template<> struct arg<4>
 {
     BOOST_STATIC_CONSTANT(int, value  = 4);
-    typedef arg<5> next;
+    using next = arg<5>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -95,7 +95,7 @@ template<> struct arg<4>
         >
     struct apply
     {
-        typedef U4 type;
+        using type = U4;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -103,7 +103,7 @@ template<> struct arg<4>
 template<> struct arg<5>
 {
     BOOST_STATIC_CONSTANT(int, value  = 5);
-    typedef arg<6> next;
+    using next = arg<6>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -113,7 +113,7 @@ template<> struct arg<5>
         >
     struct apply
     {
-        typedef U5 type;
+        using type = U5;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };

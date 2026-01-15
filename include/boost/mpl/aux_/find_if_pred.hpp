@@ -22,7 +22,7 @@ struct find_if_pred
     template< typename Iterator >
     struct apply
     {
-        typedef not_< aux::iter_apply1<Predicate,Iterator> > type;
+        using type = not_< aux::iter_apply1<Predicate,Iterator> >;
     };
 };
 

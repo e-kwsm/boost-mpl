@@ -29,8 +29,8 @@ struct front_impl
 {
     template< typename Sequence > struct apply
     {
-        typedef typename begin<Sequence>::type iter_;
-        typedef typename deref<iter_>::type type;
+        using iter_ = typename begin<Sequence>::type;
+        using type = typename deref<iter_>::type;
     };
 };
 

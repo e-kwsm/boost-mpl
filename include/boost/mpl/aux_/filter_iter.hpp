@@ -40,12 +40,12 @@ template<
     >
 struct next_filter_iter
 {
-    typedef typename find_if<
+    using base_iter_ = typename find_if<
           iterator_range<Iterator,LastIterator>
         , Predicate
-        >::type base_iter_;
+        >::type;
  
-    typedef filter_iter<base_iter_,LastIterator,Predicate> type;
+    using type = filter_iter<base_iter_,LastIterator,Predicate>;
 };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
@@ -57,15 +57,15 @@ template<
     >
 struct filter_iter
 {
-    typedef Iterator base;
-    typedef forward_iterator_tag category;
-    typedef typename aux::next_filter_iter<
+    using base = Iterator;
+    using category = forward_iterator_tag;
+    using next = typename aux::next_filter_iter<
           typename mpl::next<base>::type
         , LastIterator
         , Predicate
-        >::type next;
+        >::type;
     
-    typedef typename deref<base>::type type;
+    using type = typename deref<base>::type;
 };
 
 template<
@@ -74,8 +74,8 @@ template<
     >
 struct filter_iter< LastIterator,LastIterator,Predicate >
 {
-    typedef LastIterator base;
-    typedef forward_iterator_tag category;
+    using base = LastIterator;
+    using category = forward_iterator_tag;
 };
 
 #else

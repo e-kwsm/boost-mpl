@@ -31,21 +31,21 @@ struct partition_op
     template< typename State, typename T >
     struct apply
     {
-        typedef typename State::first first_;
-        typedef typename State::second second_;
-        typedef typename apply1< Pred,T >::type pred_;
+        using first_ = typename State::first;
+        using second_ = typename State::second;
+        using pred_ = typename apply1< Pred,T >::type;
 
-        typedef typename eval_if<
+        using result_ = typename eval_if<
               pred_
             , apply2<In1Op,first_,T>
             , apply2<In2Op,second_,T>
-            >::type result_;
+            >::type;
 
-        typedef typename if_<
+        using type = typename if_<
               pred_
             , pair< result_,second_ >
             , pair< first_,result_ >
-            >::type type;
+            >::type;
     };
 };
 

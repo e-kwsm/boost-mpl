@@ -36,31 +36,31 @@ struct erase_impl
         >
     struct apply
     {
-        typedef typename if_na< Last,typename next<First>::type >::type last_;
+        using last_ = typename if_na< Last,typename next<First>::type >::type;
         
         // 1st half: [begin, first)
-        typedef iterator_range<
+        using first_half_ = iterator_range<
               typename begin<Sequence>::type
             , First
-            > first_half_;
+            >;
 
         // 2nd half: [last, end) ... that is, [last + 1, end)
-        typedef iterator_range<
+        using second_half_ = iterator_range<
               last_
             , typename end<Sequence>::type
-            > second_half_;
+            >;
 
-        typedef typename reverse_fold<
+        using half_sequence_ = typename reverse_fold<
               second_half_
             , typename clear<Sequence>::type
             , push_front<_,_>
-            >::type half_sequence_;
+            >::type;
 
-        typedef typename reverse_fold<
+        using type = typename reverse_fold<
               first_half_
             , half_sequence_
             , push_front<_,_>
-            >::type type;
+            >::type;
     };
 };
 
