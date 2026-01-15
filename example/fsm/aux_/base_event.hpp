@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2002-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -17,43 +17,43 @@
 #include <memory>
 #include <boost/config.hpp>
 
-namespace fsm { namespace aux {
+namespace fsm {
+namespace aux {
 
 // represent an abstract base for FSM events
 
 struct base_event
 {
- public:
+  public:
     virtual ~base_event() {};
-    
+
 #if defined(BOOST_NO_CXX11_SMART_PTR)
 
     std::auto_ptr<base_event> clone() const
-    
+
 #else
 
     std::unique_ptr<base_event> clone() const
-    
+
 #endif
 
     {
         return do_clone();
     }
- 
- private:
 
+  private:
 #if defined(BOOST_NO_CXX11_SMART_PTR)
 
     virtual std::auto_ptr<base_event> do_clone() const = 0;
-    
+
 #else
 
     virtual std::unique_ptr<base_event> do_clone() const = 0;
-    
-#endif
 
+#endif
 };
 
-}}
+} // namespace aux
+} // namespace fsm
 
 #endif // BOOST_FSM_BASE_EVENT_INCLUDED

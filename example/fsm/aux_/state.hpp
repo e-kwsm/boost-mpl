@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2002-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -16,27 +16,25 @@
 
 #include <boost/mpl/integral_c.hpp>
 
-namespace fsm { namespace aux {
+namespace fsm {
+namespace aux {
 
 namespace mpl = boost::mpl;
 
 // represent a FSM state
 
-template<
-      typename T
-    , long State
-    , void (T::* invariant_func)() const
-    >
-struct state
-    : mpl::integral_c<long,State>
+template <typename T, long State, void (T::*invariant_func)() const>
+struct state : mpl::integral_c<long, State>
 {
-    static long do_check_invariant(T const& x)
+    static long do_check_invariant(T const &x)
     {
-        if (invariant_func) (x.*invariant_func)();
+        if (invariant_func)
+            (x.*invariant_func)();
         return State;
     }
 };
 
-}}
+} // namespace aux
+} // namespace fsm
 
 #endif // BOOST_FSM_STATE_INCLUDED

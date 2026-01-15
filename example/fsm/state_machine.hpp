@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2002-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -26,25 +26,22 @@
 
 namespace fsm {
 
-template< typename Derived >
-class state_machine
+template <typename Derived> class state_machine
 {
- private:
+  private:
     typedef state_machine self_t;
     typedef aux::base_event base_event_t;
     typedef boost::shared_ptr<base_event_t const> base_event_ptr_t;
-    
- public: 
+
+  public:
     typedef long state_t;
-    typedef void (Derived::* invariant_func_t)() const;
-    
-    template< typename DerivedEvent >
-    struct event
-        : aux::event<DerivedEvent>
+    typedef void (Derived::*invariant_func_t)() const;
+
+    template <typename DerivedEvent> struct event : aux::event<DerivedEvent>
     {
     };
 
-    void process_event(base_event_t const& evt)
+    void process_event(base_event_t const &evt)
     {
         // all internal events should be handled at this point
         assert(!m_events_queue.size());
@@ -52,92 +49,71 @@ class state_machine
         // process the external event passed
         do_transition(evt);
 
-        // if the previous transition generated any internal events,
-        // process those
-        while (m_events_queue.size())
-        {
-            do_transition(*m_events_queue.front());
-            m_events_queue.pop();
-        }
+            // if the previous transition generated any internal events,
+            // process those
+            while (m_events_queue.size()) {
+                do_transition(*m_events_queue.front());
+                m_events_queue.pop();
+            }
     }
 
-    state_t current_state() const
-    {
-        return m_state;
-    }
+    state_t current_state() const { return m_state; }
 
- protected:
+  protected:
     // interface for the derived class
 
-    state_machine(state_t const& initial_state)
-        : m_state(initial_state)
-    {
-    }
+    state_machine(state_t const &initial_state) : m_state(initial_state) {}
 
-    state_machine()
-        : m_state(typename Derived::initial_state())
-    {
-    }
+    state_machine() : m_state(typename Derived::initial_state()) {}
 
-    virtual ~state_machine()
-    {
-    }
-
+    virtual ~state_machine() {}
 
 #if defined(BOOST_NO_CXX11_SMART_PTR)
 
     void post_event(std::auto_ptr<base_event_t const> evt)
-    
+
 #else
 
     void post_event(std::unique_ptr<base_event_t const> evt)
-    
+
 #endif
 
     {
         m_events_queue.push(base_event_ptr_t(evt.release()));
     }
 
-    template<
-          long State
+    template <long State
 #if !defined(BOOST_INTEL_CXX_VERSION) && (!defined(__GNUC__) || __GNUC__ >= 3)
-        , invariant_func_t f = static_cast<invariant_func_t>(0)
+              ,
+              invariant_func_t f = static_cast<invariant_func_t>(0)
 #else
-        , invariant_func_t f = 0
+              ,
+              invariant_func_t f = 0
 #endif
-        >
-    struct state
-        : fsm::aux::state<Derived,State,f>
+              >
+    struct state : fsm::aux::state<Derived, State, f>
     {
     };
 
-    template<
-          typename From
-        , typename Event
-        , typename To
-        , bool (Derived::* transition_func)(Event const&)
-        >
+    template <typename From, typename Event, typename To,
+              bool (Derived::*transition_func)(Event const &)>
     struct transition
-        : aux::transition< Derived,From,Event,To,transition_func >
+        : aux::transition<Derived, From, Event, To, transition_func>
     {
     };
 
- private:
-
-    void do_transition(base_event_t const& evt)
+  private:
+    void do_transition(base_event_t const &evt)
     {
         typedef typename Derived::transition_table STT_;
-        typedef typename aux::STT_impl_gen< STT_ >::type STT_impl_;
+        typedef typename aux::STT_impl_gen<STT_>::type STT_impl_;
 
-        m_state = STT_impl_::do_transition(
-              static_cast<Derived&>(*this)
-            , m_state
-            , evt
-            );
+        m_state = STT_impl_::do_transition(static_cast<Derived &>(*this),
+                                           m_state, evt);
     }
 
     state_t m_state;
-    std::queue< base_event_ptr_t > m_events_queue;
+    std::queue<base_event_ptr_t> m_events_queue;
 };
 
 } // namespace fsm
