@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2000-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -21,15 +21,14 @@
 #include <boost/mpl/aux_/config/typeof.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+namespace mpl {
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 
-template<>
-struct O1_size_impl< aux::vector_tag >
+template <> struct O1_size_impl<aux::vector_tag>
 {
-    template< typename Vector > struct apply
-        : Vector::size
+    template <typename Vector> struct apply : Vector::size
     {
     };
 };
@@ -38,11 +37,9 @@ struct O1_size_impl< aux::vector_tag >
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
-template< long N >
-struct O1_size_impl< aux::vector_tag<N> >
+template <long N> struct O1_size_impl<aux::vector_tag<N>>
 {
-    template< typename Vector > struct apply
-        : mpl::long_<N>
+    template <typename Vector> struct apply : mpl::long_<N>
     {
     };
 };
@@ -51,6 +48,7 @@ struct O1_size_impl< aux::vector_tag<N> >
 
 #endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
 
-}}
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_VECTOR_AUX_O1_SIZE_HPP_INCLUDED

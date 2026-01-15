@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2000-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -19,16 +19,12 @@
 #include <boost/mpl/aux_/config/msvc.hpp>
 #include <boost/mpl/aux_/config/workaround.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+namespace mpl {
 
-template<
-      typename Size
-    , typename T
-    , typename Next
-    >
-struct l_item
+template <typename Size, typename T, typename Next> struct l_item
 {
-// agurt, 17/jul/03: to facilitate the deficient 'is_sequence' implementation 
+// agurt, 17/jul/03: to facilitate the deficient 'is_sequence' implementation
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
     typedef int begin;
 #endif
@@ -50,6 +46,7 @@ struct l_end
     typedef long_<0> size;
 };
 
-}}
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_LIST_AUX_NODE_HPP_INCLUDED

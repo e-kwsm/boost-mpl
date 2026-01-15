@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2000-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -32,36 +32,24 @@
 
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+namespace mpl {
 
 namespace aux {
 
-template<
-      typename Predicate
-    , typename LastIterator1
-    , typename LastIterator2
-    >
+template <typename Predicate, typename LastIterator1, typename LastIterator2>
 struct equal_pred
 {
-    template<
-          typename Iterator2
-        , typename Iterator1
-        >
-    struct apply
+    template <typename Iterator2, typename Iterator1> struct apply
     {
-        typedef typename and_< 
-              not_< is_same<Iterator1,LastIterator1> >
-            , not_< is_same<Iterator2,LastIterator2> >
-            , aux::iter_apply2<Predicate,Iterator1,Iterator2>
-            >::type type;
+        typedef typename and_<
+            not_<is_same<Iterator1, LastIterator1>>,
+            not_<is_same<Iterator2, LastIterator2>>,
+            aux::iter_apply2<Predicate, Iterator1, Iterator2>>::type type;
     };
 };
 
-template<
-      typename Sequence1
-    , typename Sequence2
-    , typename Predicate
-    >
+template <typename Sequence1, typename Sequence2, typename Predicate>
 struct equal_impl
 {
     typedef typename begin<Sequence1>::type first1_;
@@ -70,43 +58,33 @@ struct equal_impl
     typedef typename end<Sequence2>::type last2_;
 
     typedef aux::iter_fold_if_impl<
-          first1_
-        , first2_
-        , next<>
-        , protect< aux::equal_pred<Predicate,last1_,last2_> >
-        , void_
-        , always<false_>
-        > fold_;
+        first1_, first2_, next<>,
+        protect<aux::equal_pred<Predicate, last1_, last2_>>, void_,
+        always<false_>>
+        fold_;
 
     typedef typename fold_::iterator iter1_;
     typedef typename fold_::state iter2_;
-    typedef and_<
-          is_same<iter1_,last1_>
-        , is_same<iter2_,last2_>
-        > result_;
+    typedef and_<is_same<iter1_, last1_>, is_same<iter2_, last2_>> result_;
 
     typedef typename result_::type type;
 };
 
-
 } // namespace aux
 
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence1)
-    , typename BOOST_MPL_AUX_NA_PARAM(Sequence2)
-    , typename Predicate = is_same<_,_>
-    >
+template <typename BOOST_MPL_AUX_NA_PARAM(Sequence1),
+          typename BOOST_MPL_AUX_NA_PARAM(Sequence2),
+          typename Predicate = is_same<_, _>>
 struct equal
-    : aux::msvc_eti_base< 
-          typename aux::equal_impl<Sequence1,Sequence2,Predicate>::type
-        >::type
+    : aux::msvc_eti_base<
+          typename aux::equal_impl<Sequence1, Sequence2, Predicate>::type>::type
 {
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,equal,(Sequence1,Sequence2))
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, equal, (Sequence1, Sequence2))
 };
 
 BOOST_MPL_AUX_NA_SPEC(2, equal)
 
-}}
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_EQUAL_HPP_INCLUDED

@@ -16,19 +16,19 @@
 
 #include <boost/config.hpp>
 
-#if !defined(BOOST_MPL_CFG_GPU_ENABLED) \
+#if !defined(BOOST_MPL_CFG_GPU_ENABLED)
 
-#   define BOOST_MPL_CFG_GPU_ENABLED BOOST_GPU_ENABLED
+#define BOOST_MPL_CFG_GPU_ENABLED BOOST_GPU_ENABLED
 
 #endif
 
 #if defined __CUDACC__
 
-#    define BOOST_MPL_CFG_GPU 1
+#define BOOST_MPL_CFG_GPU 1
 
 #else
 
-#    define BOOST_MPL_CFG_GPU 0
+#define BOOST_MPL_CFG_GPU 0
 
 #endif
 

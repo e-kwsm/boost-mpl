@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2000-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -19,22 +19,23 @@
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 
-#   include <boost/mpl/vector/aux_/item.hpp>
-#   include <boost/mpl/vector/aux_/tag.hpp>
+#include <boost/mpl/vector/aux_/item.hpp>
+#include <boost/mpl/vector/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+namespace mpl {
 
-template<>
-struct push_back_impl< aux::vector_tag >
+template <> struct push_back_impl<aux::vector_tag>
 {
-    template< typename Vector, typename T > struct apply
+    template <typename Vector, typename T> struct apply
     {
-        typedef v_item<T,Vector,0> type;
+        typedef v_item<T, Vector, 0> type;
     };
 };
 
-}}
+} // namespace mpl
+} // namespace boost
 
-#endif 
+#endif
 
 #endif // BOOST_MPL_VECTOR_AUX_PUSH_BACK_HPP_INCLUDED

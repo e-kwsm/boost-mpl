@@ -14,13 +14,14 @@
 // $Date$
 // $Revision$
 
-
-#define BOOST_MPL_GET_TAG_DEF(TAG) \
-    namespace boost { namespace mpl { \
-        template<typename T> \
-        struct get_##TAG { \
-            typedef typename T::TAG type; \
-        }; \
-    }}
+#define BOOST_MPL_GET_TAG_DEF(TAG)                                             \
+    namespace boost {                                                          \
+    namespace mpl {                                                            \
+    template <typename T> struct get_##TAG                                     \
+    {                                                                          \
+        typedef typename T::TAG type;                                          \
+    };                                                                         \
+    }                                                                          \
+    }
 
 #endif

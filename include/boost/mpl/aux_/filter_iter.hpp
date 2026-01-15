@@ -4,8 +4,8 @@
 
 // Copyright Aleksey Gurtovoy 2000-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -22,57 +22,38 @@
 #include <boost/mpl/aux_/config/ctps.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+namespace mpl {
 
 namespace aux {
 
-template<
-      typename Iterator
-    , typename LastIterator
-    , typename Predicate
-    > 
+template <typename Iterator, typename LastIterator, typename Predicate>
 struct filter_iter;
 
-template<
-      typename Iterator
-    , typename LastIterator
-    , typename Predicate
-    >
+template <typename Iterator, typename LastIterator, typename Predicate>
 struct next_filter_iter
 {
-    typedef typename find_if<
-          iterator_range<Iterator,LastIterator>
-        , Predicate
-        >::type base_iter_;
- 
-    typedef filter_iter<base_iter_,LastIterator,Predicate> type;
+    typedef typename find_if<iterator_range<Iterator, LastIterator>,
+                             Predicate>::type base_iter_;
+
+    typedef filter_iter<base_iter_, LastIterator, Predicate> type;
 };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
-template<
-      typename Iterator
-    , typename LastIterator
-    , typename Predicate
-    >
+template <typename Iterator, typename LastIterator, typename Predicate>
 struct filter_iter
 {
     typedef Iterator base;
     typedef forward_iterator_tag category;
-    typedef typename aux::next_filter_iter<
-          typename mpl::next<base>::type
-        , LastIterator
-        , Predicate
-        >::type next;
-    
+    typedef typename aux::next_filter_iter<typename mpl::next<base>::type,
+                                           LastIterator, Predicate>::type next;
+
     typedef typename deref<base>::type type;
 };
 
-template<
-      typename LastIterator
-    , typename Predicate
-    >
-struct filter_iter< LastIterator,LastIterator,Predicate >
+template <typename LastIterator, typename Predicate>
+struct filter_iter<LastIterator, LastIterator, Predicate>
 {
     typedef LastIterator base;
     typedef forward_iterator_tag category;
@@ -80,36 +61,23 @@ struct filter_iter< LastIterator,LastIterator,Predicate >
 
 #else
 
-template< bool >
-struct filter_iter_impl
+template <bool> struct filter_iter_impl
 {
-    template<
-          typename Iterator
-        , typename LastIterator
-        , typename Predicate
-        >
+    template <typename Iterator, typename LastIterator, typename Predicate>
     struct result_
     {
         typedef Iterator base;
         typedef forward_iterator_tag category;
-        typedef typename next_filter_iter<
-              typename mpl::next<Iterator>::type
-            , LastIterator
-            , Predicate
-            >::type next;
-        
+        typedef typename next_filter_iter<typename mpl::next<Iterator>::type,
+                                          LastIterator, Predicate>::type next;
+
         typedef typename deref<base>::type type;
     };
 };
 
-template<>
-struct filter_iter_impl< true >
+template <> struct filter_iter_impl<true>
 {
-    template<
-          typename Iterator
-        , typename LastIterator
-        , typename Predicate
-        >
+    template <typename Iterator, typename LastIterator, typename Predicate>
     struct result_
     {
         typedef Iterator base;
@@ -117,15 +85,10 @@ struct filter_iter_impl< true >
     };
 };
 
-template<
-      typename Iterator
-    , typename LastIterator
-    , typename Predicate
-    >
+template <typename Iterator, typename LastIterator, typename Predicate>
 struct filter_iter
-    : filter_iter_impl<
-          ::boost::is_same<Iterator,LastIterator>::value
-        >::template result_< Iterator,LastIterator,Predicate >
+    : filter_iter_impl<::boost::is_same<Iterator, LastIterator>::value>::
+          template result_<Iterator, LastIterator, Predicate>
 {
 };
 
@@ -135,6 +98,7 @@ struct filter_iter
 
 BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(3, aux::filter_iter)
 
-}}
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_AUX_FILTER_ITER_HPP_INCLUDED
