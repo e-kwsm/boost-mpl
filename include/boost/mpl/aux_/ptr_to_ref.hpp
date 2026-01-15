@@ -31,7 +31,7 @@
 #else
 
 #   define BOOST_MPL_AUX_PTR_TO_REF(X) \
-    aux::ptr_to_ref(BOOST_MPL_AUX_STATIC_CAST(X*, 0)) \
+    aux::ptr_to_ref(BOOST_MPL_AUX_STATIC_CAST(X*, BOOST_NULLPTR)) \
 /**/
 
 #endif
