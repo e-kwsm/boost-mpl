@@ -28,18 +28,18 @@ namespace boost { namespace mpl {
 template< typename IteratorSeq >
 struct zip_iterator
 {
-    typedef forward_iterator_tag category;
-    typedef typename transform1<
+    using category = forward_iterator_tag;
+    using type = typename transform1<
           IteratorSeq
         , deref<_1>
-        >::type type;
+        >::type;
 
-    typedef zip_iterator<
+    using next = zip_iterator<
           typename transform1<
                 IteratorSeq
               , mpl::next<_1>
             >::type
-        > next;
+        >;
 };
 
 template<
@@ -48,14 +48,14 @@ template<
 struct zip_view
 {
  private:
-    typedef typename transform1< Sequences, mpl::begin<_1> >::type first_ones_;
-    typedef typename transform1< Sequences, mpl::end<_1> >::type last_ones_;
+    using first_ones_ = typename transform1< Sequences, mpl::begin<_1> >::type;
+    using last_ones_ = typename transform1< Sequences, mpl::end<_1> >::type;
     
  public:
-    typedef nested_begin_end_tag tag;
-    typedef zip_view type;
-    typedef zip_iterator<first_ones_> begin;
-    typedef zip_iterator<last_ones_> end;
+    using tag = nested_begin_end_tag;
+    using type = zip_view;
+    using begin = zip_iterator<first_ones_>;
+    using end = zip_iterator<last_ones_>;
 };
 
 BOOST_MPL_AUX_NA_SPEC(1, zip_view)

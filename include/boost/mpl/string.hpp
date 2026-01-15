@@ -144,7 +144,7 @@ namespace boost { namespace mpl
         template<typename Sequence>
         struct apply
         {
-            typedef mpl::string_iterator<Sequence, 0, 0> type;
+            using type = mpl::string_iterator<Sequence, 0, 0>;
         };
     };
 
@@ -171,7 +171,7 @@ namespace boost { namespace mpl
     template<>
     struct end_impl<mpl::string_tag>::apply<mpl::string<> >
     {
-        typedef mpl::string_iterator<mpl::string<>, 0, 0> type;
+        using type = mpl::string_iterator<mpl::string<>, 0, 0>;
     };
 
     template<typename Tag>
@@ -190,21 +190,19 @@ namespace boost { namespace mpl
             );
             // If the above assertion didn't fire, then the string is sparse.
             // Repack the string and retry the push_back
-            typedef
-                typename mpl::push_back<
+            using type = typename mpl::push_back<
                     typename mpl::copy<
                         Sequence
                       , mpl::back_inserter<mpl::string<> >
                     >::type
                   , Value
-                >::type
-            type;
+                >::type;
         };
 
         template<typename Value>
         struct apply<mpl::string<>, Value, false>
         {
-            typedef mpl::string<(char)Value::value> type;
+            using type = mpl::string<(char)Value::value>;
         };
 
         #define M0(z,n,data)                                                                        \
@@ -231,12 +229,10 @@ namespace boost { namespace mpl
         template<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, int C), typename Value>
         struct apply<mpl::string<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, C)>, Value, false>
         {
-            typedef
-                mpl::string<
+            using type = mpl::string<
                     BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(BOOST_MPL_STRING_MAX_PARAMS), C)
                   , BOOST_MPL_MULTICHAR_PUSH_BACK(BOOST_PP_CAT(C,BOOST_PP_DEC(BOOST_MPL_STRING_MAX_PARAMS)), Value::value)
-                >
-            type;
+                >;
         };
     };
 
@@ -307,22 +303,20 @@ namespace boost { namespace mpl
             );
             // If the above assertion didn't fire, then the string is sparse.
             // Repack the string and retry the push_front.
-            typedef
-                typename mpl::push_front<
+            using type = typename mpl::push_front<
                     typename mpl::reverse_copy<
                         Sequence
                       , mpl::front_inserter<string<> >
                     >::type
                   , Value
-                >::type
-            type;
+                >::type;
         };
 
         #if !BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x590))
         template<typename Value>
         struct apply<mpl::string<>, Value, false>
         {
-            typedef mpl::string<(char)Value::value> type;
+            using type = mpl::string<(char)Value::value>;
         };
         #endif
 
@@ -344,12 +338,10 @@ namespace boost { namespace mpl
         template<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, int C), typename Value>
         struct apply<mpl::string<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, C)>, Value, false>
         {
-            typedef
-                mpl::string<
+            using type0 = mpl::string<
                     BOOST_MPL_MULTICHAR_PUSH_FRONT(C0, Value::value)
                   , BOOST_PP_ENUM_SHIFTED_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, C)
-                >
-            type0;
+                >;
 
             #if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x590))
             typedef
@@ -360,7 +352,7 @@ namespace boost { namespace mpl
                 >::type
             type;
             #else
-            typedef type0 type;
+            using type = type0;
             #endif
         };
     };
@@ -402,12 +394,10 @@ namespace boost { namespace mpl
         template<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, int C)>
         struct apply<mpl::string<BOOST_PP_ENUM_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, C)>, false>
         {
-            typedef
-                mpl::string<
+            using type = mpl::string<
                     BOOST_MPL_MULTICHAR_POP_FRONT(C0)
                   , BOOST_PP_ENUM_SHIFTED_PARAMS(BOOST_MPL_STRING_MAX_PARAMS, C)
-                >
-            type;
+                >;
         };
     };
 
@@ -495,7 +485,7 @@ namespace boost { namespace mpl
         template<typename>
         struct apply
         {
-            typedef mpl::string<> type;
+            using type = mpl::string<>;
         };
     };
 
@@ -546,9 +536,9 @@ namespace boost { namespace mpl
           , back_   = BOOST_PP_CAT(C, BOOST_PP_DEC(BOOST_MPL_STRING_MAX_PARAMS))
         };
 
-        typedef char        value_type;
-        typedef string      type;
-        typedef string_tag  tag;
+        using value_type = char;
+        using type = string;
+        using tag = string_tag;
     };
 
     namespace aux_
@@ -561,7 +551,7 @@ namespace boost { namespace mpl
         template<typename End>
         struct next_unless<End, End>
         {
-            typedef End type;
+            using type = End;
         };
 
         template<typename It, typename End>
@@ -572,15 +562,15 @@ namespace boost { namespace mpl
         template<typename End>
         struct deref_unless<End, End>
         {
-            typedef mpl::char_<'\0'> type;
+            using type = mpl::char_<'\0'>;
         };
     }
 
     template<typename Sequence>
     struct c_str
     {
-        typedef typename mpl::end<Sequence>::type iend;
-        typedef typename mpl::begin<Sequence>::type i0;
+        using iend = typename mpl::end<Sequence>::type;
+        using i0 = typename mpl::begin<Sequence>::type;
         #define M0(z, n, data)                                                                      \
         typedef                                                                                     \
             typename mpl::aux_::next_unless<BOOST_PP_CAT(i, n), iend>::type                         \
@@ -588,7 +578,7 @@ namespace boost { namespace mpl
         BOOST_PP_REPEAT(BOOST_MPL_LIMIT_STRING_SIZE, M0, ~)
         #undef M0
 
-        typedef c_str type;
+        using type = c_str;
         static typename Sequence::value_type const value[BOOST_MPL_LIMIT_STRING_SIZE+1];
     };
 

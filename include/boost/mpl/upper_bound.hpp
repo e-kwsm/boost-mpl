@@ -79,11 +79,11 @@ template<
     >
 struct upper_bound_step
 {
-    typedef typename eval_if<
+    using type = typename eval_if<
           Distance
         , upper_bound_step_impl<Distance,Predicate,T,DeferredIterator>
         , DeferredIterator
-        >::type type;
+        >::type;
 };
     
 template<
@@ -94,23 +94,23 @@ template<
     >
 struct upper_bound_step_impl
 {
-    typedef typename divides< Distance, long_<2> >::type offset_;
-    typedef typename DeferredIterator::type iter_;
-    typedef typename advance< iter_,offset_ >::type middle_;
-    typedef typename apply2<
+    using offset_ = typename divides< Distance, long_<2> >::type;
+    using iter_ = typename DeferredIterator::type;
+    using middle_ = typename advance< iter_,offset_ >::type;
+    using cond_ = typename apply2<
               Predicate
             , T
             , typename deref<middle_>::type
-            >::type cond_;
+            >::type;
 
-    typedef typename prior< minus< Distance, offset_ > >::type step_;
-    typedef upper_bound_step< offset_,Predicate,T,DeferredIterator > step_forward_;
-    typedef upper_bound_step< step_,Predicate,T,next<middle_> > step_backward_;
-    typedef typename eval_if<
+    using step_ = typename prior< minus< Distance, offset_ > >::type;
+    using step_forward_ = upper_bound_step< offset_,Predicate,T,DeferredIterator >;
+    using step_backward_ = upper_bound_step< step_,Predicate,T,next<middle_> >;
+    using type = typename eval_if<
           cond_
         , step_forward_
         , step_backward_
-        >::type type;
+        >::type;
 };
 
 } // namespace aux
@@ -123,13 +123,13 @@ template<
 struct upper_bound
 {
  private:
-    typedef typename lambda<Predicate>::type pred_;
-    typedef typename size<Sequence>::type size_;
+    using pred_ = typename lambda<Predicate>::type;
+    using size_ = typename size<Sequence>::type;
 
  public:
-    typedef typename aux::upper_bound_step<
+    using type = typename aux::upper_bound_step<
         size_,pred_,T,begin<Sequence>
-        >::type type;
+        >::type;
 };
 
 #endif // BOOST_MPL_CFG_STRIPPED_DOWN_UPPER_BOUND_IMPL
