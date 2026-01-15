@@ -58,17 +58,17 @@ template< typename T > struct msvc_eti_base
 #if BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304))
     msvc_eti_base();
 #endif
-    typedef T type;
+    using type = T;
 };
 
 #endif 
 
 template<> struct msvc_eti_base<int>
 {
-    typedef msvc_eti_base type;
-    typedef msvc_eti_base first;
-    typedef msvc_eti_base second;
-    typedef msvc_eti_base tag;
+    using type = msvc_eti_base;
+    using first = msvc_eti_base;
+    using second = msvc_eti_base;
+    using tag = msvc_eti_base;
     enum { value = 0 };
 };
 

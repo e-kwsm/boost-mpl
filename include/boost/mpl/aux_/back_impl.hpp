@@ -30,9 +30,9 @@ struct back_impl
 {
     template< typename Sequence > struct apply
     {
-        typedef typename end<Sequence>::type end_;
-        typedef typename prior<end_>::type last_;
-        typedef typename deref<last_>::type type;
+        using end_ = typename end<Sequence>::type;
+        using last_ = typename prior<end_>::type;
+        using type = typename deref<last_>::type;
     };
 };
 

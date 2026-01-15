@@ -17,8 +17,8 @@ struct advance_backward<0>
 {
     template< typename Iterator > struct apply
     {
-        typedef Iterator iter0;
-        typedef iter0 type;
+        using iter0 = Iterator;
+        using type = iter0;
     };
 };
 
@@ -27,9 +27,9 @@ struct advance_backward<1>
 {
     template< typename Iterator > struct apply
     {
-        typedef Iterator iter0;
-        typedef typename prior<iter0>::type iter1;
-        typedef iter1 type;
+        using iter0 = Iterator;
+        using iter1 = typename prior<iter0>::type;
+        using type = iter1;
     };
 };
 
@@ -38,10 +38,10 @@ struct advance_backward<2>
 {
     template< typename Iterator > struct apply
     {
-        typedef Iterator iter0;
-        typedef typename prior<iter0>::type iter1;
-        typedef typename prior<iter1>::type iter2;
-        typedef iter2 type;
+        using iter0 = Iterator;
+        using iter1 = typename prior<iter0>::type;
+        using iter2 = typename prior<iter1>::type;
+        using type = iter2;
     };
 };
 
@@ -50,11 +50,11 @@ struct advance_backward<3>
 {
     template< typename Iterator > struct apply
     {
-        typedef Iterator iter0;
-        typedef typename prior<iter0>::type iter1;
-        typedef typename prior<iter1>::type iter2;
-        typedef typename prior<iter2>::type iter3;
-        typedef iter3 type;
+        using iter0 = Iterator;
+        using iter1 = typename prior<iter0>::type;
+        using iter2 = typename prior<iter1>::type;
+        using iter3 = typename prior<iter2>::type;
+        using type = iter3;
     };
 };
 
@@ -63,12 +63,12 @@ struct advance_backward<4>
 {
     template< typename Iterator > struct apply
     {
-        typedef Iterator iter0;
-        typedef typename prior<iter0>::type iter1;
-        typedef typename prior<iter1>::type iter2;
-        typedef typename prior<iter2>::type iter3;
-        typedef typename prior<iter3>::type iter4;
-        typedef iter4 type;
+        using iter0 = Iterator;
+        using iter1 = typename prior<iter0>::type;
+        using iter2 = typename prior<iter1>::type;
+        using iter3 = typename prior<iter2>::type;
+        using iter4 = typename prior<iter3>::type;
+        using type = iter4;
     };
 };
 
@@ -77,19 +77,19 @@ struct advance_backward
 {
     template< typename Iterator > struct apply
     {
-        typedef typename apply_wrap1<
+        using chunk_result_ = typename apply_wrap1<
               advance_backward<4>
             , Iterator
-            >::type chunk_result_;
+            >::type;
 
-        typedef typename apply_wrap1<
+        using type = typename apply_wrap1<
               advance_backward<(
                 (N - 4) < 0
                     ? 0
                     : N - 4
                     )>
             , chunk_result_
-            >::type type;
+            >::type;
     };
 };
 

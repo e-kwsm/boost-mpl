@@ -27,7 +27,7 @@ template< typename Value > struct always
         >
     struct apply
     {
-        typedef Value type;
+        using type = Value;
     };
 };
 

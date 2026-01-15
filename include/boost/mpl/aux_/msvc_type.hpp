@@ -47,12 +47,12 @@ template< typename T > struct msvc_type
 
 template< typename T > struct msvc_type 
 {
-    typedef typename T::type type;
+    using type = typename T::type;
 };
 
 template<> struct msvc_type<int>
 {
-    typedef int type;
+    using type = int;
 };
 
 #endif

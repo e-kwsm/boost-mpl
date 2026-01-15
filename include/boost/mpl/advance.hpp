@@ -35,16 +35,16 @@ struct advance_impl
 {
     template< typename Iterator, typename N > struct apply
     {
-        typedef typename less< N,long_<0> >::type backward_;
-        typedef typename if_< backward_, negate<N>, N >::type offset_;
+        using backward_ = typename less< N,long_<0> >::type;
+        using offset_ = typename if_< backward_, negate<N>, N >::type;
 
-        typedef typename if_<
+        using f_ = typename if_<
               backward_
             , aux::advance_backward< BOOST_MPL_AUX_VALUE_WKND(offset_)::value >
             , aux::advance_forward< BOOST_MPL_AUX_VALUE_WKND(offset_)::value >
-            >::type f_;
+            >::type;
 
-        typedef typename apply_wrap1<f_,Iterator>::type type;
+        using type = typename apply_wrap1<f_,Iterator>::type;
     };
 };
 

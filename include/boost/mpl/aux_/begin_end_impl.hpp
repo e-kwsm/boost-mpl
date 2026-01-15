@@ -31,12 +31,12 @@ namespace aux {
 template< typename Sequence > 
 struct begin_type 
 { 
-    typedef typename Sequence::begin type; 
+    using type = typename Sequence::begin;
 };
 template< typename Sequence > 
 struct end_type
 { 
-    typedef typename Sequence::end type; 
+    using type = typename Sequence::end;
 };
 
 }
@@ -50,8 +50,8 @@ struct begin_impl
 {
     template< typename Sequence > struct apply
     {
-        typedef typename eval_if<aux::has_begin<Sequence, true_>,
-                                 aux::begin_type<Sequence>, void_>::type type;
+        using type = typename eval_if<aux::has_begin<Sequence, true_>,
+                                 aux::begin_type<Sequence>, void_>::type;
     };
 };
 
@@ -60,8 +60,8 @@ struct end_impl
 {
     template< typename Sequence > struct apply
     {
-        typedef typename eval_if<aux::has_begin<Sequence, true_>,
-                                 aux::end_type<Sequence>, void_>::type type;
+        using type = typename eval_if<aux::has_begin<Sequence, true_>,
+                                 aux::end_type<Sequence>, void_>::type;
     };
 };
 

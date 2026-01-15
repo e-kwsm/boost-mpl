@@ -29,12 +29,12 @@ struct at_impl
 {
     template< typename Sequence, typename N > struct apply
     {
-        typedef typename advance<
+        using iter_ = typename advance<
               typename begin<Sequence>::type
             , N
-            >::type iter_;
+            >::type;
 
-        typedef typename deref<iter_>::type type;
+        using type = typename deref<iter_>::type;
     };
 };
 
