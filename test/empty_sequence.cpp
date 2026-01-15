@@ -2,8 +2,8 @@
 // Copyright Aleksey Gurtovoy 2004
 // Copyright Alexander Nasonov 2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -28,12 +28,12 @@ MPL_TEST_CASE()
     typedef begin<empty_sequence>::type begin;
     typedef end<empty_sequence>::type end;
 
-    MPL_ASSERT(( is_same<begin,end> ));
-    MPL_ASSERT_RELATION( (mpl::distance<begin,end>::value), ==, 0 );
-    MPL_ASSERT_RELATION( size<empty_sequence>::value, ==, 0 );
+    MPL_ASSERT((is_same<begin, end>));
+    MPL_ASSERT_RELATION((mpl::distance<begin, end>::value), ==, 0);
+    MPL_ASSERT_RELATION(size<empty_sequence>::value, ==, 0);
 
-    typedef advance_c<begin,0>::type advanced;
-    MPL_ASSERT(( is_same<advanced,end> ));
+    typedef advance_c<begin, 0>::type advanced;
+    MPL_ASSERT((is_same<advanced, end>));
 
-    MPL_ASSERT(( equal< empty_sequence, empty_sequence::type > ));
+    MPL_ASSERT((equal<empty_sequence, empty_sequence::type>));
 }

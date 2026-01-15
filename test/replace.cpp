@@ -2,8 +2,8 @@
 // Copyright Aleksey Gurtovoy 2000-2004
 // Copyright David Abrahams 2003-2004
 //
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
@@ -20,8 +20,8 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,float,char,float,float,double> types;
-    typedef replace< types,float,double >::type result;
-    typedef list<int,double,char,double,double,double> answer;
-    MPL_ASSERT(( equal< result,answer > ));
+    typedef list<int, float, char, float, float, double> types;
+    typedef replace<types, float, double>::type result;
+    typedef list<int, double, char, double, double, double> answer;
+    MPL_ASSERT((equal<result, answer>));
 }

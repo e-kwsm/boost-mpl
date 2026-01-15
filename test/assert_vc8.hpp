@@ -16,13 +16,9 @@
 
 #include <boost/mpl/assert.hpp>
 
-template<class T>
-bool func()
+template <class T> bool func()
 {
-    BOOST_MPL_ASSERT_MSG(
-        true,
-        ALWAYS_TRUE,
-        (T));
+    BOOST_MPL_ASSERT_MSG(true, ALWAYS_TRUE, (T));
 
     return true;
 }
