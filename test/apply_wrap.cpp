@@ -27,14 +27,14 @@
 #   define APPLY_0_FUNC_DEF(z_ignored,i) \
     struct f0 \
     { \
-        template< typename T = int > struct apply { typedef char type; }; \
+        template< typename T = int > struct apply { using type = char; }; \
     }; \
 /**/
 #else
 #   define APPLY_0_FUNC_DEF(z_ignored,i) \
     struct f0 \
     { \
-        template< typename T > struct apply { typedef char type; }; \
+        template< typename T > struct apply { using type = char; }; \
     }; \
 /**/
 #endif
@@ -43,13 +43,13 @@
     struct first##i \
     { \
         template< BOOST_MPL_PP_PARAMS_Z(z, i, typename U) > \
-        struct apply { typedef U1 type; }; \
+        struct apply { using type = U1; }; \
     }; \
     \
     struct last##i \
     { \
         template< BOOST_MPL_PP_PARAMS_Z(z, i, typename U) > \
-        struct apply { typedef BOOST_PP_CAT(U,i) type; }; \
+        struct apply { using type = BOOST_PP_CAT(U,i); }; \
     }; \
 /**/
 
@@ -74,23 +74,23 @@ struct g0 { struct apply { using type = char; }; };
 }}
 
 #define APPLY_0_TEST(z_ignored, i, apply_) \
-    typedef apply_<test::f##i>::type t; \
+    using t = apply_<test::f##i>::type; \
     { MPL_ASSERT(( boost::is_same<t, char> )); } \
 /**/
 
 #define APPLY_N_TEST(z, i, apply_) \
-    typedef apply_< \
+    using t1##i = apply_< \
           test::first##i \
         , char \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) \
         BOOST_MPL_PP_ENUM_Z(z, BOOST_PP_DEC(i), int) \
-        >::type t1##i; \
+        >::type; \
     \
-    typedef apply_< \
+    using t2##i = apply_< \
           test::last##i \
         , BOOST_MPL_PP_ENUM_Z(z, BOOST_PP_DEC(i), int) \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) char \
-        >::type t2##i; \
+        >::type; \
     { MPL_ASSERT(( boost::is_same<t1##i, char> )); } \
     { MPL_ASSERT(( boost::is_same<t2##i, char> )); } \
 /**/

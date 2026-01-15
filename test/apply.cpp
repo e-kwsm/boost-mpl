@@ -21,7 +21,7 @@
 template< typename T > struct std_vector
 {
 #if defined(BOOST_MPL_CFG_NO_IMPLICIT_METAFUNCTIONS)
-    typedef std_vector type;
+    using type = std_vector;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1, std_vector, (T))
 #endif
 };
