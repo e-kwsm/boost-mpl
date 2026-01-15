@@ -30,10 +30,10 @@ template<
     >
 struct iter_fold_impl< 0,First,Last,State,ForwardOp >
 {
-    typedef First iter0;
-    typedef State state0;
-    typedef state0 state;
-    typedef iter0 iterator;
+    using iter0 = First;
+    using state0 = State;
+    using state = state0;
+    using iterator = iter0;
 };
 
 template<
@@ -44,14 +44,14 @@ template<
     >
 struct iter_fold_impl< 1,First,Last,State,ForwardOp >
 {
-    typedef First iter0;
-    typedef State state0;
-    typedef typename apply2< ForwardOp,state0,iter0 >::type state1;
-    typedef typename mpl::next<iter0>::type iter1;
+    using iter0 = First;
+    using state0 = State;
+    using state1 = typename apply2< ForwardOp,state0,iter0 >::type;
+    using iter1 = typename mpl::next<iter0>::type;
     
 
-    typedef state1 state;
-    typedef iter1 iterator;
+    using state = state1;
+    using iterator = iter1;
 };
 
 template<
@@ -62,16 +62,16 @@ template<
     >
 struct iter_fold_impl< 2,First,Last,State,ForwardOp >
 {
-    typedef First iter0;
-    typedef State state0;
-    typedef typename apply2< ForwardOp,state0,iter0 >::type state1;
-    typedef typename mpl::next<iter0>::type iter1;
-    typedef typename apply2< ForwardOp,state1,iter1 >::type state2;
-    typedef typename mpl::next<iter1>::type iter2;
+    using iter0 = First;
+    using state0 = State;
+    using state1 = typename apply2< ForwardOp,state0,iter0 >::type;
+    using iter1 = typename mpl::next<iter0>::type;
+    using state2 = typename apply2< ForwardOp,state1,iter1 >::type;
+    using iter2 = typename mpl::next<iter1>::type;
     
 
-    typedef state2 state;
-    typedef iter2 iterator;
+    using state = state2;
+    using iterator = iter2;
 };
 
 template<
@@ -82,18 +82,18 @@ template<
     >
 struct iter_fold_impl< 3,First,Last,State,ForwardOp >
 {
-    typedef First iter0;
-    typedef State state0;
-    typedef typename apply2< ForwardOp,state0,iter0 >::type state1;
-    typedef typename mpl::next<iter0>::type iter1;
-    typedef typename apply2< ForwardOp,state1,iter1 >::type state2;
-    typedef typename mpl::next<iter1>::type iter2;
-    typedef typename apply2< ForwardOp,state2,iter2 >::type state3;
-    typedef typename mpl::next<iter2>::type iter3;
+    using iter0 = First;
+    using state0 = State;
+    using state1 = typename apply2< ForwardOp,state0,iter0 >::type;
+    using iter1 = typename mpl::next<iter0>::type;
+    using state2 = typename apply2< ForwardOp,state1,iter1 >::type;
+    using iter2 = typename mpl::next<iter1>::type;
+    using state3 = typename apply2< ForwardOp,state2,iter2 >::type;
+    using iter3 = typename mpl::next<iter2>::type;
     
 
-    typedef state3 state;
-    typedef iter3 iterator;
+    using state = state3;
+    using iterator = iter3;
 };
 
 template<
@@ -104,20 +104,20 @@ template<
     >
 struct iter_fold_impl< 4,First,Last,State,ForwardOp >
 {
-    typedef First iter0;
-    typedef State state0;
-    typedef typename apply2< ForwardOp,state0,iter0 >::type state1;
-    typedef typename mpl::next<iter0>::type iter1;
-    typedef typename apply2< ForwardOp,state1,iter1 >::type state2;
-    typedef typename mpl::next<iter1>::type iter2;
-    typedef typename apply2< ForwardOp,state2,iter2 >::type state3;
-    typedef typename mpl::next<iter2>::type iter3;
-    typedef typename apply2< ForwardOp,state3,iter3 >::type state4;
-    typedef typename mpl::next<iter3>::type iter4;
+    using iter0 = First;
+    using state0 = State;
+    using state1 = typename apply2< ForwardOp,state0,iter0 >::type;
+    using iter1 = typename mpl::next<iter0>::type;
+    using state2 = typename apply2< ForwardOp,state1,iter1 >::type;
+    using iter2 = typename mpl::next<iter1>::type;
+    using state3 = typename apply2< ForwardOp,state2,iter2 >::type;
+    using iter3 = typename mpl::next<iter2>::type;
+    using state4 = typename apply2< ForwardOp,state3,iter3 >::type;
+    using iter4 = typename mpl::next<iter3>::type;
     
 
-    typedef state4 state;
-    typedef iter4 iterator;
+    using state = state4;
+    using iterator = iter4;
 };
 
 template<
@@ -129,24 +129,24 @@ template<
     >
 struct iter_fold_impl
 {
-    typedef iter_fold_impl<
+    using chunk_ = iter_fold_impl<
           4
         , First
         , Last
         , State
         , ForwardOp
-        > chunk_;
+        >;
 
-    typedef iter_fold_impl<
+    using res_ = iter_fold_impl<
           ( (N - 4) < 0 ? 0 : N - 4 )
         , typename chunk_::iterator
         , Last
         , typename chunk_::state
         , ForwardOp
-        > res_;
+        >;
 
-    typedef typename res_::state state;
-    typedef typename res_::iterator iterator;
+    using state = typename res_::state;
+    using iterator = typename res_::iterator;
 };
 
 template<
@@ -173,8 +173,8 @@ template<
     >
 struct iter_fold_impl< -1,Last,Last,State,ForwardOp >
 {
-    typedef State state;
-    typedef Last iterator;
+    using state = State;
+    using iterator = Last;
 };
 
 }}}

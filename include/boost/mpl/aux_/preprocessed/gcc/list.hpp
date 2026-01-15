@@ -30,7 +30,7 @@ struct list<
         >
     : list0<  >
 {
-    typedef list0<  >::type type;
+    using type = list0<  >::type;
 };
 
 template<
@@ -42,7 +42,7 @@ struct list<
         >
     : list1<T0>
 {
-    typedef typename list1<T0>::type type;
+    using type = typename list1<T0>::type;
 };
 
 template<
@@ -54,7 +54,7 @@ struct list<
         >
     : list2< T0,T1 >
 {
-    typedef typename list2< T0,T1 >::type type;
+    using type = typename list2< T0,T1 >::type;
 };
 
 template<
@@ -66,7 +66,7 @@ struct list<
         >
     : list3< T0,T1,T2 >
 {
-    typedef typename list3< T0,T1,T2 >::type type;
+    using type = typename list3< T0,T1,T2 >::type;
 };
 
 template<
@@ -78,7 +78,7 @@ struct list<
         >
     : list4< T0,T1,T2,T3 >
 {
-    typedef typename list4< T0,T1,T2,T3 >::type type;
+    using type = typename list4< T0,T1,T2,T3 >::type;
 };
 
 template<
@@ -90,7 +90,7 @@ struct list<
         >
     : list5< T0,T1,T2,T3,T4 >
 {
-    typedef typename list5< T0,T1,T2,T3,T4 >::type type;
+    using type = typename list5< T0,T1,T2,T3,T4 >::type;
 };
 
 template<
@@ -103,7 +103,7 @@ struct list<
         >
     : list6< T0,T1,T2,T3,T4,T5 >
 {
-    typedef typename list6< T0,T1,T2,T3,T4,T5 >::type type;
+    using type = typename list6< T0,T1,T2,T3,T4,T5 >::type;
 };
 
 template<
@@ -116,7 +116,7 @@ struct list<
         >
     : list7< T0,T1,T2,T3,T4,T5,T6 >
 {
-    typedef typename list7< T0,T1,T2,T3,T4,T5,T6 >::type type;
+    using type = typename list7< T0,T1,T2,T3,T4,T5,T6 >::type;
 };
 
 template<
@@ -129,7 +129,7 @@ struct list<
         >
     : list8< T0,T1,T2,T3,T4,T5,T6,T7 >
 {
-    typedef typename list8< T0,T1,T2,T3,T4,T5,T6,T7 >::type type;
+    using type = typename list8< T0,T1,T2,T3,T4,T5,T6,T7 >::type;
 };
 
 template<
@@ -142,7 +142,7 @@ struct list<
         >
     : list9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >
 {
-    typedef typename list9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type type;
+    using type = typename list9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type;
 };
 
 template<
@@ -155,7 +155,7 @@ struct list<
         >
     : list10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >
 {
-    typedef typename list10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type type;
+    using type = typename list10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type;
 };
 
 template<
@@ -169,7 +169,7 @@ struct list<
         >
     : list11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >
 {
-    typedef typename list11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type type;
+    using type = typename list11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type;
 };
 
 template<
@@ -183,7 +183,7 @@ struct list<
         >
     : list12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >
 {
-    typedef typename list12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type type;
+    using type = typename list12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type;
 };
 
 template<
@@ -197,7 +197,7 @@ struct list<
         >
     : list13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >
 {
-    typedef typename list13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type type;
+    using type = typename list13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type;
 };
 
 template<
@@ -211,7 +211,7 @@ struct list<
         >
     : list14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >
 {
-    typedef typename list14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type type;
+    using type = typename list14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type;
 };
 
 template<
@@ -227,7 +227,7 @@ struct list<
           T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14
         >
 {
-    typedef typename list15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type type;
+    using type = typename list15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type;
 };
 
 template<
@@ -245,7 +245,7 @@ struct list<
         , T15
         >
 {
-    typedef typename list16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type type;
+    using type = typename list16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type;
 };
 
 template<
@@ -263,7 +263,7 @@ struct list<
         , T15, T16
         >
 {
-    typedef typename list17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type type;
+    using type = typename list17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type;
 };
 
 template<
@@ -281,7 +281,7 @@ struct list<
         , T15, T16, T17
         >
 {
-    typedef typename list18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type type;
+    using type = typename list18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type;
 };
 
 template<
@@ -299,7 +299,7 @@ struct list<
         , T15, T16, T17, T18
         >
 {
-    typedef typename list19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type type;
+    using type = typename list19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type;
 };
 
 /// primary template (not a specialization!)
@@ -316,7 +316,7 @@ struct list
         , T15, T16, T17, T18, T19
         >
 {
-    typedef typename list20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type type;
+    using type = typename list20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type;
 };
 
 }}

@@ -15,8 +15,8 @@ namespace boost { namespace mpl { namespace aux {
 template< typename Iterator, typename State >
 struct iter_fold_if_null_step
 {
-    typedef State state;
-    typedef Iterator iterator;
+    using state = State;
+    using iterator = Iterator;
 };
 
 template< bool >
@@ -30,8 +30,8 @@ struct iter_fold_if_step_impl
         >
     struct result_
     {
-        typedef typename apply2< StateOp,State,Iterator >::type state;
-        typedef typename IteratorOp::type iterator;
+        using state = typename apply2< StateOp,State,Iterator >::type;
+        using iterator = typename IteratorOp::type;
     };
 };
 
@@ -46,8 +46,8 @@ struct iter_fold_if_step_impl<false>
         >
     struct result_
     {
-        typedef State state;
-        typedef Iterator iterator;
+        using state = State;
+        using iterator = Iterator;
     };
 };
 
@@ -59,13 +59,13 @@ template<
     >
 struct iter_fold_if_forward_step
 {
-    typedef typename apply2< Predicate,State,Iterator >::type not_last;
-    typedef typename iter_fold_if_step_impl<
+    using not_last = typename apply2< Predicate,State,Iterator >::type;
+    using impl_ = typename iter_fold_if_step_impl<
           BOOST_MPL_AUX_MSVC_VALUE_WKND(not_last)::value
-        >::template result_< Iterator,State,ForwardOp, mpl::next<Iterator> > impl_;
+        >::template result_< Iterator,State,ForwardOp, mpl::next<Iterator> >;
 
-    typedef typename impl_::state state;
-    typedef typename impl_::iterator iterator;
+    using state = typename impl_::state;
+    using iterator = typename impl_::iterator;
 };
 
 template<
@@ -76,13 +76,13 @@ template<
     >
 struct iter_fold_if_backward_step
 {
-    typedef typename apply2< Predicate,State,Iterator >::type not_last;
-    typedef typename iter_fold_if_step_impl<
+    using not_last = typename apply2< Predicate,State,Iterator >::type;
+    using impl_ = typename iter_fold_if_step_impl<
           BOOST_MPL_AUX_MSVC_VALUE_WKND(not_last)::value
-        >::template result_< Iterator,State,BackwardOp, identity<Iterator> > impl_;
+        >::template result_< Iterator,State,BackwardOp, identity<Iterator> >;
 
-    typedef typename impl_::state state;
-    typedef typename impl_::iterator iterator;
+    using state = typename impl_::state;
+    using iterator = typename impl_::iterator;
 };
 
 template<
@@ -96,14 +96,14 @@ template<
 struct iter_fold_if_impl
 {
  private:
-    typedef iter_fold_if_null_step< Iterator,State > forward_step0;
-    typedef iter_fold_if_forward_step< typename forward_step0::iterator, typename forward_step0::state, ForwardOp, ForwardPredicate > forward_step1;
-    typedef iter_fold_if_forward_step< typename forward_step1::iterator, typename forward_step1::state, ForwardOp, ForwardPredicate > forward_step2;
-    typedef iter_fold_if_forward_step< typename forward_step2::iterator, typename forward_step2::state, ForwardOp, ForwardPredicate > forward_step3;
-    typedef iter_fold_if_forward_step< typename forward_step3::iterator, typename forward_step3::state, ForwardOp, ForwardPredicate > forward_step4;
+    using forward_step0 = iter_fold_if_null_step< Iterator,State >;
+    using forward_step1 = iter_fold_if_forward_step< typename forward_step0::iterator, typename forward_step0::state, ForwardOp, ForwardPredicate >;
+    using forward_step2 = iter_fold_if_forward_step< typename forward_step1::iterator, typename forward_step1::state, ForwardOp, ForwardPredicate >;
+    using forward_step3 = iter_fold_if_forward_step< typename forward_step2::iterator, typename forward_step2::state, ForwardOp, ForwardPredicate >;
+    using forward_step4 = iter_fold_if_forward_step< typename forward_step3::iterator, typename forward_step3::state, ForwardOp, ForwardPredicate >;
     
 
-    typedef typename if_<
+    using backward_step4 = typename if_<
           typename forward_step4::not_last
         , iter_fold_if_impl<
               typename forward_step4::iterator
@@ -117,17 +117,17 @@ struct iter_fold_if_impl
               typename forward_step4::iterator
             , typename forward_step4::state
             >
-        >::type backward_step4;
+        >::type;
 
-    typedef iter_fold_if_backward_step< typename forward_step3::iterator, typename backward_step4::state, BackwardOp, BackwardPredicate > backward_step3;
-    typedef iter_fold_if_backward_step< typename forward_step2::iterator, typename backward_step3::state, BackwardOp, BackwardPredicate > backward_step2;
-    typedef iter_fold_if_backward_step< typename forward_step1::iterator, typename backward_step2::state, BackwardOp, BackwardPredicate > backward_step1;
-    typedef iter_fold_if_backward_step< typename forward_step0::iterator, typename backward_step1::state, BackwardOp, BackwardPredicate > backward_step0;
+    using backward_step3 = iter_fold_if_backward_step< typename forward_step3::iterator, typename backward_step4::state, BackwardOp, BackwardPredicate >;
+    using backward_step2 = iter_fold_if_backward_step< typename forward_step2::iterator, typename backward_step3::state, BackwardOp, BackwardPredicate >;
+    using backward_step1 = iter_fold_if_backward_step< typename forward_step1::iterator, typename backward_step2::state, BackwardOp, BackwardPredicate >;
+    using backward_step0 = iter_fold_if_backward_step< typename forward_step0::iterator, typename backward_step1::state, BackwardOp, BackwardPredicate >;
     
 
  public:
-    typedef typename backward_step0::state state;
-    typedef typename backward_step4::iterator iterator;
+    using state = typename backward_step0::state;
+    using iterator = typename backward_step4::iterator;
 };
 
 }}}

@@ -18,28 +18,28 @@ template<
 struct inherit2
     : T1, T2
 {
-    typedef inherit2 type;
+    using type = inherit2;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2, inherit2, (T1, T2))
 };
 
 template< typename T1 >
 struct inherit2< T1,empty_base >
 {
-    typedef T1 type;
+    using type = T1;
     BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(2, inherit2, (T1, empty_base))
 };
 
 template< typename T2 >
 struct inherit2< empty_base,T2 >
 {
-    typedef T2 type;
+    using type = T2;
     BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(2, inherit2, (empty_base, T2))
 };
 
 template<>
 struct inherit2< empty_base,empty_base >
 {
-    typedef empty_base type;
+    using type = empty_base;
     BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(2, inherit2, (empty_base, empty_base))
 };
 

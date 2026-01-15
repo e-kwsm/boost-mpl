@@ -37,9 +37,9 @@ template<
     >
 struct lambda
 {
-    typedef false_ is_le;
-    typedef T result_;
-    typedef T type;
+    using is_le = false_;
+    using result_ = T;
+    using type = T;
 };
 
 template<
@@ -53,9 +53,9 @@ struct is_lambda_expression
 template< int N, typename Tag >
 struct lambda< arg<N>,Tag, int_< -1 > >
 {
-    typedef true_ is_le;
-    typedef mpl::arg<N> result_; // qualified for the sake of MIPSpro 7.41
-    typedef mpl::protect<result_> type;
+    using is_le = true_;
+    using result_ = mpl::arg<N>; // qualified for the sake of MIPSpro 7.41
+    using type = mpl::protect<result_>;
 };
 
 template<
@@ -68,12 +68,12 @@ struct lambda<
         , int_<1>
         >
 {
-    typedef false_ is_le;
-    typedef bind0<
+    using is_le = false_;
+    using result_ = bind0<
           F
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 namespace aux {
@@ -85,11 +85,11 @@ template<
     >
 struct le_result1
 {
-    typedef F<
+    using result_ = F<
           typename L1::type
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -99,12 +99,12 @@ template<
     >
 struct le_result1< true_,Tag,F,L1 >
 {
-    typedef bind1<
+    using result_ = bind1<
           quote1< F,Tag >
         , typename L1::result_
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 } // namespace aux
@@ -120,18 +120,18 @@ struct lambda<
         , int_<1>
         >
 {
-    typedef lambda< T1,Tag > l1;
-    typedef typename l1::is_le is_le1;
-    typedef typename aux::lambda_or<
+    using l1 = lambda< T1,Tag >;
+    using is_le1 = typename l1::is_le;
+    using is_le = typename aux::lambda_or<
           is_le1::value
-        >::type is_le;
+        >::type;
 
-    typedef aux::le_result1<
+    using le_result_ = aux::le_result1<
           is_le, Tag, F, l1
-        > le_result_;
+        >;
 
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 template<
@@ -144,13 +144,13 @@ struct lambda<
         , int_<2>
         >
 {
-    typedef false_ is_le;
-    typedef bind1<
+    using is_le = false_;
+    using result_ = bind1<
           F
         , T1
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 namespace aux {
@@ -162,11 +162,11 @@ template<
     >
 struct le_result2
 {
-    typedef F<
+    using result_ = F<
           typename L1::type, typename L2::type
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -176,12 +176,12 @@ template<
     >
 struct le_result2< true_,Tag,F,L1,L2 >
 {
-    typedef bind2<
+    using result_ = bind2<
           quote2< F,Tag >
         , typename L1::result_, typename L2::result_
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 } // namespace aux
@@ -197,23 +197,23 @@ struct lambda<
         , int_<2>
         >
 {
-    typedef lambda< T1,Tag > l1;
-    typedef lambda< T2,Tag > l2;
+    using l1 = lambda< T1,Tag >;
+    using l2 = lambda< T2,Tag >;
     
-    typedef typename l1::is_le is_le1;
-    typedef typename l2::is_le is_le2;
+    using is_le1 = typename l1::is_le;
+    using is_le2 = typename l2::is_le;
     
 
-    typedef typename aux::lambda_or<
+    using is_le = typename aux::lambda_or<
           is_le1::value, is_le2::value
-        >::type is_le;
+        >::type;
 
-    typedef aux::le_result2<
+    using le_result_ = aux::le_result2<
           is_le, Tag, F, l1, l2
-        > le_result_;
+        >;
 
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 template<
@@ -226,13 +226,13 @@ struct lambda<
         , int_<3>
         >
 {
-    typedef false_ is_le;
-    typedef bind2<
+    using is_le = false_;
+    using result_ = bind2<
           F
         , T1, T2
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 namespace aux {
@@ -244,11 +244,11 @@ template<
     >
 struct le_result3
 {
-    typedef F<
+    using result_ = F<
           typename L1::type, typename L2::type, typename L3::type
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -258,12 +258,12 @@ template<
     >
 struct le_result3< true_,Tag,F,L1,L2,L3 >
 {
-    typedef bind3<
+    using result_ = bind3<
           quote3< F,Tag >
         , typename L1::result_, typename L2::result_, typename L3::result_
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 } // namespace aux
@@ -279,25 +279,25 @@ struct lambda<
         , int_<3>
         >
 {
-    typedef lambda< T1,Tag > l1;
-    typedef lambda< T2,Tag > l2;
-    typedef lambda< T3,Tag > l3;
+    using l1 = lambda< T1,Tag >;
+    using l2 = lambda< T2,Tag >;
+    using l3 = lambda< T3,Tag >;
     
-    typedef typename l1::is_le is_le1;
-    typedef typename l2::is_le is_le2;
-    typedef typename l3::is_le is_le3;
+    using is_le1 = typename l1::is_le;
+    using is_le2 = typename l2::is_le;
+    using is_le3 = typename l3::is_le;
     
 
-    typedef typename aux::lambda_or<
+    using is_le = typename aux::lambda_or<
           is_le1::value, is_le2::value, is_le3::value
-        >::type is_le;
+        >::type;
 
-    typedef aux::le_result3<
+    using le_result_ = aux::le_result3<
           is_le, Tag, F, l1, l2, l3
-        > le_result_;
+        >;
 
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 template<
@@ -310,13 +310,13 @@ struct lambda<
         , int_<4>
         >
 {
-    typedef false_ is_le;
-    typedef bind3<
+    using is_le = false_;
+    using result_ = bind3<
           F
         , T1, T2, T3
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 namespace aux {
@@ -328,12 +328,12 @@ template<
     >
 struct le_result4
 {
-    typedef F<
+    using result_ = F<
           typename L1::type, typename L2::type, typename L3::type
         , typename L4::type
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -343,13 +343,13 @@ template<
     >
 struct le_result4< true_,Tag,F,L1,L2,L3,L4 >
 {
-    typedef bind4<
+    using result_ = bind4<
           quote4< F,Tag >
         , typename L1::result_, typename L2::result_, typename L3::result_
         , typename L4::result_
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 } // namespace aux
@@ -365,27 +365,27 @@ struct lambda<
         , int_<4>
         >
 {
-    typedef lambda< T1,Tag > l1;
-    typedef lambda< T2,Tag > l2;
-    typedef lambda< T3,Tag > l3;
-    typedef lambda< T4,Tag > l4;
+    using l1 = lambda< T1,Tag >;
+    using l2 = lambda< T2,Tag >;
+    using l3 = lambda< T3,Tag >;
+    using l4 = lambda< T4,Tag >;
     
-    typedef typename l1::is_le is_le1;
-    typedef typename l2::is_le is_le2;
-    typedef typename l3::is_le is_le3;
-    typedef typename l4::is_le is_le4;
+    using is_le1 = typename l1::is_le;
+    using is_le2 = typename l2::is_le;
+    using is_le3 = typename l3::is_le;
+    using is_le4 = typename l4::is_le;
     
 
-    typedef typename aux::lambda_or<
+    using is_le = typename aux::lambda_or<
           is_le1::value, is_le2::value, is_le3::value, is_le4::value
-        >::type is_le;
+        >::type;
 
-    typedef aux::le_result4<
+    using le_result_ = aux::le_result4<
           is_le, Tag, F, l1, l2, l3, l4
-        > le_result_;
+        >;
 
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 template<
@@ -398,13 +398,13 @@ struct lambda<
         , int_<5>
         >
 {
-    typedef false_ is_le;
-    typedef bind4<
+    using is_le = false_;
+    using result_ = bind4<
           F
         , T1, T2, T3, T4
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 namespace aux {
@@ -416,12 +416,12 @@ template<
     >
 struct le_result5
 {
-    typedef F<
+    using result_ = F<
           typename L1::type, typename L2::type, typename L3::type
         , typename L4::type, typename L5::type
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -431,13 +431,13 @@ template<
     >
 struct le_result5< true_,Tag,F,L1,L2,L3,L4,L5 >
 {
-    typedef bind5<
+    using result_ = bind5<
           quote5< F,Tag >
         , typename L1::result_, typename L2::result_, typename L3::result_
         , typename L4::result_, typename L5::result_
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 } // namespace aux
@@ -457,30 +457,30 @@ struct lambda<
         , int_<5>
         >
 {
-    typedef lambda< T1,Tag > l1;
-    typedef lambda< T2,Tag > l2;
-    typedef lambda< T3,Tag > l3;
-    typedef lambda< T4,Tag > l4;
-    typedef lambda< T5,Tag > l5;
+    using l1 = lambda< T1,Tag >;
+    using l2 = lambda< T2,Tag >;
+    using l3 = lambda< T3,Tag >;
+    using l4 = lambda< T4,Tag >;
+    using l5 = lambda< T5,Tag >;
     
-    typedef typename l1::is_le is_le1;
-    typedef typename l2::is_le is_le2;
-    typedef typename l3::is_le is_le3;
-    typedef typename l4::is_le is_le4;
-    typedef typename l5::is_le is_le5;
+    using is_le1 = typename l1::is_le;
+    using is_le2 = typename l2::is_le;
+    using is_le3 = typename l3::is_le;
+    using is_le4 = typename l4::is_le;
+    using is_le5 = typename l5::is_le;
     
 
-    typedef typename aux::lambda_or<
+    using is_le = typename aux::lambda_or<
           is_le1::value, is_le2::value, is_le3::value, is_le4::value
         , is_le5::value
-        >::type is_le;
+        >::type;
 
-    typedef aux::le_result5<
+    using le_result_ = aux::le_result5<
           is_le, Tag, F, l1, l2, l3, l4, l5
-        > le_result_;
+        >;
 
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 template<
@@ -494,22 +494,22 @@ struct lambda<
         , int_<6>
         >
 {
-    typedef false_ is_le;
-    typedef bind5<
+    using is_le = false_;
+    using result_ = bind5<
           F
         , T1, T2, T3, T4, T5
-        > result_;
+        >;
 
-    typedef result_ type;
+    using type = result_;
 };
 
 /// special case for 'protect'
 template< typename T, typename Tag >
 struct lambda< mpl::protect<T>,Tag, int_<1> >
 {
-    typedef false_ is_le;
-    typedef mpl::protect<T> result_;
-    typedef result_ type;
+    using is_le = false_;
+    using result_ = mpl::protect<T>;
+    using type = result_;
 };
 
 /// specializations for the main 'bind' form
@@ -525,9 +525,9 @@ struct lambda<
         , int_<6>
         >
 {
-    typedef false_ is_le;
-    typedef bind< F,T1,T2,T3,T4,T5 > result_;
-    typedef result_ type;
+    using is_le = false_;
+    using result_ = bind< F,T1,T2,T3,T4,T5 >;
+    using type = result_;
 };
 
 template<
@@ -542,14 +542,14 @@ struct lambda<
         , int_<3>
         >
 {
-    typedef lambda< F,Tag2 > l1;
-    typedef lambda< Tag1,Tag2 > l2;
-    typedef typename l1::is_le is_le;
-    typedef bind1< quote1<aux::template_arity>, typename l1::result_ > arity_;
-    typedef lambda< typename if_< is_le,arity_,Arity >::type, Tag2 > l3;
-    typedef aux::le_result3<is_le, Tag2, mpl::lambda, l1, l2, l3> le_result_;
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using l1 = lambda< F,Tag2 >;
+    using l2 = lambda< Tag1,Tag2 >;
+    using is_le = typename l1::is_le;
+    using arity_ = bind1< quote1<aux::template_arity>, typename l1::result_ >;
+    using l3 = lambda< typename if_< is_le,arity_,Arity >::type, Tag2 >;
+    using le_result_ = aux::le_result3<is_le, Tag2, mpl::lambda, l1, l2, l3>;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 BOOST_MPL_AUX_NA_SPEC2(2, 3, lambda)
