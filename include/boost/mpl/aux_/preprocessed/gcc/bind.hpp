@@ -20,7 +20,7 @@ template<
     >
 struct resolve_bind_arg
 {
-    typedef T type;
+    using type = T;
 };
 
 template<
@@ -29,8 +29,8 @@ template<
     >
 struct replace_unnamed_arg
 {
-    typedef Arg next;
-    typedef T type;
+    using next = Arg;
+    using type = T;
 };
 
 template<
@@ -38,8 +38,8 @@ template<
     >
 struct replace_unnamed_arg< arg< -1 >, Arg >
 {
-    typedef typename Arg::next next;
-    typedef Arg type;
+    using next = typename Arg::next;
+    using type = Arg;
 };
 
 template<
@@ -47,7 +47,7 @@ template<
     >
 struct resolve_bind_arg< arg<N>, U1, U2, U3, U4, U5 >
 {
-    typedef typename apply_wrap5<mpl::arg<N>, U1, U2, U3, U4, U5>::type type;
+    using type = typename apply_wrap5<mpl::arg<N>, U1, U2, U3, U4, U5>::type;
 };
 
 template<
@@ -57,8 +57,8 @@ template<
     >
 struct resolve_bind_arg< bind< F,T1,T2,T3,T4,T5 >, U1, U2, U3, U4, U5 >
 {
-    typedef bind< F,T1,T2,T3,T4,T5 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind< F,T1,T2,T3,T4,T5 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -75,15 +75,15 @@ struct bind0
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
      public:
-        typedef typename apply_wrap0<
+        using type = typename apply_wrap0<
               f_
-            >::type type;
+            >::type;
 
     };
 };
@@ -98,8 +98,8 @@ struct resolve_bind_arg<
       bind0<F>, U1, U2, U3, U4, U5
     >
 {
-    typedef bind0<F> f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind0<F>;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -127,21 +127,21 @@ struct bind1
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
      public:
-        typedef typename apply_wrap1<
+        using type = typename apply_wrap1<
               f_
             , typename t1::type
-            >::type type;
+            >::type;
 
     };
 };
@@ -156,8 +156,8 @@ struct resolve_bind_arg<
       bind1< F,T1 >, U1, U2, U3, U4, U5
     >
 {
-    typedef bind1< F,T1 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind1< F,T1 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -185,26 +185,26 @@ struct bind2
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
      public:
-        typedef typename apply_wrap2<
+        using type = typename apply_wrap2<
               f_
             , typename t1::type, typename t2::type
-            >::type type;
+            >::type;
 
     };
 };
@@ -219,8 +219,8 @@ struct resolve_bind_arg<
       bind2< F,T1,T2 >, U1, U2, U3, U4, U5
     >
 {
-    typedef bind2< F,T1,T2 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind2< F,T1,T2 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -248,31 +248,31 @@ struct bind3
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T3,n3 > r3;
-        typedef typename r3::type a3;
-        typedef typename r3::next n4;
-        typedef aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 > t3;
+        using r3 = aux::replace_unnamed_arg< T3,n3 >;
+        using a3 = typename r3::type;
+        using n4 = typename r3::next;
+        using t3 = aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >;
         ///
      public:
-        typedef typename apply_wrap3<
+        using type = typename apply_wrap3<
               f_
             , typename t1::type, typename t2::type, typename t3::type
-            >::type type;
+            >::type;
 
     };
 };
@@ -287,8 +287,8 @@ struct resolve_bind_arg<
       bind3< F,T1,T2,T3 >, U1, U2, U3, U4, U5
     >
 {
-    typedef bind3< F,T1,T2,T3 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind3< F,T1,T2,T3 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -316,37 +316,37 @@ struct bind4
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T3,n3 > r3;
-        typedef typename r3::type a3;
-        typedef typename r3::next n4;
-        typedef aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 > t3;
+        using r3 = aux::replace_unnamed_arg< T3,n3 >;
+        using a3 = typename r3::type;
+        using n4 = typename r3::next;
+        using t3 = aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T4,n4 > r4;
-        typedef typename r4::type a4;
-        typedef typename r4::next n5;
-        typedef aux::resolve_bind_arg< a4,U1,U2,U3,U4,U5 > t4;
+        using r4 = aux::replace_unnamed_arg< T4,n4 >;
+        using a4 = typename r4::type;
+        using n5 = typename r4::next;
+        using t4 = aux::resolve_bind_arg< a4,U1,U2,U3,U4,U5 >;
         ///
      public:
-        typedef typename apply_wrap4<
+        using type = typename apply_wrap4<
               f_
             , typename t1::type, typename t2::type, typename t3::type
             , typename t4::type
-            >::type type;
+            >::type;
 
     };
 };
@@ -361,8 +361,8 @@ struct resolve_bind_arg<
       bind4< F,T1,T2,T3,T4 >, U1, U2, U3, U4, U5
     >
 {
-    typedef bind4< F,T1,T2,T3,T4 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind4< F,T1,T2,T3,T4 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -391,42 +391,42 @@ struct bind5
     struct apply
     {
      private:
-        typedef aux::replace_unnamed_arg< F, mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type f_;
+        using r0 = aux::replace_unnamed_arg< F, mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg< a0,U1,U2,U3,U4,U5 >::type;
         ///
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T3,n3 > r3;
-        typedef typename r3::type a3;
-        typedef typename r3::next n4;
-        typedef aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 > t3;
+        using r3 = aux::replace_unnamed_arg< T3,n3 >;
+        using a3 = typename r3::type;
+        using n4 = typename r3::next;
+        using t3 = aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T4,n4 > r4;
-        typedef typename r4::type a4;
-        typedef typename r4::next n5;
-        typedef aux::resolve_bind_arg< a4,U1,U2,U3,U4,U5 > t4;
+        using r4 = aux::replace_unnamed_arg< T4,n4 >;
+        using a4 = typename r4::type;
+        using n5 = typename r4::next;
+        using t4 = aux::resolve_bind_arg< a4,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T5,n5 > r5;
-        typedef typename r5::type a5;
-        typedef typename r5::next n6;
-        typedef aux::resolve_bind_arg< a5,U1,U2,U3,U4,U5 > t5;
+        using r5 = aux::replace_unnamed_arg< T5,n5 >;
+        using a5 = typename r5::type;
+        using n6 = typename r5::next;
+        using t5 = aux::resolve_bind_arg< a5,U1,U2,U3,U4,U5 >;
         ///
      public:
-        typedef typename apply_wrap5<
+        using type = typename apply_wrap5<
               f_
             , typename t1::type, typename t2::type, typename t3::type
             , typename t4::type, typename t5::type
-            >::type type;
+            >::type;
 
     };
 };
@@ -442,8 +442,8 @@ struct resolve_bind_arg<
       bind5< F,T1,T2,T3,T4,T5 >, U1, U2, U3, U4, U5
     >
 {
-    typedef bind5< F,T1,T2,T3,T4,T5 > f_;
-    typedef typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type type;
+    using f_ = bind5< F,T1,T2,T3,T4,T5 >;
+    using type = typename apply_wrap5< f_,U1,U2,U3,U4,U5 >::type;
 };
 
 } // namespace aux
@@ -483,29 +483,29 @@ struct bind3<
     struct apply
     {
      private:
-        typedef mpl::arg<1> n1;
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using n1 = mpl::arg<1>;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T3,n3 > r3;
-        typedef typename r3::type a3;
-        typedef typename r3::next n4;
-        typedef aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 > t3;
+        using r3 = aux::replace_unnamed_arg< T3,n3 >;
+        using a3 = typename r3::type;
+        using n4 = typename r3::next;
+        using t3 = aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >;
         ///
-        typedef typename if_<
+        using f_ = typename if_<
               typename t1::type
             , t2, t3
-            >::type f_;
+            >::type;
 
      public:
-        typedef typename f_::type type;
+        using type = typename f_::type;
     };
 };
 
@@ -531,29 +531,29 @@ struct bind3<
     struct apply
     {
      private:
-        typedef mpl::arg<1> n1;
-        typedef aux::replace_unnamed_arg< T1,n1 > r1;
-        typedef typename r1::type a1;
-        typedef typename r1::next n2;
-        typedef aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 > t1;
+        using n1 = mpl::arg<1>;
+        using r1 = aux::replace_unnamed_arg< T1,n1 >;
+        using a1 = typename r1::type;
+        using n2 = typename r1::next;
+        using t1 = aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T2,n2 > r2;
-        typedef typename r2::type a2;
-        typedef typename r2::next n3;
-        typedef aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 > t2;
+        using r2 = aux::replace_unnamed_arg< T2,n2 >;
+        using a2 = typename r2::type;
+        using n3 = typename r2::next;
+        using t2 = aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >;
         ///
-        typedef aux::replace_unnamed_arg< T3,n3 > r3;
-        typedef typename r3::type a3;
-        typedef typename r3::next n4;
-        typedef aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 > t3;
+        using r3 = aux::replace_unnamed_arg< T3,n3 >;
+        using a3 = typename r3::type;
+        using n4 = typename r3::next;
+        using t3 = aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >;
         ///
-        typedef typename eval_if<
+        using f_ = typename eval_if<
               typename t1::type
             , t2, t3
-            >::type f_;
+            >::type;
 
      public:
-        typedef typename f_::type type;
+        using type = typename f_::type;
     };
 };
 
