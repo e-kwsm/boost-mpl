@@ -27,11 +27,11 @@ struct at_impl< aux::set_tag >
 {
     template< typename Set, typename T > struct apply
     {
-        typedef typename if_< 
+        using type = typename if_<
               has_key_impl<aux::set_tag>::apply<Set,T>
             , T
             , void_
-            >::type type;            
+            >::type;
     };
 };
 

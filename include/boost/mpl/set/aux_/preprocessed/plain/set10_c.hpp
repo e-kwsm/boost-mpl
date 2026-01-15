@@ -22,7 +22,7 @@ struct set1_c
         , set0_c<T>
         >
 {
-    typedef set1_c type;
+    using type = set1_c;
 };
 
 template<
@@ -35,7 +35,7 @@ struct set2_c
         , set1_c< T,C0 >
         >
 {
-    typedef set2_c type;
+    using type = set2_c;
 };
 
 template<
@@ -48,7 +48,7 @@ struct set3_c
         , set2_c< T,C0,C1 >
         >
 {
-    typedef set3_c type;
+    using type = set3_c;
 };
 
 template<
@@ -61,7 +61,7 @@ struct set4_c
         , set3_c< T,C0,C1,C2 >
         >
 {
-    typedef set4_c type;
+    using type = set4_c;
 };
 
 template<
@@ -74,7 +74,7 @@ struct set5_c
         , set4_c< T,C0,C1,C2,C3 >
         >
 {
-    typedef set5_c type;
+    using type = set5_c;
 };
 
 template<
@@ -87,7 +87,7 @@ struct set6_c
         , set5_c< T,C0,C1,C2,C3,C4 >
         >
 {
-    typedef set6_c type;
+    using type = set6_c;
 };
 
 template<
@@ -100,7 +100,7 @@ struct set7_c
         , set6_c< T,C0,C1,C2,C3,C4,C5 >
         >
 {
-    typedef set7_c type;
+    using type = set7_c;
 };
 
 template<
@@ -113,7 +113,7 @@ struct set8_c
         , set7_c< T,C0,C1,C2,C3,C4,C5,C6 >
         >
 {
-    typedef set8_c type;
+    using type = set8_c;
 };
 
 template<
@@ -126,7 +126,7 @@ struct set9_c
         , set8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
         >
 {
-    typedef set9_c type;
+    using type = set9_c;
 };
 
 template<
@@ -139,7 +139,7 @@ struct set10_c
         , set9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
         >
 {
-    typedef set10_c type;
+    using type = set10_c;
 };
 
 }}

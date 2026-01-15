@@ -23,7 +23,7 @@ struct set11
         , typename set10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::item_
         >
 {
-    typedef set11 type;
+    using type = set11;
 };
 
 template<
@@ -37,7 +37,7 @@ struct set12
         , typename set11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::item_
         >
 {
-    typedef set12 type;
+    using type = set12;
 };
 
 template<
@@ -52,7 +52,7 @@ struct set13
         , T11 >::item_
         >
 {
-    typedef set13 type;
+    using type = set13;
 };
 
 template<
@@ -67,7 +67,7 @@ struct set14
         , T12 >::item_
         >
 {
-    typedef set14 type;
+    using type = set14;
 };
 
 template<
@@ -82,7 +82,7 @@ struct set15
         , T12, T13 >::item_
         >
 {
-    typedef set15 type;
+    using type = set15;
 };
 
 template<
@@ -98,7 +98,7 @@ struct set16
         , T12, T13, T14 >::item_
         >
 {
-    typedef set16 type;
+    using type = set16;
 };
 
 template<
@@ -114,7 +114,7 @@ struct set17
         , T12, T13, T14, T15 >::item_
         >
 {
-    typedef set17 type;
+    using type = set17;
 };
 
 template<
@@ -130,7 +130,7 @@ struct set18
         , T12, T13, T14, T15, T16 >::item_
         >
 {
-    typedef set18 type;
+    using type = set18;
 };
 
 template<
@@ -146,7 +146,7 @@ struct set19
         , T12, T13, T14, T15, T16, T17 >::item_
         >
 {
-    typedef set19 type;
+    using type = set19;
 };
 
 template<
@@ -162,7 +162,7 @@ struct set20
         , T12, T13, T14, T15, T16, T17, T18 >::item_
         >
 {
-    typedef set20 type;
+    using type = set20;
 };
 
 }}

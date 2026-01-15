@@ -22,7 +22,7 @@ struct set11_c
         , set10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
         >
 {
-    typedef set11_c type;
+    using type = set11_c;
 };
 
 template<
@@ -36,7 +36,7 @@ struct set12_c
         , set11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
         >
 {
-    typedef set12_c type;
+    using type = set12_c;
 };
 
 template<
@@ -50,7 +50,7 @@ struct set13_c
         , set12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
         >
 {
-    typedef set13_c type;
+    using type = set13_c;
 };
 
 template<
@@ -64,7 +64,7 @@ struct set14_c
         , set13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
         >
 {
-    typedef set14_c type;
+    using type = set14_c;
 };
 
 template<
@@ -78,7 +78,7 @@ struct set15_c
         , set14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >
         >
 {
-    typedef set15_c type;
+    using type = set15_c;
 };
 
 template<
@@ -92,7 +92,7 @@ struct set16_c
         , set15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >
         >
 {
-    typedef set16_c type;
+    using type = set16_c;
 };
 
 template<
@@ -106,7 +106,7 @@ struct set17_c
         , set16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >
         >
 {
-    typedef set17_c type;
+    using type = set17_c;
 };
 
 template<
@@ -120,7 +120,7 @@ struct set18_c
         , set17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >
         >
 {
-    typedef set18_c type;
+    using type = set18_c;
 };
 
 template<
@@ -134,7 +134,7 @@ struct set19_c
         , set18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >
         >
 {
-    typedef set19_c type;
+    using type = set19_c;
 };
 
 template<
@@ -148,7 +148,7 @@ struct set20_c
         , set19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >
         >
 {
-    typedef set20_c type;
+    using type = set20_c;
 };
 
 }}

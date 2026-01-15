@@ -40,9 +40,9 @@ template< typename Set, typename Tail > struct s_iter_get
 
 template< typename Set, typename Tail > struct s_iter_impl
 {
-    typedef Tail                        tail_;
-    typedef forward_iterator_tag        category;
-    typedef typename Tail::item_type_   type;
+    using tail_ = Tail;
+    using category = forward_iterator_tag;
+    using type = typename Tail::item_type_;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef typename s_iter_get< Set,typename Tail::base >::type next;
@@ -60,7 +60,7 @@ struct next< s_iter<Set,Tail> >
 template< typename Set > 
 struct next< s_iter<Set,set0<> > >
 {
-    typedef s_iter<Set,set0<> > type;
+    using type = s_iter<Set,set0<> >;
 };
 
 template< typename Set, typename Tail > struct s_iter
@@ -70,7 +70,7 @@ template< typename Set, typename Tail > struct s_iter
 
 template< typename Set > struct s_iter<Set, set0<> >
 {
-    typedef forward_iterator_tag category;
+    using category = forward_iterator_tag;
 };
 
 #else

@@ -26,7 +26,7 @@ struct clear_impl< aux::set_tag >
 {
     template< typename Set > struct apply
     {
-        typedef set0<> type;
+        using type = set0<>;
     };
 };
 

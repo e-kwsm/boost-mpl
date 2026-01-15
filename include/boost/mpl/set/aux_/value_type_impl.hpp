@@ -25,7 +25,7 @@ struct value_type_impl< aux::set_tag >
 {
     template< typename Set, typename T > struct apply
     {
-        typedef T type;
+        using type = T;
     };
 };
 

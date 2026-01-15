@@ -34,7 +34,7 @@ struct end_impl< aux::set_tag >
 {
     template< typename Set > struct apply
     {
-        typedef s_iter< Set,set0<> > type;
+        using type = s_iter< Set,set0<> >;
     };
 };
 

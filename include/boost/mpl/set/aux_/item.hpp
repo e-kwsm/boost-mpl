@@ -29,19 +29,19 @@ template< typename T, typename Base >
 struct s_item
     : Base
 {
-    typedef s_item<T,Base> item_;
-    typedef void_       last_masked_;
-    typedef T           item_type_;
-    typedef typename Base::item_ base;
-    typedef s_item type;
+    using item_ = s_item<T,Base>;
+    using last_masked_ = void_;
+    using item_type_ = T;
+    using base = typename Base::item_;
+    using type = s_item;
     
-    typedef typename next< typename Base::size >::type  size;
-    typedef typename next< typename Base::order >::type order;
+    using size = typename next< typename Base::size >::type;
+    using order = typename next< typename Base::order >::type;
 
 #if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
     typedef typename aux::weighted_tag<BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value>::type order_tag_;
 #else
-    typedef char (&order_tag_)[BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value];
+    using order_tag_ = char(&)[BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value];
 #endif
 
     BOOST_MPL_AUX_SET_OVERLOAD( order_tag_, ORDER_BY_KEY, s_item, aux::type_wrapper<T>* );
@@ -53,12 +53,12 @@ template< typename T, typename Base >
 struct s_mask
     : Base
 {
-    typedef s_mask<T,Base> item_;
-    typedef T       last_masked_;
-    typedef void_   item_type_;
-    typedef typename Base::item_ base;
-    typedef typename prior< typename Base::size >::type  size;
-    typedef s_mask type;
+    using item_ = s_mask<T,Base>;
+    using last_masked_ = T;
+    using item_type_ = void_;
+    using base = typename Base::item_;
+    using size = typename prior< typename Base::size >::type;
+    using type = s_mask;
 
     BOOST_MPL_AUX_SET_OVERLOAD( aux::yes_tag, IS_MASKED, s_mask, aux::type_wrapper<T>* );
 };
@@ -68,11 +68,11 @@ template< typename T, typename Base >
 struct s_unmask
     : Base
 {
-    typedef s_unmask<T,Base> item_;
-    typedef void_   last_masked_;
-    typedef T       item_type_;
-    typedef typename Base::item_ base;
-    typedef typename next< typename Base::size >::type  size;
+    using item_ = s_unmask<T,Base>;
+    using last_masked_ = void_;
+    using item_type_ = T;
+    using base = typename Base::item_;
+    using size = typename next< typename Base::size >::type;
 
     BOOST_MPL_AUX_SET_OVERLOAD( aux::no_tag, IS_MASKED, s_unmask, aux::type_wrapper<T>* );
 };

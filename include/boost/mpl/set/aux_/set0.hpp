@@ -52,13 +52,13 @@ namespace boost { namespace mpl {
 
 template< typename Dummy = na > struct set0
 {
-    typedef set0<>          item_;
-    typedef item_           type;
-    typedef aux::set_tag    tag;
-    typedef void_           last_masked_;
-    typedef void_           item_type_;
-    typedef long_<0>        size;
-    typedef long_<1>        order;
+    using item_ = set0<>;
+    using type = item_;
+    using tag = aux::set_tag;
+    using last_masked_ = void_;
+    using item_type_ = void_;
+    using size = long_<0>;
+    using order = long_<1>;
 
     BOOST_MPL_AUX_SET0_OVERLOAD( aux::no_tag, ORDER_BY_KEY, set0<>, void const volatile* );
     BOOST_MPL_AUX_SET0_OVERLOAD( aux::yes_tag, IS_MASKED, set0<>, void const volatile* );
