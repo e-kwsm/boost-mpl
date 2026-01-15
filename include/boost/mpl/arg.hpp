@@ -93,7 +93,7 @@ BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 template<> struct arg<i_>
 {
     BOOST_STATIC_CONSTANT(int, value = i_);
-    typedef arg<BOOST_PP_INC(i_)> next;
+    using next = arg<BOOST_PP_INC(i_)>;
     BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
     BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
 
@@ -102,7 +102,7 @@ template<> struct arg<i_>
         >
     struct apply
     {
-        typedef BOOST_PP_CAT(U,i_) type;
+        using type = BOOST_PP_CAT(U,i_);
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };
@@ -120,7 +120,7 @@ template<> struct arg<-1>
         >
     struct apply
     {
-        typedef U1 type;
+        using type = U1;
         BOOST_MPL_AUX_ASSERT_NOT_NA(type);
     };
 };

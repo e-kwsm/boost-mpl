@@ -21,7 +21,7 @@ namespace boost { namespace mpl { namespace aux {
 
 template< typename T > struct type_wrapper
 {
-    typedef T type;
+    using type = T;
 };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
@@ -33,7 +33,7 @@ template< typename T > struct wrapped_type;
 
 template< typename T > struct wrapped_type< type_wrapper<T> >
 {
-    typedef T type;
+    using type = T;
 };
 #else
 template< typename W > struct wrapped_type

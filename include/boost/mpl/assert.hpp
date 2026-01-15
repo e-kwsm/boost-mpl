@@ -76,8 +76,8 @@ struct failed {};
 #   define AUX778076_ASSERT_ARG(x) x
 #endif
 
-template< bool C >  struct assert        { typedef void* type; };
-template<>          struct assert<false> { typedef AUX778076_ASSERT_ARG(assert) type; };
+template< bool C >  struct assert        { using type = void*; };
+template<>          struct assert<false> { using type = AUX778076_ASSERT_ARG(assert); };
 
 template< bool C >
 int assertion_failed( typename assert<C>::type );
@@ -168,20 +168,20 @@ T make_assert_arg();
 
 #elif !defined(BOOST_MPL_CFG_ASSERT_BROKEN_POINTER_TO_POINTER_TO_MEMBER)
 
-template< bool > struct assert_arg_pred_impl { typedef int type; };
-template<> struct assert_arg_pred_impl<true> { typedef void* type; };
+template< bool > struct assert_arg_pred_impl { using type = int; };
+template<> struct assert_arg_pred_impl<true> { using type = void*; };
 
 template< typename P > struct assert_arg_pred
 {
-    typedef typename P::type p_type;
-    typedef typename assert_arg_pred_impl< p_type::value >::type type;
+    using p_type = typename P::type;
+    using type = typename assert_arg_pred_impl< p_type::value >::type;
 };
 
 template< typename P > struct assert_arg_pred_not
 {
-    typedef typename P::type p_type;
+    using p_type = typename P::type;
     BOOST_MPL_AUX_ASSERT_CONSTANT( bool, p = !p_type::value );
-    typedef typename assert_arg_pred_impl<p>::type type;
+    using type = typename assert_arg_pred_impl<p>::type;
 };
 
 #if BOOST_WORKAROUND(BOOST_GCC_VERSION, >= 80000)

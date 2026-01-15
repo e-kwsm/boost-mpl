@@ -65,7 +65,7 @@ namespace boost { namespace mpl { namespace aux {
 
 template< BOOST_MPL_AUX_NTTP_DECL(int, N) > struct arity_tag
 {
-    typedef char (&type)[(unsigned)N + 1];
+    using type = char(&)[(unsigned)N + 1];
 };
 
 #   define AUX778076_MAX_ARITY_OP(unused, state, i_) \
@@ -117,7 +117,7 @@ struct template_arity
             ) >::value
         ));
         
-    typedef mpl::int_<value> type;
+    using type = mpl::int_<value>;
 };
 
 #   undef AUX778076_TEMPLATE_ARITY_IMPL_INVOCATION

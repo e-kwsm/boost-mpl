@@ -74,7 +74,7 @@ namespace boost { namespace mpl { namespace aux {
 
 template< typename T > struct value_type_wknd
 {
-    typedef typename T::value_type type;
+    using type = typename T::value_type;
 };
 
 #if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)

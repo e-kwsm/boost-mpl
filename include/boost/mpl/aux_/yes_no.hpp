@@ -23,24 +23,24 @@
 
 namespace boost { namespace mpl { namespace aux {
 
-typedef char (&no_tag)[1];
-typedef char (&yes_tag)[2];
+using no_tag = char(&)[1];
+using yes_tag = char(&)[2];
 
 template< bool C_ > struct yes_no_tag
 {
-    typedef no_tag type;
+    using type = no_tag;
 };
 
 template<> struct yes_no_tag<true>
 {
-    typedef yes_tag type;
+    using type = yes_tag;
 };
 
 
 template< BOOST_MPL_AUX_NTTP_DECL(std::size_t, n) > struct weighted_tag
 {
 #if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    typedef char (&type)[n];
+    using type = char(&)[n];
 #else
     char buf[n];
     typedef weighted_tag type;

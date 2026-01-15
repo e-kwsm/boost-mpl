@@ -108,9 +108,9 @@ template<
     >
 struct lambda
 {
-    typedef false_ is_le;
-    typedef T result_;
-    typedef T type;
+    using is_le = false_;
+    using result_ = T;
+    using type = T;
 };
 
 template<
@@ -125,9 +125,9 @@ struct is_lambda_expression
 template< int N, typename Tag >
 struct lambda< arg<N>,Tag AUX778076_ARITY_PARAM(int_<-1>) >
 {
-    typedef true_ is_le;
-    typedef mpl::arg<N> result_; // qualified for the sake of MIPSpro 7.41
-    typedef mpl::protect<result_> type; 
+    using is_le = true_;
+    using result_ = mpl::arg<N>; // qualified for the sake of MIPSpro 7.41
+    using type = mpl::protect<result_>;
 };
 
 
@@ -139,9 +139,9 @@ struct lambda< arg<N>,Tag AUX778076_ARITY_PARAM(int_<-1>) >
 template< typename T, typename Tag >
 struct lambda< mpl::protect<T>,Tag AUX778076_ARITY_PARAM(int_<1>) >
 {
-    typedef false_ is_le;
-    typedef mpl::protect<T> result_;
-    typedef result_ type;
+    using is_le = false_;
+    using result_ = mpl::protect<T>;
+    using type = result_;
 };
 
 /// specializations for the main 'bind' form
@@ -155,9 +155,9 @@ struct lambda<
         AUX778076_ARITY_PARAM(int_<BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)>)
         >
 {
-    typedef false_ is_le;
-    typedef bind<F, AUX778076_BIND_PARAMS(T)> result_;
-    typedef result_ type;
+    using is_le = false_;
+    using result_ = bind<F, AUX778076_BIND_PARAMS(T)>;
+    using type = result_;
 };
 
 
@@ -175,16 +175,16 @@ struct lambda<
         , int_<3>
         >
 {
-    typedef lambda< F,Tag2 > l1;
-    typedef lambda< Tag1,Tag2 > l2;
+    using l1 = lambda< F,Tag2 >;
+    using l2 = lambda< Tag1,Tag2 >;
 
-    typedef typename l1::is_le is_le;
-    typedef bind1< quote1<aux::template_arity>, typename l1::result_ > arity_;
-    typedef lambda< typename if_<is_le,arity_,Arity>::type,Tag2 > l3;
+    using is_le = typename l1::is_le;
+    using arity_ = bind1< quote1<aux::template_arity>, typename l1::result_ >;
+    using l3 = lambda< typename if_<is_le,arity_,Arity>::type,Tag2 >;
     
-    typedef aux::le_result3<is_le, Tag2, mpl::lambda, l1, l2, l3> le_result_;
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using le_result_ = aux::le_result3<is_le, Tag2, mpl::lambda, l1, l2, l3>;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 #elif !defined(BOOST_MPL_CFG_DMC_AMBIGUOUS_CTPS)
@@ -254,11 +254,11 @@ template<
     >
 struct BOOST_PP_CAT(le_result,i_)
 {
-    typedef F<
+    using result_ = F<
           BOOST_MPL_PP_REPEAT(i_, AUX778076_TYPE, L)
-        > result_;
+        >;
     
-    typedef result_ type;
+    using type = result_;
 };
 
 template<
@@ -268,12 +268,12 @@ template<
     >
 struct BOOST_PP_CAT(le_result,i_)< true_,Tag,F,AUX778076_LAMBDA_PARAMS(i_, L) >
 {
-    typedef BOOST_PP_CAT(bind,i_)<
+    using result_ = BOOST_PP_CAT(bind,i_)<
           BOOST_PP_CAT(quote,i_)<F,Tag>
         , BOOST_MPL_PP_REPEAT(i_, AUX778076_RESULT, L)
-        > result_;
+        >;
 
-    typedef mpl::protect<result_> type;
+    using type = mpl::protect<result_>;
 };
 
 #   undef AUX778076_TYPE
@@ -311,16 +311,16 @@ struct lambda<
     BOOST_MPL_PP_REPEAT(i_, AUX778076_LAMBDA_TYPEDEF, T)
     BOOST_MPL_PP_REPEAT(i_, AUX778076_IS_LE_TYPEDEF, unused)
 
-    typedef typename aux::lambda_or<
+    using is_le = typename aux::lambda_or<
           BOOST_MPL_PP_REPEAT(i_, AUX778076_IS_LAMBDA_EXPR, unused)
-        >::type is_le;
+        >::type;
 
-    typedef aux::BOOST_PP_CAT(le_result,i_)<
+    using le_result_ = aux::BOOST_PP_CAT(le_result,i_)<
           is_le, Tag, F, AUX778076_LAMBDA_PARAMS(i_, l)
-        > le_result_;
+        >;
     
-    typedef typename le_result_::result_ result_;
-    typedef typename le_result_::type type;
+    using result_ = typename le_result_::result_;
+    using type = typename le_result_::type;
 };
 
 
@@ -340,13 +340,13 @@ struct lambda<
         AUX778076_ARITY_PARAM(int_<BOOST_PP_INC(i_)>)
         >
 {
-    typedef false_ is_le;
-    typedef BOOST_PP_CAT(bind,i_)<
+    using is_le = false_;
+    using result_ = BOOST_PP_CAT(bind,i_)<
           F
         AUX778076_BIND_N_PARAMS(i_, T)
-        > result_;
+        >;
         
-    typedef result_ type;
+    using type = result_;
 };
 
 #undef i_

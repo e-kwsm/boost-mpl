@@ -60,12 +60,12 @@ struct is_not_na<na>
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 template< typename T, typename U > struct if_na
 {
-    typedef T type;
+    using type = T;
 };
 
 template< typename U > struct if_na<na,U>
 {
-    typedef U type;
+    using type = U;
 };
 #else
 template< typename T > struct if_na_impl
