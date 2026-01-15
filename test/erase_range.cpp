@@ -20,15 +20,15 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,char,long,short,unsigned,long,double,long> types;
+    using types = list<int,char,long,short,unsigned,long,double,long>;
 
-    typedef find<types,short>::type iter1;
-    typedef find<types,double>::type iter2;
+    using iter1 = find<types,short>::type;
+    using iter2 = find<types,double>::type;
 
-    typedef erase<types,iter1,iter2>::type result;
+    using result = erase<types,iter1,iter2>::type;
     
     MPL_ASSERT_RELATION( size<result>::value, ==, 5 );
 
-    typedef find<result,unsigned>::type iter;
+    using iter = find<result,unsigned>::type;
     MPL_ASSERT(( is_same< iter, end<result>::type > ));
 }

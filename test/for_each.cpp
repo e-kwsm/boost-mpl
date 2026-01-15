@@ -62,10 +62,10 @@ void push_back(std::vector<int>* c, int i)
 
 int main()
 {
-    typedef mpl::list<char,short,int,long,float,double> types;
+    using types = mpl::list<char,short,int,long,float,double>;
     mpl::for_each< types,mpl::make_identity<mpl::_1> >(type_printer(std::cout));
 
-    typedef mpl::range_c<int,0,10> numbers;
+    using numbers = mpl::range_c<int,0,10>;
     std::vector<int> v;
 
     mpl::for_each<numbers>(

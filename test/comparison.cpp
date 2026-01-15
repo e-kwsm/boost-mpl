@@ -18,8 +18,8 @@
 // make sure MSVC behaves nicely in presence of the following template
 template< typename T > struct value {};
 
-typedef int_<0> _0;
-typedef int_<10> _10;
+using _0 = int_<0>;
+using _10 = int_<10>;
 
 MPL_TEST_CASE()
 {

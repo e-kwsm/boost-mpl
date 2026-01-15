@@ -31,21 +31,21 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector_c<int,0,1,7,8,9> numbers;
-    typedef find< numbers,integral_c<int,7> >::type pos;
-    typedef insert_range< numbers,pos,range_c<int,2,7> >::type range;
+    using numbers = vector_c<int,0,1,7,8,9>;
+    using pos = find< numbers,integral_c<int,7> >::type;
+    using range = insert_range< numbers,pos,range_c<int,2,7> >::type;
 
     MPL_ASSERT_RELATION( size<range>::value, ==, 10 );
     MPL_ASSERT(( equal< range,range_c<int,0,10> > ));
 
-    typedef insert_range< list0<>,end< list0<> >::type,list1<int> >::type result2;
+    using result2 = insert_range< list0<>,end< list0<> >::type,list1<int> >::type;
     MPL_ASSERT_RELATION( size<result2>::value, ==, 1 );
 }
 
 template<typename A, typename B>
 void test_associative()
 {
-    typedef typename insert_range< A,typename end< A >::type,B >::type C;
+    using C = typename insert_range< A,typename end< A >::type,B >::type;
 
     MPL_ASSERT_RELATION( size<C>::value, <=, (size<A>::value + size<B>::value) );
     MPL_ASSERT(( fold< joint_view< A,B >,true_,and_< _1,contains< C,_2 > > > ));
@@ -53,21 +53,21 @@ void test_associative()
 
 MPL_TEST_CASE()
 {
-    typedef set3< short,int,long > signed_integers;
-    typedef set3< unsigned short,unsigned int,unsigned long > unsigned_integers;
+    using signed_integers = set3< short,int,long >;
+    using unsigned_integers = set3< unsigned short,unsigned int,unsigned long >;
     test_associative<signed_integers, unsigned_integers>();
 
-    typedef set_c< int,1,3,5,7,9 > odds;
-    typedef set_c< int,0,2,4,6,8 > evens;
+    using odds = set_c< int,1,3,5,7,9 >;
+    using evens = set_c< int,0,2,4,6,8 >;
     test_associative<odds, evens>();
 
-    typedef map2<
+    using pointers = map2<
               pair< void,void* >
             , pair< int,int* >
-            > pointers;
-    typedef map2<
+            >;
+    using pointers_to_const = map2<
               pair< void const,void const* >
             , pair< int const,int const* >
-            > pointers_to_const;
+            >;
     test_associative<pointers, pointers_to_const>();
 }

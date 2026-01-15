@@ -31,25 +31,25 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<long,float,short,double,float,long,long double> types;
-    typedef fold<
+    using types = list<long,float,short,double,float,long,long double>;
+    using number_of_floats = fold<
           types
         , int_<0>
         , if_< boost::is_float<_2>,next<_1>,_1 >
-        >::type number_of_floats;
+        >::type;
 
     MPL_ASSERT_RELATION( number_of_floats::value, ==, 4 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,5,-1,0,-7,-2,0,-5,4> numbers;
-    typedef list_c<int,-1,-7,-2,-5> negatives;
-    typedef reverse_fold<
+    using numbers = list_c<int,5,-1,0,-7,-2,0,-5,4>;
+    using negatives = list_c<int,-1,-7,-2,-5>;
+    using result = reverse_fold<
           numbers
         , list_c<int>
         , if_< less< _2,int_<0> >, push_front<_1,_2>, _1 >
-        >::type result;
+        >::type;
 
     MPL_ASSERT(( equal< result,negatives,equal_to<_1,_2> > ));
 }

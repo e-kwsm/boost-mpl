@@ -20,7 +20,7 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector<int,char,long,short,char,long,double,long> types;
+    using types = vector<int,char,long,short,char,long,double,long>;
 
     MPL_ASSERT_RELATION( (count<types,int>::value), ==, 1 );
     MPL_ASSERT_RELATION( (count<types,double>::value), ==, 1 );
@@ -31,7 +31,7 @@ MPL_TEST_CASE()
     
 MPL_TEST_CASE()
 {
-    typedef vector_c<int,1,0,5,1,7,5,0,5> values;
+    using values = vector_c<int,1,0,5,1,7,5,0,5>;
 
     MPL_ASSERT_RELATION( (count< values, integral_c<int,1> >::value), ==, 2 );
     MPL_ASSERT_RELATION( (count< values, integral_c<int,0> >::value), ==, 2 );

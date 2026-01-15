@@ -30,10 +30,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef transform_view<
+    using result = transform_view<
           zip_view< vector< range_c<int,0,10>, range_c<int,10,20> > >
         , unpack_args< plus<> >
-        > result;
+        >;
 
     MPL_ASSERT(( equal< 
           result

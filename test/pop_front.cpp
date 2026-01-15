@@ -19,13 +19,13 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<long>::type types1;
-    typedef list<int,long>::type types2;
-    typedef list<char,int,long>::type types3;
+    using types1 = list<long>::type;
+    using types2 = list<int,long>::type;
+    using types3 = list<char,int,long>::type;
 
-    typedef pop_front<types1>::type result1;
-    typedef pop_front<types2>::type result2;
-    typedef pop_front<types3>::type result3;
+    using result1 = pop_front<types1>::type;
+    using result2 = pop_front<types2>::type;
+    using result3 = pop_front<types3>::type;
     
     MPL_ASSERT_RELATION( size<result1>::value, ==, 0 );
     MPL_ASSERT_RELATION( size<result2>::value, ==, 1 );

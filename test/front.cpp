@@ -17,7 +17,7 @@
 
 template< typename Seq, int value > struct front_test
 {
-    typedef typename front<Seq>::type t;
+    using t = typename front<Seq>::type;
     MPL_ASSERT_RELATION( t::value, ==, value );
 };
 

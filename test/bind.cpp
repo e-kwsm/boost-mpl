@@ -28,7 +28,7 @@ struct f1
 {
     template< typename T1 > struct apply
     {
-        typedef T1 type;
+        using type = T1;
     };
 };
 
@@ -37,7 +37,7 @@ struct f5
     template< typename T1, typename T2, typename T3, typename T4, typename T5 >
     struct apply
     {
-        typedef T5 type;
+        using type = T5;
     };
 };
 
@@ -45,13 +45,13 @@ struct f5
 
 MPL_TEST_CASE() // basic argument binding
 {
-    typedef apply_wrap1< bind1<f1,_1>, int >::type r11;
-    typedef apply_wrap5< bind1<f1,_5>, void,void,void,void,int >::type r12;
+    using r11 = apply_wrap1< bind1<f1,_1>, int >::type;
+    using r12 = apply_wrap5< bind1<f1,_5>, void,void,void,void,int >::type;
     MPL_ASSERT(( boost::is_same<r11,int> ));
     MPL_ASSERT(( boost::is_same<r12,int> ));
     
-    typedef apply_wrap5< bind5<f5,_1,_2,_3,_4,_5>, void,void,void,void,int >::type r51;
-    typedef apply_wrap5< bind5<f5,_5,_4,_3,_2,_1>, int,void,void,void,void >::type r52;
+    using r51 = apply_wrap5< bind5<f5,_1,_2,_3,_4,_5>, void,void,void,void,int >::type;
+    using r52 = apply_wrap5< bind5<f5,_5,_4,_3,_2,_1>, int,void,void,void,void >::type;
     MPL_ASSERT(( boost::is_same<r51,int> ));
     MPL_ASSERT(( boost::is_same<r52,int> ));
 }
@@ -59,8 +59,8 @@ MPL_TEST_CASE() // basic argument binding
 
 MPL_TEST_CASE() // fully bound metafunction classes
 {
-    typedef apply_wrap0< bind1<f1,int> >::type r11;
-    typedef apply_wrap0< bind5<f5,void,void,void,void,int> >::type r51;
+    using r11 = apply_wrap0< bind1<f1,int> >::type;
+    using r51 = apply_wrap0< bind5<f5,void,void,void,void,int> >::type;
     MPL_ASSERT(( boost::is_same<r11,int> ));
     MPL_ASSERT(( boost::is_same<r51,int> ));
 }
@@ -68,8 +68,8 @@ MPL_TEST_CASE() // fully bound metafunction classes
 
 MPL_TEST_CASE() // metafunction class composition
 {
-    typedef apply_wrap5< bind5<f5,_1,_2,_3,_4,bind1<f1,_1> >, int,void,void,void,void >::type r51;
-    typedef apply_wrap5< bind5<f5,_1,_2,_3,_4,bind1<f1,_5> >, void,void,void,void,int >::type r52;
+    using r51 = apply_wrap5< bind5<f5,_1,_2,_3,_4,bind1<f1,_1> >, int,void,void,void,void >::type;
+    using r52 = apply_wrap5< bind5<f5,_1,_2,_3,_4,bind1<f1,_5> >, void,void,void,void,int >::type;
     MPL_ASSERT(( boost::is_same<r51,int> ));
     MPL_ASSERT(( boost::is_same<r52,int> ));
 }
@@ -79,9 +79,9 @@ MPL_TEST_CASE() // metafunction class composition
     && !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
 MPL_TEST_CASE() // if_ evaluation
 {
-    typedef bind3< quote3<if_>, _1, bind1< quote1<next>, _2>, _3 > f;
-    typedef apply_wrap3< f,true_,int_<0>,int >::type r1;
-    typedef apply_wrap3< f,false_,int,int_<0> >::type r2;
+    using f = bind3< quote3<if_>, _1, bind1< quote1<next>, _2>, _3 >;
+    using r1 = apply_wrap3< f,true_,int_<0>,int >::type;
+    using r2 = apply_wrap3< f,false_,int,int_<0> >::type;
     
     MPL_ASSERT(( boost::is_same<r1,int_<1> > ));
     MPL_ASSERT(( boost::is_same<r2,int_<0> > ));

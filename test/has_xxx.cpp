@@ -26,13 +26,13 @@ struct a3 { int xxx; };
 struct a4 { static int xxx(); };
 struct a5 { template< typename T > struct xxx {}; };
 
-struct b1 { typedef int xxx; };
+struct b1 { using xxx = int; };
 struct b2 { struct xxx; };
-struct b3 { typedef int& xxx; };
-struct b4 { typedef int* xxx; };
-struct b5 { typedef int xxx[10]; };
-struct b6 { typedef void (*xxx)(); };
-struct b7 { typedef void (xxx)(); };
+struct b3 { using xxx = int&; };
+struct b4 { using xxx = int*; };
+struct b5 { using xxx = int[10]; };
+struct b6 { using xxx = void (*)(); };
+struct b7 { using xxx = void (); };
 
 struct c1 { template< typename T > struct xxx {}; };
 struct c2 { template< typename T1, typename T2 > struct xxx {}; };
@@ -43,7 +43,7 @@ struct c6 { template< typename T > struct yyy {}; };
 struct c7 { template< typename T1, typename T2 > struct yyy {}; };
 
 template< typename T > struct outer;
-template< typename T > struct inner { typedef typename T::type type; };
+template< typename T > struct inner { using type = typename T::type; };
 
 // agurt, 15/aug/04: make sure MWCW passes the test in presence of the following
 // template

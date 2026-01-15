@@ -28,10 +28,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector0<> v0;
-    typedef vector1<char> v1;
-    typedef vector2<char,long> v2;
-    typedef vector9<char,char,char,char,char,char,char,char,int> v9;
+    using v0 = vector0<>;
+    using v1 = vector1<char>;
+    using v2 = vector2<char,long>;
+    using v9 = vector9<char,char,char,char,char,char,char,char,int>;
 
     MPL_ASSERT(( equal< v0,v0::type > ));
     MPL_ASSERT(( equal< v1,v1::type > ));
@@ -59,11 +59,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector2<char,long> v2;
+    using v2 = vector2<char,long>;
     
-    typedef begin<v2>::type i1;
-    typedef next<i1>::type  i2;
-    typedef next<i2>::type  i3;
+    using i1 = begin<v2>::type;
+    using i2 = next<i1>::type;
+    using i3 = next<i2>::type;
     
     MPL_ASSERT(( is_same<deref<i1>::type,char> ));
     MPL_ASSERT(( is_same<deref<i2>::type,long> ));
@@ -72,11 +72,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector0<> v0;
+    using v0 = vector0<>;
 
-    typedef push_back<v0,int>::type     v1;
-    typedef push_front<v1,char>::type   v2;
-    typedef push_back<v2,long>::type    v3;
+    using v1 = push_back<v0,int>::type;
+    using v2 = push_front<v1,char>::type;
+    using v3 = push_back<v2,long>::type;
 
     MPL_ASSERT(( is_same< back<v1>::type,int > ));
     MPL_ASSERT(( is_same< back<v2>::type,int > ));
@@ -90,10 +90,10 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector9<char,bool,char,char,char,char,bool,long,int> v9;
+    using v9 = vector9<char,bool,char,char,char,char,bool,long,int>;
 
-    typedef pop_back<v9>::type  v8;
-    typedef pop_front<v8>::type v7;
+    using v8 = pop_back<v9>::type;
+    using v7 = pop_front<v8>::type;
 
     MPL_ASSERT(( is_same< back<v9>::type,int > ));
     MPL_ASSERT(( is_same< back<v8>::type,long > ));
@@ -107,10 +107,10 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector<> v0;
-    typedef vector<char> v1;
-    typedef vector<char,long> v2;
-    typedef vector<char,char,char,char,char,char,char,char,int> v9;
+    using v0 = vector<>;
+    using v1 = vector<char>;
+    using v2 = vector<char,long>;
+    using v9 = vector<char,char,char,char,char,char,char,char,int>;
 
     MPL_ASSERT(( equal< v0,v0::type > ));
     MPL_ASSERT(( equal< v1,v1::type > ));

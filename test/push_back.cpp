@@ -19,14 +19,14 @@ struct no_push_back_tag {};
 
 struct no_push_back
 {
-    typedef no_push_back_tag tag;
+    using tag = no_push_back_tag;
 };
 
 struct has_push_back_tag {};
 
 struct with_push_back
 {
-    typedef has_push_back_tag tag;
+    using tag = has_push_back_tag;
 };
 
 namespace boost { namespace mpl {
@@ -36,7 +36,7 @@ struct push_back_impl< has_push_back_tag >
 {
     template<class Seq, class T> struct apply
     {
-        typedef no_push_back type;
+        using type = no_push_back;
     };
 };
 
@@ -47,6 +47,6 @@ MPL_TEST_CASE()
     MPL_ASSERT_NOT(( has_push_back< no_push_back > ));
     MPL_ASSERT(( has_push_back< with_push_back > ));
 
-    typedef push_back< with_push_back , int >::type test;
+    using test = push_back< with_push_back , int >::type;
     MPL_ASSERT(( is_same< test, no_push_back > ));
 }

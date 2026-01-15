@@ -22,12 +22,12 @@
 
 MPL_TEST_CASE()
 {
-    typedef joint_view<
+    using numbers = joint_view<
           range_c<int,0,10>
         , range_c<int,10,15>
-        > numbers;
+        >;
 
-    typedef range_c<int,0,15> answer;
+    using answer = range_c<int,0,15>;
 
     MPL_ASSERT(( equal<numbers,answer> ));
     MPL_ASSERT(( equal<numbers::type,answer> ));
@@ -36,8 +36,8 @@ MPL_TEST_CASE()
 
 template< typename View > struct test_is_empty
 {
-    typedef typename begin<View>::type first_;
-    typedef typename end<View>::type last_;
+    using first_ = typename begin<View>::type;
+    using last_ = typename end<View>::type;
     
     MPL_ASSERT_RELATION( size<View>::value, ==, 0 );
     MPL_ASSERT(( is_same< first_,last_> ));

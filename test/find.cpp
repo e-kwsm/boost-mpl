@@ -21,17 +21,17 @@
 
 MPL_TEST_CASE()
 {    
-    typedef list<int,char,long,short,char,long,double,long>::type types;
-    typedef list_c<int,1,0,5,1,7,5,0,5> values;
+    using types = list<int,char,long,short,char,long,double,long>::type;
+    using values = list_c<int,1,0,5,1,7,5,0,5>;
 
-    typedef find<types, short>::type types_iter;
-    typedef find< values, integral_c<int,7> >::type values_iter;
+    using types_iter = find<types, short>::type;
+    using values_iter = find< values, integral_c<int,7> >::type;
    
     MPL_ASSERT(( is_same< deref<types_iter>::type, short> ));
     MPL_ASSERT_RELATION( deref<values_iter>::type::value, ==, 7 );
 
-    typedef begin<types>::type types_first;
-    typedef begin<values>::type values_first;
+    using types_first = begin<types>::type;
+    using values_first = begin<values>::type;
     MPL_ASSERT_RELATION( (mpl::distance< types_first,types_iter >::value), ==, 3 );
     MPL_ASSERT_RELATION( (mpl::distance< values_first,values_iter >::value), ==, 4 );
 }

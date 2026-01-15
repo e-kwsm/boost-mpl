@@ -69,7 +69,7 @@ BOOST_PP_REPEAT(
     , unused
     )
 
-struct g0 { struct apply { typedef char type; }; };
+struct g0 { struct apply { using type = char; }; };
 
 }}
 
@@ -114,7 +114,7 @@ MPL_TEST_CASE()
 
 #if !defined(BOOST_MPL_CFG_NO_HAS_APPLY)
     {
-        typedef apply_wrap0<test::g0>::type t;
+        using t = apply_wrap0<test::g0>::type;
         MPL_ASSERT(( boost::is_same<t, char> ));
     }
 #endif

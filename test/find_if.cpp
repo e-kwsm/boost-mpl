@@ -21,26 +21,26 @@
 #include <boost/type_traits/is_float.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-typedef vector<int,char,long,short,char,long,double,float,char>::type types;
-typedef begin<types>::type first_;
+using types = vector<int,char,long,short,char,long,double,float,char>::type;
+using first_ = begin<types>::type;
 
 MPL_TEST_CASE()
 {
-    typedef find_if< types, boost::is_float<_> >::type iter;
+    using iter = find_if< types, boost::is_float<_> >::type;
     MPL_ASSERT(( is_same< iter::type, double > ));
     MPL_ASSERT_RELATION( (mpl::distance<first_,iter>::value), ==, 6 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef find_if< types, boost::is_same<_,long> >::type iter;
+    using iter = find_if< types, boost::is_same<_,long> >::type;
     MPL_ASSERT(( is_same< iter::type, long > ));
     MPL_ASSERT_RELATION( (mpl::distance<first_,iter>::value), ==, 2 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef find_if< types, boost::is_same<_,void> >::type iter;
+    using iter = find_if< types, boost::is_same<_,void> >::type;
     MPL_ASSERT(( is_same< iter, end<types>::type > ));
     MPL_ASSERT_RELATION( (mpl::distance<first_,iter>::value), ==, size<types>::value );
 }

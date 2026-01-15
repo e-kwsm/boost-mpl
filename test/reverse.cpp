@@ -23,10 +23,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,9,8,7,6,5,4,3,2,1,0> numbers;
-    typedef reverse< numbers >::type result;
+    using numbers = list_c<int,9,8,7,6,5,4,3,2,1,0>;
+    using result = reverse< numbers >::type;
 
-    typedef range_c<int,0,10> answer;
+    using answer = range_c<int,0,10>;
     
     MPL_ASSERT(( equal< result,answer,equal_to<_1,_2> > ));
 }

@@ -16,11 +16,11 @@
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/aux_/test.hpp>
 
-typedef integral_c<unsigned int, 0> _0;
-typedef integral_c<unsigned int, 1> _1;
-typedef integral_c<unsigned int, 2> _2;
-typedef integral_c<unsigned int, 8> _8;
-typedef integral_c<unsigned int, 0xffffffff> _ffffffff;
+using _0 = integral_c<unsigned int, 0>;
+using _1 = integral_c<unsigned int, 1>;
+using _2 = integral_c<unsigned int, 2>;
+using _8 = integral_c<unsigned int, 8>;
+using _ffffffff = integral_c<unsigned int, 0xffffffff>;
 
 MPL_TEST_CASE()
 {

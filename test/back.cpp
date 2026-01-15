@@ -17,7 +17,7 @@
 
 template< typename Seq, int value > struct back_test
 {
-    typedef typename back<Seq>::type t;
+    using t = typename back<Seq>::type;
     MPL_ASSERT_RELATION( t::value, ==, value );
 };
 

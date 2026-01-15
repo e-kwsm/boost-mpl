@@ -22,9 +22,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector_c<int,0,1,3,4,5,6,7,8,9> numbers;
-    typedef find< numbers,integral_c<int,3> >::type pos;
-    typedef insert< numbers,pos,integral_c<int,2> >::type range;
+    using numbers = vector_c<int,0,1,3,4,5,6,7,8,9>;
+    using pos = find< numbers,integral_c<int,3> >::type;
+    using range = insert< numbers,pos,integral_c<int,2> >::type;
     
     MPL_ASSERT_RELATION( size<range>::value, ==, 10 );
     MPL_ASSERT(( equal< range,range_c<int,0,10> > ));

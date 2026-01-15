@@ -18,10 +18,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int, 3, 4, 0, -5, 8, -1, 7>::type numbers;
-    typedef list_c<int, -5, -1, 0, 3, 4, 7, 8>::type manual_result;
+    using numbers = list_c<int, 3, 4, 0, -5, 8, -1, 7>::type;
+    using manual_result = list_c<int, -5, -1, 0, 3, 4, 7, 8>::type;
 
-    typedef sort< numbers >::type result;
+    using result = sort< numbers >::type;
 
     MPL_ASSERT(( equal< result,manual_result,equal_to<_1,_2> > ));
 }

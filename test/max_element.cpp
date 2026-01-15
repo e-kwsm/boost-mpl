@@ -18,9 +18,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,3,4,2,0,-5,8,-1,7>::type numbers;
-    typedef max_element< numbers >::type iter;
-    typedef deref<iter>::type max_value;
+    using numbers = list_c<int,3,4,2,0,-5,8,-1,7>::type;
+    using iter = max_element< numbers >::type;
+    using max_value = deref<iter>::type;
     
     MPL_ASSERT_RELATION( max_value::value, ==, 8 );
 }

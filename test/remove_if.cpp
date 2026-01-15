@@ -27,13 +27,13 @@
 
 MPL_TEST_CASE()
 {
-    typedef list10_c<int,0,1,2,3,4,5,6,7,8,9> numbers;
-    typedef list5_c<int,4,3,2,1,0>::type answer;
-    typedef remove_if<
+    using numbers = list10_c<int,0,1,2,3,4,5,6,7,8,9>;
+    using answer = list5_c<int,4,3,2,1,0>::type;
+    using result = remove_if<
           numbers
         , greater<_,int_<4> >
         , mpl::front_inserter< list0_c<int> >
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION( size<result>::value, ==, 5 );
     MPL_ASSERT(( equal<result,answer> ));
@@ -41,13 +41,13 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list8<int,float,long,float,char,long,double,double> types;
-    typedef list4<int,long,char,long>::type answer;
-    typedef reverse_remove_if<
+    using types = list8<int,float,long,float,char,long,double,double>;
+    using answer = list4<int,long,char,long>::type;
+    using result = reverse_remove_if<
           types
         , is_float<_>
         , mpl::front_inserter< list0<> >
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION( size<result>::value, ==, 4 );
     MPL_ASSERT(( equal<result,answer> ));

@@ -26,13 +26,13 @@
 
 MPL_TEST_CASE()
 {
-    typedef list10_c<int,0,1,2,3,4,5,6,7,8,9>::type numbers;
-    typedef list5_c<int,4,3,2,1,0>::type answer;
-    typedef copy_if<
+    using numbers = list10_c<int,0,1,2,3,4,5,6,7,8,9>::type;
+    using answer = list5_c<int,4,3,2,1,0>::type;
+    using result = copy_if<
           numbers
         , less<_,int_<5> >
         , mpl::front_inserter< list0_c<int> >
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION(size<result>::value, ==, 5);
     MPL_ASSERT(( equal<result,answer> ));
@@ -41,13 +41,13 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list8<int,float,long,float,char,long,double,double>::type types;
-    typedef list4<float,float,double,double>::type float_types;
-    typedef reverse_copy_if<
+    using types = list8<int,float,long,float,char,long,double,double>::type;
+    using float_types = list4<float,float,double,double>::type;
+    using result = reverse_copy_if<
           types
         , is_float<_>
         , mpl::front_inserter< list0<> >
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION(mpl::size<result>::value, ==, 4);
     MPL_ASSERT(( equal<result,float_types> ));

@@ -18,9 +18,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef int_<0> _0;
-    typedef int_<1> _1;
-    typedef int_<2> _2;
+    using _0 = int_<0>;
+    using _1 = int_<1>;
+    using _2 = int_<2>;
 
     MPL_ASSERT(( is_same< next<_0>::type, _1 > ));
     MPL_ASSERT(( is_same< next<_1>::type, _2 > ));

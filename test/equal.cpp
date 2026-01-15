@@ -18,10 +18,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,float,long,double,char,long,double,float> list1;
-    typedef list<int,float,long,double,char,long,double,float> list2;
-    typedef list<int,float,long,double,char,long,double,short> list3;
-    typedef list<int,float,long,double,char,long,double> list4;
+    using list1 = list<int,float,long,double,char,long,double,float>;
+    using list2 = list<int,float,long,double,char,long,double,float>;
+    using list3 = list<int,float,long,double,char,long,double,short>;
+    using list4 = list<int,float,long,double,char,long,double>;
     
     MPL_ASSERT(( equal<list1,list2> ));
     MPL_ASSERT(( equal<list2,list1> ));

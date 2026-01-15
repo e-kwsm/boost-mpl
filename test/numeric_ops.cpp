@@ -22,10 +22,10 @@ struct complex_tag : int_<10> {};
 
 template< typename Re, typename Im > struct complex
 {
-    typedef complex_tag tag;
-    typedef complex type;
-    typedef Re real;
-    typedef Im imag;
+    using tag = complex_tag;
+    using type = complex;
+    using real = Re;
+    using imag = Im;
 };
 
 template< typename C > struct real : C::real {};
@@ -86,30 +86,30 @@ struct equal_to_impl< complex_tag,complex_tag >
 }}
 
 
-typedef int_<2> i;
-typedef complex< int_<5>, int_<-1> > c1;
-typedef complex< int_<-5>, int_<1> > c2;
+using i = int_<2>;
+using c1 = complex< int_<5>, int_<-1> >;
+using c2 = complex< int_<-5>, int_<1> >;
 
 MPL_TEST_CASE()
 {
-    typedef plus<c1,c2>::type r1;
+    using r1 = plus<c1,c2>::type;
     MPL_ASSERT_RELATION( real<r1>::value, ==, 0 );
     MPL_ASSERT_RELATION( imag<r1>::value, ==, 0 );
 
-    typedef plus<c1,c1>::type r2;
+    using r2 = plus<c1,c1>::type;
     MPL_ASSERT_RELATION( real<r2>::value, ==, 10 );
     MPL_ASSERT_RELATION( imag<r2>::value, ==, -2 );
 
-    typedef plus<c2,c2>::type r3;
+    using r3 = plus<c2,c2>::type;
     MPL_ASSERT_RELATION( real<r3>::value, ==, -10 );
     MPL_ASSERT_RELATION( imag<r3>::value, ==, 2 );
 
 #if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    typedef plus<c1,i>::type r4;
+    using r4 = plus<c1,i>::type;
     MPL_ASSERT_RELATION( real<r4>::value, ==, 7 );
     MPL_ASSERT_RELATION( imag<r4>::value, ==, -1 );
 
-    typedef plus<i,c2>::type r5;
+    using r5 = plus<i,c2>::type;
     MPL_ASSERT_RELATION( real<r5>::value, ==, -3 );
     MPL_ASSERT_RELATION( imag<r5>::value, ==, 1 );
 #endif
@@ -117,24 +117,24 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef times<c1,c2>::type r1;
+    using r1 = times<c1,c2>::type;
     MPL_ASSERT_RELATION( real<r1>::value, ==, -24 );
     MPL_ASSERT_RELATION( imag<r1>::value, ==, 10 );
 
-    typedef times<c1,c1>::type r2;
+    using r2 = times<c1,c1>::type;
     MPL_ASSERT_RELATION( real<r2>::value, ==, 24 );
     MPL_ASSERT_RELATION( imag<r2>::value, ==, -10 );
 
-    typedef times<c2,c2>::type r3;
+    using r3 = times<c2,c2>::type;
     MPL_ASSERT_RELATION( real<r3>::value, ==, 24 );
     MPL_ASSERT_RELATION( imag<r3>::value, ==, -10 );
 
 #if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    typedef times<c1,i>::type r4;
+    using r4 = times<c1,i>::type;
     MPL_ASSERT_RELATION( real<r4>::value, ==, 10 );
     MPL_ASSERT_RELATION( imag<r4>::value, ==, -2 );
 
-    typedef times<i,c2>::type r5;
+    using r5 = times<i,c2>::type;
     MPL_ASSERT_RELATION( real<r5>::value, ==, -10 );
     MPL_ASSERT_RELATION( imag<r5>::value, ==, 2 );
 #endif

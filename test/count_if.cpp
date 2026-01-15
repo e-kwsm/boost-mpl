@@ -23,8 +23,8 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector<int,char&,long,short,char&,long,double,long> types;
-    typedef vector_c<int,1,0,5,1,7,5,0,5> values;
+    using types = vector<int,char&,long,short,char&,long,double,long>;
+    using values = vector_c<int,1,0,5,1,7,5,0,5>;
     
     MPL_ASSERT_RELATION( (count_if< types, boost::is_float<_> >::value), ==, 1 );
     MPL_ASSERT_RELATION( (count_if< types, boost::is_same<_,char&> >::value), ==, 2 );

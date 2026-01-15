@@ -26,17 +26,17 @@
 
 MPL_TEST_CASE()
 {
-    typedef mpl::list<int,float,long,float,char[50],long double,char> types;
-    typedef mpl::list<float,float,long double> floats;
+    using types = mpl::list<int,float,long,float,char[50],long double,char>;
+    using floats = mpl::list<float,float,long double>;
 
     MPL_ASSERT(( equal< mpl::filter_view< types,boost::is_float<_> >::type,floats > ));
 
-    typedef mpl::max_element<
+    using iter = mpl::max_element<
           mpl::transform_view<
               mpl::filter_view< types,boost::is_float<_> >
             , mpl::sizeof_<_>
             >
-        >::type iter;
+        >::type;
 
     MPL_ASSERT((is_same<mpl::deref<iter::base>::type, long double>));
 }

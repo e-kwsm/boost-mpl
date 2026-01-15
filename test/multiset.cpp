@@ -47,11 +47,11 @@ struct test_data2
 template< typename S0 >
 struct test_data
 {
-    typedef S0                                  s0;
-    typedef typename insert<s0,int>::type       s1;
-    typedef typename insert<s1,char&>::type     s2;
-    typedef typename insert<s2,int>::type       s3;
-    typedef typename insert<s3,abstract>::type  s4;
+    using s0 = S0;
+    using s1 = typename insert<s0,int>::type;
+    using s2 = typename insert<s1,char&>::type;
+    using s3 = typename insert<s2,int>::type;
+    using s4 = typename insert<s3,abstract>::type;
 };
 
 
@@ -97,10 +97,10 @@ MPL_TEST_CASE()
     // typedef begin<set_of_1_int>::type iter_to_1_int;
     // BOOST_MPL_ASSERT(( is_same< deref<iter_to_1_int>::type, int > ));
     
-    typedef multiset0<> s0;
-    typedef insert<s0,int>::type s1;
-    typedef insert<s1,long>::type s2;
-    typedef insert<s2,char>::type myset;
+    using s0 = multiset0<>;
+    using s1 = insert<s0,int>::type;
+    using s2 = insert<s1,long>::type;
+    using myset = insert<s2,char>::type;
     
     // find_test<myset>();
     // find_test<myset::type>();

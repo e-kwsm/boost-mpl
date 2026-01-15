@@ -49,15 +49,15 @@ void empty_set_test()
     MPL_ASSERT_NOT(( has_key<s,char> ));
     MPL_ASSERT_NOT(( has_key<s,long> ));
 
-    typedef BOOST_DEDUCED_TYPENAME order<s,int>::type o1;
-    typedef BOOST_DEDUCED_TYPENAME order<s,char>::type o2;
-    typedef BOOST_DEDUCED_TYPENAME order<s,long>::type o3;
+    using o1 = BOOST_DEDUCED_TYPENAME order<s,int>::type;
+    using o2 = BOOST_DEDUCED_TYPENAME order<s,char>::type;
+    using o3 = BOOST_DEDUCED_TYPENAME order<s,long>::type;
     MPL_ASSERT(( is_same< o1, void_ > ));
     MPL_ASSERT(( is_same< o2, void_ > ));
     MPL_ASSERT(( is_same< o3, void_ > ));
     
-    typedef BOOST_DEDUCED_TYPENAME begin<s>::type first;
-    typedef BOOST_DEDUCED_TYPENAME end<s>::type last;
+    using first = BOOST_DEDUCED_TYPENAME begin<s>::type;
+    using last = BOOST_DEDUCED_TYPENAME end<s>::type;
 
     MPL_ASSERT(( is_same<first, last> ));
     MPL_ASSERT_RELATION( (distance<first, last>::value), ==, 0 );
@@ -79,15 +79,15 @@ void int_set_test()
     MPL_ASSERT_NOT(( has_key<s,char> ));
     MPL_ASSERT_NOT(( has_key<s,long> ));
 
-    typedef BOOST_DEDUCED_TYPENAME order<s,int>::type o1;
-    typedef BOOST_DEDUCED_TYPENAME order<s,char>::type o2;
-    typedef BOOST_DEDUCED_TYPENAME order<s,long>::type o3;
+    using o1 = BOOST_DEDUCED_TYPENAME order<s,int>::type;
+    using o2 = BOOST_DEDUCED_TYPENAME order<s,char>::type;
+    using o3 = BOOST_DEDUCED_TYPENAME order<s,long>::type;
     MPL_ASSERT_NOT(( is_same< o1, void_ > ));
     MPL_ASSERT(( is_same< o2, void_ > ));
     MPL_ASSERT(( is_same< o3, void_ > ));
     
-    typedef BOOST_DEDUCED_TYPENAME begin<s>::type first;
-    typedef BOOST_DEDUCED_TYPENAME end<s>::type last;
+    using first = BOOST_DEDUCED_TYPENAME begin<s>::type;
+    using last = BOOST_DEDUCED_TYPENAME end<s>::type;
 
     MPL_ASSERT(( is_same< BOOST_DEDUCED_TYPENAME deref<first>::type, int > ));
     MPL_ASSERT(( is_same< BOOST_DEDUCED_TYPENAME next<first>::type, last > ));
@@ -109,16 +109,16 @@ void int_char_set_test()
     MPL_ASSERT(( has_key<s,char> ));
     MPL_ASSERT_NOT(( has_key<s,long> ));
 
-    typedef BOOST_DEDUCED_TYPENAME order<s,int>::type o1;
-    typedef BOOST_DEDUCED_TYPENAME order<s,char>::type o2;
-    typedef BOOST_DEDUCED_TYPENAME order<s,long>::type o3;
+    using o1 = BOOST_DEDUCED_TYPENAME order<s,int>::type;
+    using o2 = BOOST_DEDUCED_TYPENAME order<s,char>::type;
+    using o3 = BOOST_DEDUCED_TYPENAME order<s,long>::type;
     MPL_ASSERT_NOT(( is_same< o1, void_ > ));
     MPL_ASSERT_NOT(( is_same< o2, void_ > ));
     MPL_ASSERT(( is_same< o3, void_ > ));
     MPL_ASSERT_NOT(( is_same< o1, o2 > ));
 
-    typedef BOOST_DEDUCED_TYPENAME begin<s>::type first;
-    typedef BOOST_DEDUCED_TYPENAME end<s>::type last;
+    using first = BOOST_DEDUCED_TYPENAME begin<s>::type;
+    using last = BOOST_DEDUCED_TYPENAME end<s>::type;
 
     MPL_ASSERT_RELATION( (distance<first, last>::value), ==, 2 );
 
@@ -140,9 +140,9 @@ void int_char_long_set_test()
     MPL_ASSERT(( has_key<s,int> ));
     MPL_ASSERT(( has_key<s,char> ));
 
-    typedef BOOST_DEDUCED_TYPENAME order<s,int>::type o1;
-    typedef BOOST_DEDUCED_TYPENAME order<s,char>::type o2;
-    typedef BOOST_DEDUCED_TYPENAME order<s,long>::type o3;
+    using o1 = BOOST_DEDUCED_TYPENAME order<s,int>::type;
+    using o2 = BOOST_DEDUCED_TYPENAME order<s,char>::type;
+    using o3 = BOOST_DEDUCED_TYPENAME order<s,long>::type;
     MPL_ASSERT_NOT(( is_same< o1, void_ > ));
     MPL_ASSERT_NOT(( is_same< o2, void_ > ));
     MPL_ASSERT_NOT(( is_same< o3, void_ > ));
@@ -150,8 +150,8 @@ void int_char_long_set_test()
     MPL_ASSERT_NOT(( is_same< o1, o3 > ));
     MPL_ASSERT_NOT(( is_same< o2, o3 > ));
 
-    typedef BOOST_DEDUCED_TYPENAME begin<s>::type first;
-    typedef BOOST_DEDUCED_TYPENAME end<s>::type last;
+    using first = BOOST_DEDUCED_TYPENAME begin<s>::type;
+    using last = BOOST_DEDUCED_TYPENAME end<s>::type;
     MPL_ASSERT_RELATION( (distance<first, last>::value), ==, 3 );
 
     MPL_ASSERT(( contains< s, int > ));
@@ -224,17 +224,17 @@ void numbered_vs_variadic_set_test()
 
 MPL_TEST_CASE()
 {
-    typedef mpl::set0<> s01;
-    typedef mpl::set<>  s02;
-    typedef mpl::set1<int> s11;
-    typedef mpl::set<int>  s12;
-    typedef mpl::set2<int,char> s21;
-    typedef mpl::set<int,char>  s22;
-    typedef mpl::set<char,int>  s23;
-    typedef mpl::set3<int,char,long> s31;
-    typedef mpl::set<int,char,long>  s32;
-    typedef mpl::set<int,long,char>  s33;
-    typedef mpl::set<long,char,int>  s34;
+    using s01 = mpl::set0<>;
+    using s02 = mpl::set<>;
+    using s11 = mpl::set1<int>;
+    using s12 = mpl::set<int>;
+    using s21 = mpl::set2<int,char>;
+    using s22 = mpl::set<int,char>;
+    using s23 = mpl::set<char,int>;
+    using s31 = mpl::set3<int,char,long>;
+    using s32 = mpl::set<int,char,long>;
+    using s33 = mpl::set<int,long,char>;
+    using s34 = mpl::set<long,char,int>;
 
     numbered_vs_variadic_set_test<s01,s02>();
     numbered_vs_variadic_set_test<s11,s12>();
@@ -301,10 +301,10 @@ MPL_TEST_CASE()
     empty_set_types_variety_test< set<> >();
     empty_set_types_variety_test< set<>::type >();
 
-    typedef set<
+    using s = set<
           char,int const,long*,UDT* const,incomplete,abstract
         , incomplete volatile&,abstract const&
-        > s;
+        >;
 
     set_types_variety_test<s>();
     set_types_variety_test<s::type>();
@@ -316,7 +316,7 @@ void find_test()
 {
     MPL_ASSERT_RELATION( size<S>::value, ==, 3 );
 
-    typedef typename end<S>::type not_found;
+    using not_found = typename end<S>::type;
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<S,int>::type,not_found> ));
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<S,long>::type,not_found> ));
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<S,char>::type,not_found> ));
@@ -325,14 +325,14 @@ void find_test()
 
 MPL_TEST_CASE()
 {
-    typedef mpl::set<int,long,char> s;
+    using s = mpl::set<int,long,char>;
     find_test<s>();
     find_test<s::type>();
 }
 
 MPL_TEST_CASE()
 {
-    typedef insert< set<>, int >::type little_set;
+    using little_set = insert< set<>, int >::type;
 
     MPL_ASSERT_RELATION(size<little_set>::value, ==, 1);
     MPL_ASSERT_RELATION(size<little_set::type>::value, ==, 1);
@@ -340,7 +340,7 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef erase_key< set< float, int >, float >::type little_set;
+    using little_set = erase_key< set< float, int >, float >::type;
 
     MPL_ASSERT_RELATION(size<little_set>::value, ==, 1);
     MPL_ASSERT_RELATION(size<little_set::type>::value, ==, 1);

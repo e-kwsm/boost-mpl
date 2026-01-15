@@ -28,24 +28,24 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<char,short,int,long,float,double> types;
-    typedef list<char*,short*,int*,long*,float*,double*> pointers;
+    using types = list<char,short,int,long,float,double>;
+    using pointers = list<char*,short*,int*,long*,float*,double*>;
     
-    typedef transform1< types,add_pointer<_1> >::type result;
+    using result = transform1< types,add_pointer<_1> >::type;
     MPL_ASSERT(( equal<result,pointers> ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef list_c<long,0,2,4,6,8,10> evens;
-    typedef list_c<long,2,3,5,7,11,13> primes;
-    typedef list_c<long,2,5,9,13,19,23> sums;
+    using evens = list_c<long,0,2,4,6,8,10>;
+    using primes = list_c<long,2,3,5,7,11,13>;
+    using sums = list_c<long,2,5,9,13,19,23>;
 
-    typedef transform2< evens, primes, plus<> >::type result;
+    using result = transform2< evens, primes, plus<> >::type;
     MPL_ASSERT(( equal< result,sums,equal_to<_1,_2> > ));
 
 #if !defined(BOOST_MPL_CFG_NO_HAS_XXX)
-    typedef transform< evens, primes, plus<> >::type result2;
+    using result2 = transform< evens, primes, plus<> >::type;
     MPL_ASSERT(( is_same<result2,result> ));
 #endif
 }

@@ -21,9 +21,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,float,float,char,int,int,int,double> types;
-    typedef unique< types, is_same<_1,_2> >::type result;
+    using types = list<int,float,float,char,int,int,int,double>;
+    using result = unique< types, is_same<_1,_2> >::type;
 
-    typedef list<int,float,char,int,double>::type answer;
+    using answer = list<int,float,char,int,double>::type;
     MPL_ASSERT(( equal< result,answer > ));
 }

@@ -17,10 +17,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef int_<0> _0;
-    typedef int_<1> _1;
-    typedef int_<3> _3;
-    typedef int_<10> _10;
+    using _0 = int_<0>;
+    using _1 = int_<1>;
+    using _3 = int_<3>;
+    using _10 = int_<10>;
 
     MPL_ASSERT_RELATION( (plus<_0,_10>::value), ==, 10 );
     MPL_ASSERT_RELATION( (plus<_10,_0>::value), ==, 10 );

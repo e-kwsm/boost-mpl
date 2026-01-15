@@ -25,9 +25,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef list8_c<int,1,4,5,2,7,5,3,5>::type numbers;
-    typedef replace_if< numbers, greater<_1,int_<4> >, int_<0> >::type result;
+    using numbers = list8_c<int,1,4,5,2,7,5,3,5>::type;
+    using result = replace_if< numbers, greater<_1,int_<4> >, int_<0> >::type;
 
-    typedef list8_c<int,1,4,0,2,0,0,3,0>::type answer;
+    using answer = list8_c<int,1,4,0,2,0,0,3,0>::type;
     MPL_ASSERT(( equal< answer,result,equal_to<_1,_2> > ));
 }

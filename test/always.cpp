@@ -20,7 +20,7 @@
 
 MPL_TEST_CASE()
 {
-    typedef always<true_> always_true;
+    using always_true = always<true_>;
 
     MPL_ASSERT(( apply< always_true > ));
     MPL_ASSERT(( apply0< always_true > ));
@@ -32,13 +32,13 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef always< int_<10> > always_10;
+    using always_10 = always< int_<10> >;
 
-    typedef apply< always_10 >::type res;
-    typedef apply0< always_10 >::type res0;
-    typedef apply1< always_10,int_<0> >::type res1;
-    typedef apply2< always_10,int_<0>,int_<0> >::type res2;
-    typedef apply3< always_10,int_<0>,int_<0>,int_<0> >::type res3;
+    using res = apply< always_10 >::type;
+    using res0 = apply0< always_10 >::type;
+    using res1 = apply1< always_10,int_<0> >::type;
+    using res2 = apply2< always_10,int_<0>,int_<0> >::type;
+    using res3 = apply3< always_10,int_<0>,int_<0>,int_<0> >::type;
 
     MPL_ASSERT_RELATION( res::value, ==, 10 );
     MPL_ASSERT_RELATION( res0::value, ==, 10 );

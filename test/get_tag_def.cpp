@@ -20,7 +20,7 @@
 
 struct test_type_get_tag_def
 {
-    typedef int a_tag;
+    using a_tag = int;
 };
 
 BOOST_MPL_GET_TAG_DEF(a_tag);

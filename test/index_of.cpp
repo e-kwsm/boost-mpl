@@ -19,12 +19,12 @@
 
 MPL_TEST_CASE()
 {
-    typedef list< int, double, float >::type types;
+    using types = list< int, double, float >::type;
 
-    typedef index_of< types, int    >::type index_of_int;
-    typedef index_of< types, double >::type index_of_double;
-    typedef index_of< types, float  >::type index_of_float;
-    typedef index_of< types, char   >::type index_of_char;
+    using index_of_int = index_of< types, int    >::type;
+    using index_of_double = index_of< types, double >::type;
+    using index_of_float = index_of< types, float  >::type;
+    using index_of_char = index_of< types, char   >::type;
 
     MPL_ASSERT_RELATION( index_of_int::value, ==, 0 );
     MPL_ASSERT_RELATION( index_of_double::value, ==, 1 );

@@ -31,12 +31,12 @@
 
 MPL_TEST_CASE()
 {
-    typedef map2<
+    using m_ = map2<
           mpl::pair<int,unsigned>
         , mpl::pair<char,unsigned char>
-        > m_;
+        >;
 
-    typedef erase_key<m_,char>::type m;
+    using m = erase_key<m_,char>::type;
 
     MPL_ASSERT_RELATION( size<m>::type::value, ==, 1 );
     MPL_ASSERT_NOT(( empty<m> ));
@@ -54,13 +54,13 @@ MPL_TEST_CASE()
     MPL_ASSERT_NOT(( is_same< order<m,int>::type, void_ > ));
     MPL_ASSERT(( is_same< order<m,char>::type,void_ > ));
 
-    typedef begin<m>::type first;
-    typedef end<m>::type last;
+    using first = begin<m>::type;
+    using last = end<m>::type;
 
     MPL_ASSERT(( is_same< deref<first>::type,mpl::pair<int,unsigned> > ));
     MPL_ASSERT(( is_same< next<first>::type,last > ));
 
-    typedef insert<m,mpl::pair<char,long> >::type m2;
+    using m2 = insert<m,mpl::pair<char,long> >::type;
 
     MPL_ASSERT_RELATION( size<m2>::type::value, ==, 2 );
     MPL_ASSERT_NOT(( empty<m2>::type ));
@@ -79,18 +79,18 @@ MPL_TEST_CASE()
     MPL_ASSERT_NOT(( is_same< order<m2,char>::type, void_ > ));
     MPL_ASSERT_NOT(( is_same< order<m2,char>::type, order<m2,int>::type > ));
 
-    typedef begin<m2>::type first2;
-    typedef end<m2>::type last2;
+    using first2 = begin<m2>::type;
+    using last2 = end<m2>::type;
 
     MPL_ASSERT(( is_same<deref<first2>::type,mpl::pair<int,unsigned> > ));
-    typedef next<first2>::type iter;
+    using iter = next<first2>::type;
     MPL_ASSERT(( is_same<deref<iter>::type,mpl::pair<char,long> > ));
     MPL_ASSERT(( is_same< next<iter>::type,last2 > ));
 
-    typedef insert<m2,mpl::pair<int,unsigned> >::type s2_1;
+    using s2_1 = insert<m2,mpl::pair<int,unsigned> >::type;
     MPL_ASSERT(( is_same<m2,s2_1> ));
 
-    typedef insert<m2,mpl::pair<long,unsigned> >::type m3;
+    using m3 = insert<m2,mpl::pair<long,unsigned> >::type;
     MPL_ASSERT_RELATION( size<m3>::type::value, ==, 3 );
     MPL_ASSERT(( has_key<m3,long>::type ));
     MPL_ASSERT(( has_key<m3,int>::type ));
@@ -98,7 +98,7 @@ MPL_TEST_CASE()
     MPL_ASSERT(( contains< m3,mpl::pair<long,unsigned> > ));
     MPL_ASSERT(( contains< m3,mpl::pair<int,unsigned> > ));
 
-    typedef insert<m,mpl::pair<char,long> >::type m1;
+    using m1 = insert<m,mpl::pair<char,long> >::type;
     MPL_ASSERT_RELATION( size<m1>::type::value, ==, 2 );
     MPL_ASSERT(( is_same< at<m1,int>::type,unsigned > ));
     MPL_ASSERT(( is_same< at<m1,char>::type,long > ));
@@ -110,13 +110,13 @@ MPL_TEST_CASE()
 
     MPL_ASSERT(( is_same< m1,m2 > ));
 
-    typedef erase_key<m1,char>::type m_1;
+    using m_1 = erase_key<m1,char>::type;
     MPL_ASSERT(( is_same<m,m_1> ));
     MPL_ASSERT_RELATION( size<m_1>::type::value, ==, 1 );
     MPL_ASSERT(( is_same< at<m_1,char>::type,void_ > ));
     MPL_ASSERT(( is_same< at<m_1,int>::type,unsigned > ));
 
-    typedef erase_key<m3,char>::type m2_1;
+    using m2_1 = erase_key<m3,char>::type;
     MPL_ASSERT_RELATION( size<m2_1>::type::value, ==, 2 );
     MPL_ASSERT(( is_same< at<m2_1,char>::type,void_ > ));
     MPL_ASSERT(( is_same< at<m2_1,int>::type,unsigned > ));
@@ -125,7 +125,7 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef map0<> m;
+    using m = map0<>;
     
     MPL_ASSERT_RELATION( size<m>::type::value, ==, 0 );
     MPL_ASSERT(( empty<m>::type ));
@@ -151,11 +151,11 @@ MPL_TEST_CASE()
     MPL_ASSERT_NOT(( has_key<m,UDT&>::type ));
     MPL_ASSERT_NOT(( has_key<m,incomplete&>::type ));
 
-    typedef insert<m,mpl::pair<char,int> >::type m1;
+    using m1 = insert<m,mpl::pair<char,int> >::type;
     MPL_ASSERT_RELATION( size<m1>::type::value, ==, 1 );
     MPL_ASSERT(( is_same< at<m1,char>::type,int > ));
 
-    typedef erase_key<m,char>::type m0_1;
+    using m0_1 = erase_key<m,char>::type;
     MPL_ASSERT_RELATION( size<m0_1>::type::value, ==, 0 );
     MPL_ASSERT(( is_same< at<m0_1,char>::type,void_ > ));
 }
@@ -166,7 +166,7 @@ void test()
 {
     MPL_ASSERT_RELATION( size<M>::value, ==, 3 );
 
-    typedef typename end<M>::type not_found;
+    using not_found = typename end<M>::type;
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<M,mpl::pair<int,int*> >::type,not_found> ));
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<M,mpl::pair<long,long*> >::type,not_found> ));
     BOOST_MPL_ASSERT_NOT(( is_same<BOOST_DEDUCED_TYPENAME find<M,mpl::pair<char,char*> >::type,not_found> ));
@@ -175,8 +175,8 @@ void test()
 
 MPL_TEST_CASE()
 {
-    typedef map< mpl::pair<int,int*> > map_of_1_pair;
-    typedef begin<map_of_1_pair>::type iter_to_1_pair;
+    using map_of_1_pair = map< mpl::pair<int,int*> >;
+    using iter_to_1_pair = begin<map_of_1_pair>::type;
     
     BOOST_MPL_ASSERT((
         is_same<
@@ -185,11 +185,11 @@ MPL_TEST_CASE()
         >
     ));
     
-    typedef map<
+    using mymap = map<
         mpl::pair<int,int*>
       , mpl::pair<long,long*>
       , mpl::pair<char,char*>
-    > mymap;
+    >;
     
     test<mymap>();
     test<mymap::type>();
@@ -197,18 +197,18 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef mpl::erase_key<
+    using int_to_float_map = mpl::erase_key<
         mpl::map<
             mpl::pair<char, double>
           , mpl::pair<int, float>
         >
       , char
-    >::type int_to_float_map;
+    >::type;
 
-    typedef mpl::insert<
+    using with_char_too = mpl::insert<
         int_to_float_map
       , mpl::pair<char, long>
-    >::type with_char_too;
+    >::type;
 
     BOOST_MPL_ASSERT((
         boost::is_same<
@@ -220,7 +220,7 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef insert< map<>, pair<int,int> >::type little_map;
+    using little_map = insert< map<>, pair<int,int> >::type;
 
     MPL_ASSERT_RELATION(size<little_map>::value, ==, 1);
     MPL_ASSERT_RELATION(size<little_map::type>::value, ==, 1);
@@ -228,7 +228,7 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef erase_key< map< pair<float,float>, pair<int,int> >, float >::type little_map;
+    using little_map = erase_key< map< pair<float,float>, pair<int,int> >, float >::type;
 
     MPL_ASSERT_RELATION(size<little_map>::value, ==, 1);
     MPL_ASSERT_RELATION(size<little_map::type>::value, ==, 1);

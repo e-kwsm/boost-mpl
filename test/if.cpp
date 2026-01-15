@@ -17,10 +17,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef if_<true_,char,long>::type t1;
-    typedef if_c<true,char,long>::type t2;
-    typedef if_<false_,char,long>::type t3;
-    typedef if_c<false,char,long>::type t4;
+    using t1 = if_<true_,char,long>::type;
+    using t2 = if_c<true,char,long>::type;
+    using t3 = if_<false_,char,long>::type;
+    using t4 = if_c<false,char,long>::type;
 
     MPL_ASSERT(( is_same<t1, char> ));
     MPL_ASSERT(( is_same<t2, char> ));

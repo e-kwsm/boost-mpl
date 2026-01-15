@@ -26,10 +26,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef deque<> d0;
-    typedef deque<char> d1;
-    typedef deque<char,long> d2;
-    typedef deque<char,char,char,char,char,char,char,char,int> d9;
+    using d0 = deque<>;
+    using d1 = deque<char>;
+    using d2 = deque<char,long>;
+    using d9 = deque<char,char,char,char,char,char,char,char,int>;
 
     MPL_ASSERT_RELATION( size<d0>::value, ==, 0 );
     MPL_ASSERT_RELATION( size<d1>::value, ==, 1 );
@@ -52,11 +52,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef deque<char,long> d2;
+    using d2 = deque<char,long>;
     
-    typedef begin<d2>::type i1;
-    typedef next<i1>::type  i2;
-    typedef next<i2>::type  i3;
+    using i1 = begin<d2>::type;
+    using i2 = next<i1>::type;
+    using i3 = next<i2>::type;
     
     MPL_ASSERT(( is_same<deref<i1>::type,char> ));
     MPL_ASSERT(( is_same<deref<i2>::type,long> ));
@@ -65,25 +65,25 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef deque<> d0;
+    using d0 = deque<>;
 
-    typedef push_back<d0,int>::type d1;
+    using d1 = push_back<d0,int>::type;
     MPL_ASSERT(( is_same< back<d1>::type,int > ));
 
-    typedef push_front<d1,char>::type d2;
+    using d2 = push_front<d1,char>::type;
     MPL_ASSERT(( is_same< back<d2>::type,int > ));
     MPL_ASSERT(( is_same< front<d2>::type,char > ));
 
-    typedef push_back<d2,long>::type d3;
+    using d3 = push_back<d2,long>::type;
     MPL_ASSERT(( is_same< back<d3>::type,long > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef deque<> d0;
-    typedef deque<char> d1;
-    typedef deque<char,long> d2;
-    typedef deque<char,char,char,char,char,char,char,char,int> d9;
+    using d0 = deque<>;
+    using d1 = deque<char>;
+    using d2 = deque<char,long>;
+    using d9 = deque<char,char,char,char,char,char,char,char,int>;
 
     MPL_ASSERT_RELATION( size<d0>::value, ==, 0 );
     MPL_ASSERT_RELATION( size<d1>::value, ==, 1 );

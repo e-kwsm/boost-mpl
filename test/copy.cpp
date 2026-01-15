@@ -38,11 +38,11 @@
 
 MPL_TEST_CASE()
 {
-    typedef vector10_c<int,9,8,7,6,5,4,3,2,1,0> answer;
-    typedef copy<
+    using answer = vector10_c<int,9,8,7,6,5,4,3,2,1,0>;
+    using result = copy<
           range_c<int,0,10>
         , mpl::front_inserter< vector0<> >
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION( size<result>::value, ==, 10 );
     MPL_ASSERT(( equal< result,answer > ));
@@ -50,11 +50,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector10_c<int,10,11,12,13,14,15,16,17,18,19> numbers;
-    typedef reverse_copy<
+    using numbers = vector10_c<int,10,11,12,13,14,15,16,17,18,19>;
+    using result = reverse_copy<
           range_c<int,0,10>
         , mpl::front_inserter<numbers>
-        >::type result;
+        >::type;
 
     MPL_ASSERT_RELATION( size<result>::value, ==,  20 );
     MPL_ASSERT(( equal< result,range_c<int,0,20> > ));
@@ -65,8 +65,8 @@ struct push_back_only_tag {};
 template< typename Seq >
 struct push_back_only
 {
-    typedef push_back_only_tag tag;
-    typedef Seq seq;
+    using tag = push_back_only_tag;
+    using seq = Seq;
 };
 
 namespace boost { namespace mpl {
@@ -121,9 +121,9 @@ struct insert_impl< ::push_back_only_tag >
 {
     template< typename Seq, typename Pos, typename X > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename insert< typename Seq::seq, Pos, X >::type
-        > type;
+        >;
     };
 };
 
@@ -132,9 +132,9 @@ struct insert_range_impl< ::push_back_only_tag >
 {
     template< typename Seq, typename Pos, typename X > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename insert_range< typename Seq::seq, Pos, X >::type
-        > type;
+        >;
     };
 };
 
@@ -143,9 +143,9 @@ struct erase_impl< ::push_back_only_tag >
 {
     template< typename Seq, typename Iter1, typename Iter2 > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename erase< typename Seq::seq, Iter1, Iter2 >::type
-        > type;
+        >;
     };
 };
 
@@ -154,9 +154,9 @@ struct clear_impl< ::push_back_only_tag >
 {
     template< typename Seq > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename clear< typename Seq::seq >::type
-        > type;
+        >;
     };
 };
 
@@ -165,9 +165,9 @@ struct push_back_impl< ::push_back_only_tag >
 {
     template< typename Seq, typename X > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename push_back< typename Seq::seq, X >::type
-        > type;
+        >;
     };
 };
 
@@ -176,9 +176,9 @@ struct pop_back_impl< ::push_back_only_tag >
 {
     template< typename Seq > struct apply
     {
-        typedef ::push_back_only<
+        using type = ::push_back_only<
             typename pop_back< typename Seq::seq >::type
-        > type;
+        >;
     };
 };
 
@@ -204,8 +204,8 @@ struct has_push_back_impl< ::push_back_only_tag >
 
 MPL_TEST_CASE()
 {
-    typedef vector10_c<int,0,1,2,3,4,5,6,7,8,9> numbers;
-    typedef copy< push_back_only< numbers > >::type result;
+    using numbers = vector10_c<int,0,1,2,3,4,5,6,7,8,9>;
+    using result = copy< push_back_only< numbers > >::type;
 
     MPL_ASSERT((equal< numbers, result >));
 }

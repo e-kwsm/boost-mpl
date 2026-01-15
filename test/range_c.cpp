@@ -22,9 +22,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef range_c<int,0,0> range0;
-    typedef range_c<int,0,1> range1;
-    typedef range_c<int,0,10> range10;
+    using range0 = range_c<int,0,0>;
+    using range1 = range_c<int,0,1>;
+    using range10 = range_c<int,0,10>;
 
     MPL_ASSERT_RELATION( size<range0>::value, ==, 0 );
     MPL_ASSERT_RELATION( size<range1>::value, ==, 1 );
@@ -46,15 +46,15 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef range_c<unsigned char,0,10> r;
-    typedef begin<r>::type first;
-    typedef end<r>::type last;
+    using r = range_c<unsigned char,0,10>;
+    using first = begin<r>::type;
+    using last = end<r>::type;
 
     MPL_ASSERT(( is_same< advance_c<first,10>::type, last > ));
     MPL_ASSERT(( is_same< advance_c<last,-10>::type, first > ));
 
     MPL_ASSERT_RELATION( ( mpl::distance<first,last>::value ), ==, 10 );
 
-    typedef advance_c<first,5>::type iter;
+    using iter = advance_c<first,5>::type;
     MPL_ASSERT_RELATION( deref<iter>::type::value, ==, 5 );
 }

@@ -20,8 +20,8 @@
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,1,2,3,3,3,5,8> numbers;
-    typedef lower_bound< numbers, int_<4> >::type iter;
+    using numbers = list_c<int,1,2,3,3,3,5,8>;
+    using iter = lower_bound< numbers, int_<4> >::type;
     
     MPL_ASSERT_RELATION( (mpl::distance< begin<numbers>::type,iter >::value), ==, 5 );
     MPL_ASSERT_RELATION( deref<iter>::type::value, ==, 5 );

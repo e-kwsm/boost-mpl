@@ -17,8 +17,8 @@
 #include <boost/mpl/aux_/config/gcc.hpp>
 #include <boost/mpl/aux_/config/workaround.hpp>
 
-typedef int UDT::* mem_ptr;
-typedef int (UDT::* mem_fun_ptr)();
+using mem_ptr = int UDT::*;
+using mem_fun_ptr = int (UDT::*)();
 
 #define AUX_LAMBDA_TEST(T) \
     { MPL_ASSERT(( apply1<lambda< is_same<_,T> >::type, T> )); } \

@@ -17,7 +17,7 @@
 
 template< typename T > struct f1
 {
-    typedef T type;
+    using type = T;
 };
 
 template<
@@ -34,8 +34,8 @@ struct f5
 
 MPL_TEST_CASE()
 {
-    typedef quote1<f1>::apply<int>::type t1;
-    typedef quote5<f5>::apply<char,short,int,long,float>::type t5;
+    using t1 = quote1<f1>::apply<int>::type;
+    using t5 = quote5<f5>::apply<char,short,int,long,float>::type;
     
     MPL_ASSERT(( boost::is_same< t1, int > ));
     MPL_ASSERT(( boost::is_same< t5, f5<char,short,int,long,float> > ));

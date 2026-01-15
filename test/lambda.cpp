@@ -33,7 +33,7 @@ struct my
 MPL_TEST_CASE()
 {
     // !(x == char) && !(x == double) || sizeof(x) > 8
-    typedef lambda<
+    using f = lambda<
         or_<
               and_<
                     not_< boost::is_same<_1, char> >
@@ -41,7 +41,7 @@ MPL_TEST_CASE()
                   >
             , greater< sizeof_<_1>, mpl::size_t<8> >
             >
-        >::type f;
+        >::type;
 
     MPL_ASSERT_NOT(( apply_wrap1<f,char> ));
     MPL_ASSERT_NOT(( apply_wrap1<f,double> ));
@@ -52,13 +52,13 @@ MPL_TEST_CASE()
 MPL_TEST_CASE()
 {
     // x == y || x == my || sizeof(x) == sizeof(y)
-    typedef lambda<
+    using f = lambda<
         or_< 
               boost::is_same<_1, _2>
             , boost::is_same<_2, my>
             , equal_to< sizeof_<_1>, sizeof_<_2> >
             >
-        >::type f;
+        >::type;
 
     MPL_ASSERT_NOT(( apply_wrap2<f,double,char> ));
     MPL_ASSERT_NOT(( apply_wrap2<f,my,int> ));
@@ -71,8 +71,8 @@ MPL_TEST_CASE()
 MPL_TEST_CASE()
 {
     // bind <-> lambda interaction
-    typedef lambda< less<_1,_2> >::type pred;
-    typedef bind2< pred, _1, int_<4> > f;
+    using pred = lambda< less<_1,_2> >::type;
+    using f = bind2< pred, _1, int_<4> >;
     
     MPL_ASSERT(( apply_wrap1< f,int_<3> > ));
 }

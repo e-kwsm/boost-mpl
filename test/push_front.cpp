@@ -24,14 +24,14 @@ struct no_push_front_tag {};
 
 struct no_push_front
 {
-    typedef no_push_front_tag tag;
+    using tag = no_push_front_tag;
 };
 
 MPL_TEST_CASE()
 {
-    typedef push_front<list0<>,long>::type res1;
-    typedef push_front<list1<long>,int>::type res2;
-    typedef push_front<list2<int,long>,char>::type res3;
+    using res1 = push_front<list0<>,long>::type;
+    using res2 = push_front<list1<long>,int>::type;
+    using res3 = push_front<list2<int,long>,char>::type;
     
     MPL_ASSERT_RELATION( size<res1>::value, ==, 1 );
     MPL_ASSERT_RELATION( size<res2>::value, ==, 2 );

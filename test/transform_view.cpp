@@ -21,20 +21,20 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,long,char,char[50],double> types;
-    typedef list<
+    using types = list<int,long,char,char[50],double>;
+    using sizes = list<
         sizeof_<int>::type,
         sizeof_<long>::type,
         sizeof_<char>::type,
         sizeof_<char[50]>::type,
         sizeof_<double>::type
-    > sizes;
+    >;
 
     MPL_ASSERT(( equal< transform_view< types, sizeof_<_> >::type,sizes > ));
 
-    typedef max_element<
+    using iter = max_element<
           transform_view< types, sizeof_<_> >
-        >::type iter;
+        >::type;
 
     MPL_ASSERT_RELATION( deref<iter>::type::value, ==, 50 );
 }

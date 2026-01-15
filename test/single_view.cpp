@@ -20,9 +20,9 @@
 
 MPL_TEST_CASE()
 {
-    typedef single_view<int> view;
-    typedef begin<view>::type first;
-    typedef end<view>::type last;
+    using view = single_view<int>;
+    using first = begin<view>::type;
+    using last = end<view>::type;
 
     MPL_ASSERT(( is_same< deref<first>::type, int > ));
     MPL_ASSERT(( is_same< next<first>::type, last > ));

@@ -39,9 +39,9 @@ struct at_c
 #if !BOOST_WORKAROUND(BOOST_MSVC, <= 1200)
 MPL_TEST_CASE()
 {
-    typedef set_c<bool,true>::type s1;
-    typedef set_c<bool,false>::type s2;
-    typedef set_c<bool,true,false>::type s3;
+    using s1 = set_c<bool,true>::type;
+    using s2 = set_c<bool,false>::type;
+    using s3 = set_c<bool,true,false>::type;
 
     MPL_ASSERT_RELATION( size<s1>::value, ==, 1 );
     MPL_ASSERT_RELATION( size<s2>::value, ==, 1 );
@@ -61,24 +61,24 @@ MPL_TEST_CASE()
     MPL_ASSERT(( is_same< test::at_c<s2,true>::type, void_ > ));
 #endif
 
-    typedef begin<s1>::type first1;
-    typedef end<s1>::type last1;
+    using first1 = begin<s1>::type;
+    using last1 = end<s1>::type;
     MPL_ASSERT_RELATION( (distance<first1, last1>::value), ==, 1 );
 
-    typedef begin<s2>::type first2;
-    typedef end<s2>::type last2;
+    using first2 = begin<s2>::type;
+    using last2 = end<s2>::type;
     MPL_ASSERT_RELATION( (distance<first2, last2>::value), ==, 1 );
     
-    typedef begin<s3>::type first3;
-    typedef end<s3>::type last3;
+    using first3 = begin<s3>::type;
+    using last3 = end<s3>::type;
     MPL_ASSERT_RELATION( (distance<first3, last3>::value), ==, 2 );
 }
 #endif
 
 MPL_TEST_CASE()
 {
-    typedef set_c<char,'a'>::type s1;
-    typedef set_c<char,'a','b','c','d','e','f','g','h'>::type s2;
+    using s1 = set_c<char,'a'>::type;
+    using s2 = set_c<char,'a','b','c','d','e','f','g','h'>::type;
 
     MPL_ASSERT_RELATION( size<s1>::value, ==, 1 );
     MPL_ASSERT_RELATION( size<s2>::value, ==, 8 );
@@ -96,11 +96,11 @@ MPL_TEST_CASE()
     MPL_ASSERT(( is_same< test::at_c<s2,'k'>::type, void_ > ));
 #endif
     
-    typedef begin<s1>::type first1;
-    typedef end<s1>::type last1;
+    using first1 = begin<s1>::type;
+    using last1 = end<s1>::type;
     MPL_ASSERT_RELATION( (distance<first1, last1>::value), ==, 1 );
 
-    typedef begin<s2>::type first2;
-    typedef end<s2>::type last2;
+    using first2 = begin<s2>::type;
+    using last2 = end<s2>::type;
     MPL_ASSERT_RELATION( (distance<first2, last2>::value), ==, 8 );
 }

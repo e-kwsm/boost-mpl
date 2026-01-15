@@ -17,7 +17,7 @@
 
 MPL_TEST_CASE()
 {    
-    typedef vector<int,char,long,short,char,long,double,long>::type types;
+    using types = vector<int,char,long,short,char,long,double,long>::type;
 
     MPL_ASSERT(( contains< types,short > ));
     MPL_ASSERT_NOT(( contains< types,unsigned > ));

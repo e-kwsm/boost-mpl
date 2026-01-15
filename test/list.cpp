@@ -23,10 +23,10 @@
 
 MPL_TEST_CASE()
 {
-    typedef list0<> l0;
-    typedef list1<char> l1;
-    typedef list2<char,long> l2;
-    typedef list9<char,char,char,char,char,char,char,char,char> l9;
+    using l0 = list0<>;
+    using l1 = list1<char>;
+    using l2 = list2<char,long>;
+    using l9 = list9<char,char,char,char,char,char,char,char,char>;
 
     MPL_ASSERT_RELATION(size<l0>::value, ==, 0);
     MPL_ASSERT_RELATION(size<l1>::value, ==, 1);
@@ -45,11 +45,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list2<char,long> l2;
+    using l2 = list2<char,long>;
     
-    typedef begin<l2>::type i1;
-    typedef next<i1>::type  i2;
-    typedef next<i2>::type  i3;
+    using i1 = begin<l2>::type;
+    using i2 = next<i1>::type;
+    using i3 = next<i2>::type;
     
     MPL_ASSERT(( is_same<deref<i1>::type,char> ));
     MPL_ASSERT(( is_same<deref<i2>::type,long> ));
@@ -58,11 +58,11 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list0<> l0;
+    using l0 = list0<>;
 
-    typedef push_front<l0,char>::type l1;
+    using l1 = push_front<l0,char>::type;
     MPL_ASSERT(( is_same<front<l1>::type,char> ));
 
-    typedef push_front<l1,long>::type l2;
+    using l2 = push_front<l1,long>::type;
     MPL_ASSERT(( is_same<front<l2>::type,long> ));
 }

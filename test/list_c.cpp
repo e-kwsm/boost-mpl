@@ -22,8 +22,8 @@
 #if !BOOST_WORKAROUND(BOOST_MSVC,<= 1200)
 MPL_TEST_CASE()
 {
-    typedef list_c<bool,true>::type l1;
-    typedef list_c<bool,false>::type l2;
+    using l1 = list_c<bool,true>::type;
+    using l2 = list_c<bool,false>::type;
 
     MPL_ASSERT(( is_same< l1::value_type, bool > ));
     MPL_ASSERT(( is_same< l2::value_type, bool > ));
@@ -35,9 +35,9 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,-1>::type l1;
-    typedef list_c<int,0,1>::type l2;
-    typedef list_c<int,1,2,3>::type l3;
+    using l1 = list_c<int,-1>::type;
+    using l2 = list_c<int,0,1>::type;
+    using l3 = list_c<int,1,2,3>::type;
 
     MPL_ASSERT(( is_same< l1::value_type, int > ));
     MPL_ASSERT(( is_same< l2::value_type, int > ));
@@ -53,8 +53,8 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list_c<unsigned,0>::type l1;
-    typedef list_c<unsigned,1,2>::type l2;
+    using l1 = list_c<unsigned,0>::type;
+    using l2 = list_c<unsigned,1,2>::type;
 
     MPL_ASSERT(( is_same< l1::value_type, unsigned > ));
     MPL_ASSERT(( is_same< l2::value_type, unsigned > ));
@@ -67,13 +67,13 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef list_c<unsigned,2,1> l2;
+    using l2 = list_c<unsigned,2,1>;
 
     MPL_ASSERT(( is_same< l2::value_type, unsigned > ));
     
-    typedef begin<l2>::type i1;
-    typedef next<i1>::type  i2;
-    typedef next<i2>::type  i3;
+    using i1 = begin<l2>::type;
+    using i2 = next<i1>::type;
+    using i3 = next<i2>::type;
     
     MPL_ASSERT_RELATION( deref<i1>::type::value, ==, 2 );
     MPL_ASSERT_RELATION( deref<i2>::type::value, ==, 1 );

@@ -29,100 +29,100 @@ template< typename T > struct std_vector
 
 MPL_TEST_CASE()
 {
-    typedef plus<int_<2>,int_<3> > plus1;
-    typedef lambda<plus1>::type plus2;
+    using plus1 = plus<int_<2>,int_<3> >;
+    using plus2 = lambda<plus1>::type;
     MPL_ASSERT(( is_same< plus1,plus2 > ));
 
-    typedef lambda<std_vector<int> >::type v;
+    using v = lambda<std_vector<int> >::type;
     MPL_ASSERT(( is_same< v,std_vector<int> > ));
 
-    typedef lambda<std_vector<_1> >::type make_vector;
-    typedef apply_wrap1<make_vector,int>::type v_int;
+    using make_vector = lambda<std_vector<_1> >::type;
+    using v_int = apply_wrap1<make_vector,int>::type;
     MPL_ASSERT(( is_same< v_int,std_vector<int> > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef plus<_1,_2> plus_fun;
-    typedef apply2<plus_fun,int_<2>,int_<3> >::type res;
+    using plus_fun = plus<_1,_2>;
+    using res = apply2<plus_fun,int_<2>,int_<3> >::type;
 
     MPL_ASSERT_RELATION( res::value, ==, 5 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1<_1, plus<_1,_2> >::type plus_fun;
+    using plus_fun = apply1<_1, plus<_1,_2> >::type;
     MPL_ASSERT(( is_same< plus_fun,plus<_1,_2> > ));
 
-    typedef apply2<plus_fun,int_<2>,int_<3> >::type res;
+    using res = apply2<plus_fun,int_<2>,int_<3> >::type;
     MPL_ASSERT_RELATION( res::value, ==, 5 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef lambda< lambda<_1> >::type make_lambda;
-    typedef apply_wrap1< make_lambda,std_vector<int> >::type v;
+    using make_lambda = lambda< lambda<_1> >::type;
+    using v = apply_wrap1< make_lambda,std_vector<int> >::type;
     MPL_ASSERT(( is_same< v,std_vector<int> > ));
 
-    typedef apply_wrap1< make_lambda,std_vector<_1> >::type make_vector;
-    typedef apply_wrap1< make_vector,int >::type v_int;
+    using make_vector = apply_wrap1< make_lambda,std_vector<_1> >::type;
+    using v_int = apply_wrap1< make_vector,int >::type;
     MPL_ASSERT(( is_same< v_int,std_vector<int> > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1< _1, std_vector<int> >::type v;
+    using v = apply1< _1, std_vector<int> >::type;
     MPL_ASSERT(( is_same< v,std_vector<int> > ));
 
-    typedef apply1< _1, std_vector<_1> >::type v_lambda;
-    typedef apply1<v_lambda,int>::type v_int;
+    using v_lambda = apply1< _1, std_vector<_1> >::type;
+    using v_int = apply1<v_lambda,int>::type;
     MPL_ASSERT(( is_same< v_int,std_vector<int> > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1< lambda<_1>, std_vector<int> >::type v;
+    using v = apply1< lambda<_1>, std_vector<int> >::type;
     MPL_ASSERT(( is_same< v,std_vector<int> > ));
 
-    typedef apply1< lambda<_1>, std_vector<_1> >::type make_vector;
-    typedef apply_wrap1< make_vector,int >::type v_int;
+    using make_vector = apply1< lambda<_1>, std_vector<_1> >::type;
+    using v_int = apply_wrap1< make_vector,int >::type;
     MPL_ASSERT(( is_same< v_int,std_vector<int> > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1< lambda<_1>, plus<_1,_2> >::type plus_fun;
-    typedef apply_wrap2< plus_fun,int_<2>,int_<3> >::type res;
+    using plus_fun = apply1< lambda<_1>, plus<_1,_2> >::type;
+    using res = apply_wrap2< plus_fun,int_<2>,int_<3> >::type;
 
     MPL_ASSERT_RELATION( res::value, ==, 5 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef bind2<plus<>,_1,_1> b1;
-    typedef lambda<b1>::type b2;
+    using b1 = bind2<plus<>,_1,_1>;
+    using b2 = lambda<b1>::type;
     MPL_ASSERT(( is_same< b1,b2 > ));
 }
 
 MPL_TEST_CASE()
 {
 #if !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
-    typedef lambda< lambda< bind2<plus<>,_1,_1> > >::type make_lambda;
-    typedef apply_wrap1< make_lambda::type, int_<5> >::type res;
+    using make_lambda = lambda< lambda< bind2<plus<>,_1,_1> > >::type;
+    using res = apply_wrap1< make_lambda::type, int_<5> >::type;
     MPL_ASSERT_RELATION( res::value, ==, 10 );
 #endif
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1< bind2<plus<>,_1,_1>, int_<5> >::type res;
+    using res = apply1< bind2<plus<>,_1,_1>, int_<5> >::type;
     MPL_ASSERT_RELATION( res::value, ==, 10 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef apply1<_1, lambda<plus<_1,_2> > >::type plus_fun;
-    typedef apply_wrap2< plus_fun::type, int_<2>,int_<3> >::type res;
+    using plus_fun = apply1<_1, lambda<plus<_1,_2> > >::type;
+    using res = apply_wrap2< plus_fun::type, int_<2>,int_<3> >::type;
 
     MPL_ASSERT_RELATION( res::value, ==, 5 );
 }

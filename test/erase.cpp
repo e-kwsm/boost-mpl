@@ -22,24 +22,24 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<int,char,long,short,char,long,double,long> types;
-    typedef find<types,short>::type iter;
+    using types = list<int,char,long,short,char,long,double,long>;
+    using iter = find<types,short>::type;
     
-    typedef erase<types, iter>::type result;
+    using result = erase<types, iter>::type;
     MPL_ASSERT_RELATION( size<result>::value, ==, 7 );
 
-    typedef find<result,short>::type result_iter;
+    using result_iter = find<result,short>::type;
     MPL_ASSERT(( is_same< result_iter, end<result>::type > ));
 }
 
 MPL_TEST_CASE()
 {
-    typedef list_c<int,1,0,5,1,7,5,0,5> values;
-    typedef find< values, integral_c<int,7> >::type iter;
+    using values = list_c<int,1,0,5,1,7,5,0,5>;
+    using iter = find< values, integral_c<int,7> >::type;
 
-    typedef erase<values, iter>::type result;
+    using result = erase<values, iter>::type;
     MPL_ASSERT_RELATION( size<result>::value, ==, 7 );
 
-    typedef find<result, integral_c<int,7> >::type result_iter;
+    using result_iter = find<result, integral_c<int,7> >::type;
     MPL_ASSERT(( is_same< result_iter, end<result>::type > ));
 }

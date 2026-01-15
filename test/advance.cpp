@@ -17,10 +17,10 @@
 
 template< int pos > struct iter
 {
-    typedef mpl::bidirectional_iterator_tag category;
-    typedef iter<(pos + 1)> next;
-    typedef iter<(pos - 1)> prior;
-    typedef int_<pos> type;
+    using category = mpl::bidirectional_iterator_tag;
+    using next = iter<(pos + 1)>;
+    using prior = iter<(pos - 1)>;
+    using type = int_<pos>;
 };
 
 #if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
@@ -29,13 +29,13 @@ template< int pos, typename Default > struct tag< iter<pos>,Default > : void_ {}
 }}
 #endif
 
-typedef iter<0> first;
-typedef iter<10> last;
+using first = iter<0>;
+using last = iter<10>;
 
 MPL_TEST_CASE()
 {
-    typedef mpl::advance<first,int_<10> >::type iter1;
-    typedef advance_c<first,10>::type           iter2;
+    using iter1 = mpl::advance<first,int_<10> >::type;
+    using iter2 = advance_c<first,10>::type;
 
     MPL_ASSERT(( is_same<iter1, last> ));
     MPL_ASSERT(( is_same<iter2, last> ));
@@ -43,8 +43,8 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef mpl::advance<last,int_<-10> >::type iter1;
-    typedef advance_c<last,-10>::type           iter2;
+    using iter1 = mpl::advance<last,int_<-10> >::type;
+    using iter2 = advance_c<last,-10>::type;
 
     MPL_ASSERT(( is_same<iter1, first> ));
     MPL_ASSERT(( is_same<iter2, first> ));

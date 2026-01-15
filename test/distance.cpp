@@ -20,18 +20,18 @@
 
 MPL_TEST_CASE()
 {
-    typedef list<char,short,int,long>::type list;
-    typedef begin<list>::type first;
-    typedef end<list>::type last;
+    using list = list<char,short,int,long>::type;
+    using first = begin<list>::type;
+    using last = end<list>::type;
     
     MPL_ASSERT_RELATION( (mpl::distance<first,last>::value), ==, 4 );
 }
 
 MPL_TEST_CASE()
 {
-    typedef range_c<int,0,10>::type range;
-    typedef begin<range>::type first;
-    typedef end<range>::type last;
+    using range = range_c<int,0,10>::type;
+    using first = begin<range>::type;
+    using last = end<range>::type;
     
     MPL_ASSERT_RELATION( (mpl::distance<first,last>::value), ==, 10 );
 }

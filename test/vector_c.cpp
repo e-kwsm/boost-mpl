@@ -20,8 +20,8 @@
 #if !BOOST_WORKAROUND(BOOST_MSVC, <=1200)
 MPL_TEST_CASE()
 {
-    typedef vector_c<bool,true>::type v1;
-    typedef vector_c<bool,false>::type v2;
+    using v1 = vector_c<bool,true>::type;
+    using v2 = vector_c<bool,false>::type;
 
     MPL_ASSERT(( is_same< v1::value_type, bool > ));
     MPL_ASSERT(( is_same< v2::value_type, bool > ));
@@ -33,9 +33,9 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector_c<int,-1> v1;
-    typedef vector_c<int,0,1> v2;
-    typedef vector_c<int,1,2,3> v3;
+    using v1 = vector_c<int,-1>;
+    using v2 = vector_c<int,0,1>;
+    using v3 = vector_c<int,1,2,3>;
 
     MPL_ASSERT(( is_same< v1::value_type, int > ));
     MPL_ASSERT(( is_same< v2::value_type, int > ));
@@ -52,8 +52,8 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef vector_c<unsigned,0> v1;
-    typedef vector_c<unsigned,1,2> v2;
+    using v1 = vector_c<unsigned,0>;
+    using v2 = vector_c<unsigned,1,2>;
 
     MPL_ASSERT(( is_same< v1::value_type, unsigned > ));
     MPL_ASSERT(( is_same< v2::value_type, unsigned > ));

@@ -63,8 +63,8 @@ int main()
 {
     // Test mpl::size of strings
     {
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'> almost_full;
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'> full;
+        using almost_full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'>;
+        using full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'>;
 
         BOOST_MPL_ASSERT_RELATION(0,  ==, (mpl::size<mpl::string<> >::value));
         BOOST_MPL_ASSERT_RELATION(1,  ==, (mpl::size<mpl::string<'a'> >::value));
@@ -78,8 +78,8 @@ int main()
 
     // Test mpl::begin and mpl::end with strings
     {
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'> almost_full;
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'> full;
+        using almost_full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'>;
+        using full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'>;
 
         BOOST_MPL_ASSERT((
             boost::is_same<
@@ -133,61 +133,61 @@ int main()
 
     // testing push_back
     {
-        typedef mpl::push_back<mpl::string<>, mpl::char_<'a'> >::type t1;
+        using t1 = mpl::push_back<mpl::string<>, mpl::char_<'a'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t1, mpl::string<'a'> >));
 
-        typedef mpl::push_back<t1, mpl::char_<'b'> >::type t2;
+        using t2 = mpl::push_back<t1, mpl::char_<'b'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t2, mpl::string<'ab'> >));
 
-        typedef mpl::push_back<t2, mpl::char_<'c'> >::type t3;
+        using t3 = mpl::push_back<t2, mpl::char_<'c'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t3, mpl::string<'abc'> >));
 
-        typedef mpl::push_back<t3, mpl::char_<'d'> >::type t4;
+        using t4 = mpl::push_back<t3, mpl::char_<'d'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t4, mpl::string<'abcd'> >));
 
-        typedef mpl::push_back<t4, mpl::char_<'e'> >::type t5;
+        using t5 = mpl::push_back<t4, mpl::char_<'e'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t5, mpl::string<'abcd','e'> >));
 
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'> almost_full;
-        typedef mpl::push_back<almost_full, mpl::char_<'X'> >::type t6;
+        using almost_full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'>;
+        using t6 = mpl::push_back<almost_full, mpl::char_<'X'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t6, mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaX'> >));
     }
 
     // Test mpl::next
     {
-        typedef mpl::string<'a','bc','def','ghij'> s;
+        using s = mpl::string<'a','bc','def','ghij'>;
 
-        typedef mpl::begin<s>::type i0;
+        using i0 = mpl::begin<s>::type;
         BOOST_MPL_ASSERT((boost::is_same<i0, mpl::string_iterator<s,0,0> >));
 
-        typedef mpl::next<i0>::type i1;
+        using i1 = mpl::next<i0>::type;
         BOOST_MPL_ASSERT((boost::is_same<i1, mpl::string_iterator<s,1,0> >));
 
-        typedef mpl::next<i1>::type i2;
+        using i2 = mpl::next<i1>::type;
         BOOST_MPL_ASSERT((boost::is_same<i2, mpl::string_iterator<s,1,1> >));
 
-        typedef mpl::next<i2>::type i3;
+        using i3 = mpl::next<i2>::type;
         BOOST_MPL_ASSERT((boost::is_same<i3, mpl::string_iterator<s,2,0> >));
 
-        typedef mpl::next<i3>::type i4;
+        using i4 = mpl::next<i3>::type;
         BOOST_MPL_ASSERT((boost::is_same<i4, mpl::string_iterator<s,2,1> >));
 
-        typedef mpl::next<i4>::type i5;
+        using i5 = mpl::next<i4>::type;
         BOOST_MPL_ASSERT((boost::is_same<i5, mpl::string_iterator<s,2,2> >));
 
-        typedef mpl::next<i5>::type i6;
+        using i6 = mpl::next<i5>::type;
         BOOST_MPL_ASSERT((boost::is_same<i6, mpl::string_iterator<s,3,0> >));
 
-        typedef mpl::next<i6>::type i7;
+        using i7 = mpl::next<i6>::type;
         BOOST_MPL_ASSERT((boost::is_same<i7, mpl::string_iterator<s,3,1> >));
 
-        typedef mpl::next<i7>::type i8;
+        using i8 = mpl::next<i7>::type;
         BOOST_MPL_ASSERT((boost::is_same<i8, mpl::string_iterator<s,3,2> >));
 
-        typedef mpl::next<i8>::type i9;
+        using i9 = mpl::next<i8>::type;
         BOOST_MPL_ASSERT((boost::is_same<i9, mpl::string_iterator<s,3,3> >));
 
-        typedef mpl::next<i9>::type i10;
+        using i10 = mpl::next<i9>::type;
         BOOST_MPL_ASSERT((boost::is_same<i10, mpl::string_iterator<s,4,0> >));
 
         BOOST_MPL_ASSERT((boost::is_same<i10, mpl::end<s>::type>));
@@ -195,39 +195,39 @@ int main()
 
     // Test mpl::prior
     {
-        typedef mpl::string<'a','bc','def','ghij'> s;
+        using s = mpl::string<'a','bc','def','ghij'>;
 
-        typedef mpl::end<s>::type i10;
+        using i10 = mpl::end<s>::type;
         BOOST_MPL_ASSERT((boost::is_same<i10, mpl::string_iterator<s,4,0> >));
 
-        typedef mpl::prior<i10>::type i9;
+        using i9 = mpl::prior<i10>::type;
         BOOST_MPL_ASSERT((boost::is_same<i9, mpl::string_iterator<s,3,3> >));
 
-        typedef mpl::prior<i9>::type i8;
+        using i8 = mpl::prior<i9>::type;
         BOOST_MPL_ASSERT((boost::is_same<i8, mpl::string_iterator<s,3,2> >));
 
-        typedef mpl::prior<i8>::type i7;
+        using i7 = mpl::prior<i8>::type;
         BOOST_MPL_ASSERT((boost::is_same<i7, mpl::string_iterator<s,3,1> >));
 
-        typedef mpl::prior<i7>::type i6;
+        using i6 = mpl::prior<i7>::type;
         BOOST_MPL_ASSERT((boost::is_same<i6, mpl::string_iterator<s,3,0> >));
 
-        typedef mpl::prior<i6>::type i5;
+        using i5 = mpl::prior<i6>::type;
         BOOST_MPL_ASSERT((boost::is_same<i5, mpl::string_iterator<s,2,2> >));
 
-        typedef mpl::prior<i5>::type i4;
+        using i4 = mpl::prior<i5>::type;
         BOOST_MPL_ASSERT((boost::is_same<i4, mpl::string_iterator<s,2,1> >));
 
-        typedef mpl::prior<i4>::type i3;
+        using i3 = mpl::prior<i4>::type;
         BOOST_MPL_ASSERT((boost::is_same<i3, mpl::string_iterator<s,2,0> >));
 
-        typedef mpl::prior<i3>::type i2;
+        using i2 = mpl::prior<i3>::type;
         BOOST_MPL_ASSERT((boost::is_same<i2, mpl::string_iterator<s,1,1> >));
 
-        typedef mpl::prior<i2>::type i1;
+        using i1 = mpl::prior<i2>::type;
         BOOST_MPL_ASSERT((boost::is_same<i1, mpl::string_iterator<s,1,0> >));
 
-        typedef mpl::prior<i1>::type i0;
+        using i0 = mpl::prior<i1>::type;
         BOOST_MPL_ASSERT((boost::is_same<i0, mpl::string_iterator<s,0,0> >));
 
         BOOST_MPL_ASSERT((boost::is_same<i0, mpl::begin<s>::type>));
@@ -235,62 +235,62 @@ int main()
 
     // Test mpl::deref
     {
-        typedef mpl::string<'a','bc','def','ghij'> s;
+        using s = mpl::string<'a','bc','def','ghij'>;
 
-        typedef mpl::begin<s>::type i0;
+        using i0 = mpl::begin<s>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i0>::type, mpl::char_<'a'> >));
 
-        typedef mpl::next<i0>::type i1;
+        using i1 = mpl::next<i0>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i1>::type, mpl::char_<'b'> >));
 
-        typedef mpl::next<i1>::type i2;
+        using i2 = mpl::next<i1>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i2>::type, mpl::char_<'c'> >));
 
-        typedef mpl::next<i2>::type i3;
+        using i3 = mpl::next<i2>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i3>::type, mpl::char_<'d'> >));
 
-        typedef mpl::next<i3>::type i4;
+        using i4 = mpl::next<i3>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i4>::type, mpl::char_<'e'> >));
 
-        typedef mpl::next<i4>::type i5;
+        using i5 = mpl::next<i4>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i5>::type, mpl::char_<'f'> >));
 
-        typedef mpl::next<i5>::type i6;
+        using i6 = mpl::next<i5>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i6>::type, mpl::char_<'g'> >));
 
-        typedef mpl::next<i6>::type i7;
+        using i7 = mpl::next<i6>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i7>::type, mpl::char_<'h'> >));
 
-        typedef mpl::next<i7>::type i8;
+        using i8 = mpl::next<i7>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i8>::type, mpl::char_<'i'> >));
 
-        typedef mpl::next<i8>::type i9;
+        using i9 = mpl::next<i8>::type;
         BOOST_MPL_ASSERT((boost::is_same<mpl::deref<i9>::type, mpl::char_<'j'> >));
     }
 
     // testing push_back
     {
-        typedef mpl::push_back<mpl::string<>, mpl::char_<'a'> >::type t1;
+        using t1 = mpl::push_back<mpl::string<>, mpl::char_<'a'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t1, mpl::string<'a'> >));
 
-        typedef mpl::push_back<t1, mpl::char_<'b'> >::type t2;
+        using t2 = mpl::push_back<t1, mpl::char_<'b'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t2, mpl::string<'ab'> >));
 
-        typedef mpl::push_back<t2, mpl::char_<'c'> >::type t3;
+        using t3 = mpl::push_back<t2, mpl::char_<'c'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t3, mpl::string<'abc'> >));
 
-        typedef mpl::push_back<t3, mpl::char_<'d'> >::type t4;
+        using t4 = mpl::push_back<t3, mpl::char_<'d'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t4, mpl::string<'abcd'> >));
 
-        typedef mpl::push_back<t4, mpl::char_<'e'> >::type t5;
+        using t5 = mpl::push_back<t4, mpl::char_<'e'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t5, mpl::string<'abcd','e'> >));
 
-        typedef mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'> almost_full;
-        typedef mpl::push_back<almost_full, mpl::char_<'X'> >::type t6;
+        using almost_full = mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaa'>;
+        using t6 = mpl::push_back<almost_full, mpl::char_<'X'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t6, mpl::string<'aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaX'> >));
 
-        typedef mpl::string<'a','a','a','a','a','a','a','aaaa'> must_repack;
-        typedef mpl::push_back<must_repack, mpl::char_<'X'> >::type t7;
+        using must_repack = mpl::string<'a','a','a','a','a','a','a','aaaa'>;
+        using t7 = mpl::push_back<must_repack, mpl::char_<'X'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t7, mpl::string<'aaaa','aaaa','aaaX'> >));
     }
 
@@ -299,27 +299,27 @@ int main()
 
     // testing push_front
     {
-        typedef mpl::push_front<mpl::string<>, mpl::char_<'a'> >::type t1;
+        using t1 = mpl::push_front<mpl::string<>, mpl::char_<'a'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t1, mpl::string<'a'> >));
 
-        typedef mpl::push_front<t1, mpl::char_<'b'> >::type t2;
+        using t2 = mpl::push_front<t1, mpl::char_<'b'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t2, mpl::string<'ba'> >));
 
-        typedef mpl::push_front<t2, mpl::char_<'c'> >::type t3;
+        using t3 = mpl::push_front<t2, mpl::char_<'c'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t3, mpl::string<'cba'> >));
 
-        typedef mpl::push_front<t3, mpl::char_<'d'> >::type t4;
+        using t4 = mpl::push_front<t3, mpl::char_<'d'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t4, mpl::string<'dcba'> >));
 
-        typedef mpl::push_front<t4, mpl::char_<'e'> >::type t5;
+        using t5 = mpl::push_front<t4, mpl::char_<'e'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t5, mpl::string<'e','dcba'> >));
 
-        typedef mpl::string<'aaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'> almost_full;
-        typedef mpl::push_front<almost_full, mpl::char_<'X'> >::type t6;
+        using almost_full = mpl::string<'aaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'>;
+        using t6 = mpl::push_front<almost_full, mpl::char_<'X'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t6, mpl::string<'Xaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa','aaaa'> >));
 
-        typedef mpl::string<'aaaa','a','a','a','a','a','a','a'> must_repack;
-        typedef mpl::push_front<must_repack, mpl::char_<'X'> >::type t7;
+        using must_repack = mpl::string<'aaaa','a','a','a','a','a','a','a'>;
+        using t7 = mpl::push_front<must_repack, mpl::char_<'X'> >::type;
         BOOST_MPL_ASSERT((boost::is_same<t7, mpl::string<'Xaaa','aaaa','aaaa'> >));
     }
 
@@ -351,20 +351,20 @@ int main()
     BOOST_TEST(('!' == mpl::back<mpl::string<'hi!'> >::type()));
 
     // back-inserter with copy
-    typedef mpl::vector_c<char, 'a','b','c','d','e'> rgc;
+    using rgc = mpl::vector_c<char, 'a','b','c','d','e'>;
     BOOST_TEST(0 == std::strcmp("abcde", mpl::c_str<rgc>::value));
-    typedef mpl::copy<rgc, mpl::back_inserter<mpl::string<> > >::type str;
+    using str = mpl::copy<rgc, mpl::back_inserter<mpl::string<> > >::type;
     BOOST_TEST(0 == std::strcmp("abcde", mpl::c_str<str>::value));
 
     // test insert_range and erase
     {
-        typedef mpl::string<'Hell','o wo','rld!'> hello;
-        typedef mpl::advance_c<mpl::begin<hello>::type, 5>::type where;
-        typedef mpl::string<' cru','el'> cruel;
-        typedef mpl::insert_range<hello, where, cruel>::type hello_cruel;
+        using hello = mpl::string<'Hell','o wo','rld!'>;
+        using where = mpl::advance_c<mpl::begin<hello>::type, 5>::type;
+        using cruel = mpl::string<' cru','el'>;
+        using hello_cruel = mpl::insert_range<hello, where, cruel>::type;
         BOOST_TEST(0 == std::strcmp("Hello cruel world!", mpl::c_str<hello_cruel>::value));
 
-        typedef mpl::erase<hello, mpl::begin<hello>::type, where>::type erased1;
+        using erased1 = mpl::erase<hello, mpl::begin<hello>::type, where>::type;
         BOOST_TEST(0 == std::strcmp(" world!", mpl::c_str<erased1>::value));
     }
 
