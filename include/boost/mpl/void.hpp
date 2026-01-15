@@ -26,7 +26,7 @@ BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
 //  instantiated so that it can be passed in as an object that can be
 //  used to select an overloaded function. Possible use includes signaling
 //  a zero arity functor evaluation call.
-struct void_ { typedef void_ type; };
+struct void_ { using type = void_; };
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 

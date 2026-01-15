@@ -21,7 +21,7 @@ struct list1
         , l_end
         >
 {
-    typedef list1 type;
+    using type = list1;
 };
 
 template<
@@ -34,7 +34,7 @@ struct list2
         , list1<T1>
         >
 {
-    typedef list2 type;
+    using type = list2;
 };
 
 template<
@@ -47,7 +47,7 @@ struct list3
         , list2< T1,T2 >
         >
 {
-    typedef list3 type;
+    using type = list3;
 };
 
 template<
@@ -60,7 +60,7 @@ struct list4
         , list3< T1,T2,T3 >
         >
 {
-    typedef list4 type;
+    using type = list4;
 };
 
 template<
@@ -73,7 +73,7 @@ struct list5
         , list4< T1,T2,T3,T4 >
         >
 {
-    typedef list5 type;
+    using type = list5;
 };
 
 template<
@@ -87,7 +87,7 @@ struct list6
         , list5< T1,T2,T3,T4,T5 >
         >
 {
-    typedef list6 type;
+    using type = list6;
 };
 
 template<
@@ -101,7 +101,7 @@ struct list7
         , list6< T1,T2,T3,T4,T5,T6 >
         >
 {
-    typedef list7 type;
+    using type = list7;
 };
 
 template<
@@ -115,7 +115,7 @@ struct list8
         , list7< T1,T2,T3,T4,T5,T6,T7 >
         >
 {
-    typedef list8 type;
+    using type = list8;
 };
 
 template<
@@ -129,7 +129,7 @@ struct list9
         , list8< T1,T2,T3,T4,T5,T6,T7,T8 >
         >
 {
-    typedef list9 type;
+    using type = list9;
 };
 
 template<
@@ -143,7 +143,7 @@ struct list10
         , list9< T1,T2,T3,T4,T5,T6,T7,T8,T9 >
         >
 {
-    typedef list10 type;
+    using type = list10;
 };
 
 }}

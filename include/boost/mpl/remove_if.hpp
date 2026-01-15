@@ -32,11 +32,11 @@ template< typename Pred, typename InsertOp > struct remove_if_helper
 {
     template< typename Sequence, typename U > struct apply
     {
-        typedef typename eval_if<
+        using type = typename eval_if<
               typename apply1<Pred,U>::type
             , identity<Sequence>
             , apply2<InsertOp,Sequence,U>
-            >::type type;
+            >::type;
     };
 };
 

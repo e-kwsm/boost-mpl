@@ -27,9 +27,9 @@ template<
     >
 struct pair
 {
-    typedef pair type;
-    typedef T1 first;
-    typedef T2 second;
+    using type = pair;
+    using first = T1;
+    using second = T2;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,pair,(T1,T2))
 };
@@ -40,7 +40,7 @@ template<
 struct first
 {
 #if !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-    typedef typename P::first type;
+    using type = typename P::first;
 #else
     typedef typename aux::msvc_eti_base<P>::first type;
 #endif
@@ -53,7 +53,7 @@ template<
 struct second
 {
 #if !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-    typedef typename P::second type;
+    using type = typename P::second;
 #else
     typedef typename aux::msvc_eti_base<P>::second type;
 #endif

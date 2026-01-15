@@ -20,7 +20,7 @@ struct vector1
         , vector0<  >
         >
 {
-    typedef vector1 type;
+    using type = vector1;
 };
 
 template<
@@ -32,7 +32,7 @@ struct vector2
         , vector1<T0>
         >
 {
-    typedef vector2 type;
+    using type = vector2;
 };
 
 template<
@@ -44,7 +44,7 @@ struct vector3
         , vector2< T0,T1 >
         >
 {
-    typedef vector3 type;
+    using type = vector3;
 };
 
 template<
@@ -56,7 +56,7 @@ struct vector4
         , vector3< T0,T1,T2 >
         >
 {
-    typedef vector4 type;
+    using type = vector4;
 };
 
 template<
@@ -68,7 +68,7 @@ struct vector5
         , vector4< T0,T1,T2,T3 >
         >
 {
-    typedef vector5 type;
+    using type = vector5;
 };
 
 template<
@@ -81,7 +81,7 @@ struct vector6
         , vector5< T0,T1,T2,T3,T4 >
         >
 {
-    typedef vector6 type;
+    using type = vector6;
 };
 
 template<
@@ -94,7 +94,7 @@ struct vector7
         , vector6< T0,T1,T2,T3,T4,T5 >
         >
 {
-    typedef vector7 type;
+    using type = vector7;
 };
 
 template<
@@ -107,7 +107,7 @@ struct vector8
         , vector7< T0,T1,T2,T3,T4,T5,T6 >
         >
 {
-    typedef vector8 type;
+    using type = vector8;
 };
 
 template<
@@ -120,7 +120,7 @@ struct vector9
         , vector8< T0,T1,T2,T3,T4,T5,T6,T7 >
         >
 {
-    typedef vector9 type;
+    using type = vector9;
 };
 
 template<
@@ -133,7 +133,7 @@ struct vector10
         , vector9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >
         >
 {
-    typedef vector10 type;
+    using type = vector10;
 };
 
 }}

@@ -29,7 +29,7 @@ struct begin_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
     {
-        typedef v_iter<Vector,0> type;
+        using type = v_iter<Vector,0>;
     };
 };
 
@@ -38,7 +38,7 @@ struct end_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
     {
-        typedef v_iter<Vector,Vector::size::value> type;
+        using type = v_iter<Vector,Vector::size::value>;
     };
 };
 

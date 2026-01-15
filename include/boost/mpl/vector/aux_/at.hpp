@@ -31,8 +31,8 @@ namespace boost { namespace mpl {
 template< typename Vector, long n_ >
 struct v_at_impl
 {
-    typedef long_< (Vector::lower_bound_::value + n_) > index_;
-    typedef __typeof__( Vector::item_(index_()) ) type;
+    using index_ = long_< (Vector::lower_bound_::value + n_) >;
+    using type = __typeof__( Vector::item_(index_()) );
 };
 
 

@@ -26,7 +26,7 @@ struct clear_impl< aux::map_tag >
 {
     template< typename Map > struct apply
     {
-        typedef map0<> type;
+        using type = map0<>;
     };
 };
 

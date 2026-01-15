@@ -31,7 +31,7 @@ struct protect : T
 #if BOOST_WORKAROUND(__EDG_VERSION__, == 238)
     typedef mpl::protect type;
 #else
-    typedef protect type;
+    using type = protect;
 #endif
 };
 

@@ -52,7 +52,7 @@
 // watch out for GNU gettext users, who #define _(x)
 #if !defined(_) || defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<-1> _;
+using _ = arg<-1>;
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 
 namespace boost { namespace mpl { 
@@ -82,7 +82,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
 
-typedef arg<i_> BOOST_PP_CAT(_,i_);
+using BOOST_PP_CAT(_,i_) = arg<i_>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 

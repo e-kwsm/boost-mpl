@@ -31,13 +31,13 @@ template<
     >
 struct iter_fold
 {
-    typedef typename aux::iter_fold_impl<
+    using type = typename aux::iter_fold_impl<
           ::boost::mpl::O1_size<Sequence>::value
         , typename begin<Sequence>::type
         , typename end<Sequence>::type
         , State
         , typename lambda<ForwardOp>::type
-        >::state type;
+        >::state;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,iter_fold,(Sequence,State,ForwardOp))
 };

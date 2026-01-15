@@ -30,7 +30,7 @@ struct map<
         >
     : map0<  >
 {
-    typedef map0<  >::type type;
+    using type = map0<  >::type;
 };
 
 template<
@@ -42,7 +42,7 @@ struct map<
         >
     : map1<T0>
 {
-    typedef typename map1<T0>::type type;
+    using type = typename map1<T0>::type;
 };
 
 template<
@@ -54,7 +54,7 @@ struct map<
         >
     : map2< T0,T1 >
 {
-    typedef typename map2< T0,T1 >::type type;
+    using type = typename map2< T0,T1 >::type;
 };
 
 template<
@@ -66,7 +66,7 @@ struct map<
         >
     : map3< T0,T1,T2 >
 {
-    typedef typename map3< T0,T1,T2 >::type type;
+    using type = typename map3< T0,T1,T2 >::type;
 };
 
 template<
@@ -78,7 +78,7 @@ struct map<
         >
     : map4< T0,T1,T2,T3 >
 {
-    typedef typename map4< T0,T1,T2,T3 >::type type;
+    using type = typename map4< T0,T1,T2,T3 >::type;
 };
 
 template<
@@ -90,7 +90,7 @@ struct map<
         >
     : map5< T0,T1,T2,T3,T4 >
 {
-    typedef typename map5< T0,T1,T2,T3,T4 >::type type;
+    using type = typename map5< T0,T1,T2,T3,T4 >::type;
 };
 
 template<
@@ -103,7 +103,7 @@ struct map<
         >
     : map6< T0,T1,T2,T3,T4,T5 >
 {
-    typedef typename map6< T0,T1,T2,T3,T4,T5 >::type type;
+    using type = typename map6< T0,T1,T2,T3,T4,T5 >::type;
 };
 
 template<
@@ -116,7 +116,7 @@ struct map<
         >
     : map7< T0,T1,T2,T3,T4,T5,T6 >
 {
-    typedef typename map7< T0,T1,T2,T3,T4,T5,T6 >::type type;
+    using type = typename map7< T0,T1,T2,T3,T4,T5,T6 >::type;
 };
 
 template<
@@ -129,7 +129,7 @@ struct map<
         >
     : map8< T0,T1,T2,T3,T4,T5,T6,T7 >
 {
-    typedef typename map8< T0,T1,T2,T3,T4,T5,T6,T7 >::type type;
+    using type = typename map8< T0,T1,T2,T3,T4,T5,T6,T7 >::type;
 };
 
 template<
@@ -142,7 +142,7 @@ struct map<
         >
     : map9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >
 {
-    typedef typename map9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type type;
+    using type = typename map9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type;
 };
 
 template<
@@ -155,7 +155,7 @@ struct map<
         >
     : map10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >
 {
-    typedef typename map10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type type;
+    using type = typename map10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type;
 };
 
 template<
@@ -169,7 +169,7 @@ struct map<
         >
     : map11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >
 {
-    typedef typename map11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type type;
+    using type = typename map11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type;
 };
 
 template<
@@ -183,7 +183,7 @@ struct map<
         >
     : map12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >
 {
-    typedef typename map12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type type;
+    using type = typename map12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type;
 };
 
 template<
@@ -197,7 +197,7 @@ struct map<
         >
     : map13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >
 {
-    typedef typename map13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type type;
+    using type = typename map13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type;
 };
 
 template<
@@ -211,7 +211,7 @@ struct map<
         >
     : map14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >
 {
-    typedef typename map14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type type;
+    using type = typename map14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type;
 };
 
 template<
@@ -227,7 +227,7 @@ struct map<
           T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14
         >
 {
-    typedef typename map15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type type;
+    using type = typename map15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type;
 };
 
 template<
@@ -245,7 +245,7 @@ struct map<
         , T15
         >
 {
-    typedef typename map16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type type;
+    using type = typename map16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type;
 };
 
 template<
@@ -263,7 +263,7 @@ struct map<
         , T15, T16
         >
 {
-    typedef typename map17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type type;
+    using type = typename map17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type;
 };
 
 template<
@@ -281,7 +281,7 @@ struct map<
         , T15, T16, T17
         >
 {
-    typedef typename map18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type type;
+    using type = typename map18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type;
 };
 
 template<
@@ -299,7 +299,7 @@ struct map<
         , T15, T16, T17, T18
         >
 {
-    typedef typename map19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type type;
+    using type = typename map19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type;
 };
 
 /// primary template (not a specialization!)
@@ -316,7 +316,7 @@ struct map
         , T15, T16, T17, T18, T19
         >
 {
-    typedef typename map20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type type;
+    using type = typename map20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type;
 };
 
 }}

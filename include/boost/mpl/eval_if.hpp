@@ -34,8 +34,8 @@ struct eval_if
         && BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304)) \
         )
 {
-    typedef typename if_<C,F1,F2>::type f_;
-    typedef typename f_::type type;
+    using f_ = typename if_<C,F1,F2>::type;
+    using type = typename f_::type;
 #else
     : if_<C,F1,F2>::type
 {
@@ -56,8 +56,8 @@ struct eval_if_c
         && BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304)) \
         )
 {
-    typedef typename if_c<C,F1,F2>::type f_;
-    typedef typename f_::type type;
+    using f_ = typename if_c<C,F1,F2>::type;
+    using type = typename f_::type;
 #else
     : if_c<C,F1,F2>::type
 {

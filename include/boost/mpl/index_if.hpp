@@ -33,22 +33,22 @@ template<
     >
 struct index_if
 {
-    typedef typename iter_fold_if<
+    using result_ = typename iter_fold_if<
           Sequence
         , int_<0>
         , next<>
         , aux::find_if_pred<Predicate>
-        >::type result_;
+        >::type;
 
-    typedef typename end<Sequence>::type not_found_;
-    typedef typename first<result_>::type result_index_;
-    typedef typename second<result_>::type result_iterator_;
+    using not_found_ = typename end<Sequence>::type;
+    using result_index_ = typename first<result_>::type;
+    using result_iterator_ = typename second<result_>::type;
 
-    typedef typename if_<
+    using type = typename if_<
           is_same< result_iterator_,not_found_ >
         , void_
         , result_index_
-        >::type type;
+        >::type;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,index_if,(Sequence,Predicate))
 };

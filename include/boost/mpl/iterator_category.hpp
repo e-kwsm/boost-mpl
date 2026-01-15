@@ -24,7 +24,7 @@ template<
     >
 struct iterator_category
 {
-    typedef typename Iterator::category type;
+    using type = typename Iterator::category;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,iterator_category,(Iterator))
 };
 

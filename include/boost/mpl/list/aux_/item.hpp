@@ -32,12 +32,12 @@ struct l_item
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
     typedef int begin;
 #endif
-    typedef aux::list_tag tag;
-    typedef l_item type;
+    using tag = aux::list_tag;
+    using type = l_item;
 
-    typedef Size size;
-    typedef T item;
-    typedef Next next;
+    using size = Size;
+    using item = T;
+    using next = Next;
 };
 
 struct l_end
@@ -45,9 +45,9 @@ struct l_end
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
     typedef int begin;
 #endif
-    typedef aux::list_tag tag;
-    typedef l_end type;
-    typedef long_<0> size;
+    using tag = aux::list_tag;
+    using type = l_end;
+    using size = long_<0>;
 };
 
 }}

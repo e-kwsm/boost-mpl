@@ -23,8 +23,8 @@ namespace boost { namespace mpl {
 template< typename T > struct set0_c
     : set0<>
 {
-    typedef set0_c type;
-    typedef T value_type;
+    using type = set0_c;
+    using value_type = T;
 };
 
 }}

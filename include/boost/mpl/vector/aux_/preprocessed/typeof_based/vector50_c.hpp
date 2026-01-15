@@ -24,8 +24,8 @@ struct vector41_c
         , vector40_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39 >
         >
 {
-    typedef vector41_c type;
-    typedef T value_type;
+    using type = vector41_c;
+    using value_type = T;
 };
 
 template<
@@ -42,8 +42,8 @@ struct vector42_c
         , vector41_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40 >
         >
 {
-    typedef vector42_c type;
-    typedef T value_type;
+    using type = vector42_c;
+    using value_type = T;
 };
 
 template<
@@ -60,8 +60,8 @@ struct vector43_c
         , vector42_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41 >
         >
 {
-    typedef vector43_c type;
-    typedef T value_type;
+    using type = vector43_c;
+    using value_type = T;
 };
 
 template<
@@ -78,8 +78,8 @@ struct vector44_c
         , vector43_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42 >
         >
 {
-    typedef vector44_c type;
-    typedef T value_type;
+    using type = vector44_c;
+    using value_type = T;
 };
 
 template<
@@ -96,8 +96,8 @@ struct vector45_c
         , vector44_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43 >
         >
 {
-    typedef vector45_c type;
-    typedef T value_type;
+    using type = vector45_c;
+    using value_type = T;
 };
 
 template<
@@ -114,8 +114,8 @@ struct vector46_c
         , vector45_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44 >
         >
 {
-    typedef vector46_c type;
-    typedef T value_type;
+    using type = vector46_c;
+    using value_type = T;
 };
 
 template<
@@ -132,8 +132,8 @@ struct vector47_c
         , vector46_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45 >
         >
 {
-    typedef vector47_c type;
-    typedef T value_type;
+    using type = vector47_c;
+    using value_type = T;
 };
 
 template<
@@ -150,8 +150,8 @@ struct vector48_c
         , vector47_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46 >
         >
 {
-    typedef vector48_c type;
-    typedef T value_type;
+    using type = vector48_c;
+    using value_type = T;
 };
 
 template<
@@ -168,8 +168,8 @@ struct vector49_c
         , vector48_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47 >
         >
 {
-    typedef vector49_c type;
-    typedef T value_type;
+    using type = vector49_c;
+    using value_type = T;
 };
 
 template<
@@ -186,8 +186,8 @@ struct vector50_c
         , vector49_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47,C48 >
         >
 {
-    typedef vector50_c type;
-    typedef T value_type;
+    using type = vector50_c;
+    using value_type = T;
 };
 
 }}

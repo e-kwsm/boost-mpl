@@ -14,13 +14,13 @@ namespace boost { namespace mpl {
 template< typename T, bool has_type_ >
 struct quote_impl
 {
-    typedef typename T::type type;
+    using type = typename T::type;
 };
 
 template< typename T >
 struct quote_impl< T,false >
 {
-    typedef T type;
+    using type = T;
 };
 
 template<

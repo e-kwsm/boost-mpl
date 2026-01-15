@@ -80,11 +80,11 @@ template<
     >
 struct lower_bound_step
 {
-    typedef typename eval_if<
+    using type = typename eval_if<
           Distance
         , lower_bound_step_impl<Distance,Predicate,T,DeferredIterator>
         , DeferredIterator
-        >::type type;
+        >::type;
 };
     
 template<
@@ -95,23 +95,23 @@ template<
     >
 struct lower_bound_step_impl
 {
-    typedef typename divides< Distance, long_<2> >::type offset_;
-    typedef typename DeferredIterator::type iter_;
-    typedef typename advance< iter_,offset_ >::type middle_;
-    typedef typename apply2<
+    using offset_ = typename divides< Distance, long_<2> >::type;
+    using iter_ = typename DeferredIterator::type;
+    using middle_ = typename advance< iter_,offset_ >::type;
+    using cond_ = typename apply2<
               Predicate
             , typename deref<middle_>::type
             , T
-            >::type cond_;
+            >::type;
 
-    typedef typename prior< minus< Distance, offset_> >::type step_;
-    typedef lower_bound_step< offset_,Predicate,T,DeferredIterator > step_forward_;
-    typedef lower_bound_step< step_,Predicate,T,next<middle_> > step_backward_;
-    typedef typename eval_if<
+    using step_ = typename prior< minus< Distance, offset_> >::type;
+    using step_forward_ = lower_bound_step< offset_,Predicate,T,DeferredIterator >;
+    using step_backward_ = lower_bound_step< step_,Predicate,T,next<middle_> >;
+    using type = typename eval_if<
           cond_
         , step_backward_
         , step_forward_
-        >::type type;
+        >::type;
 };
 
 
@@ -125,13 +125,13 @@ template<
 struct lower_bound
 {
  private:
-    typedef typename lambda<Predicate>::type pred_;
-    typedef typename size<Sequence>::type size_;
+    using pred_ = typename lambda<Predicate>::type;
+    using size_ = typename size<Sequence>::type;
 
  public:
-    typedef typename aux::lower_bound_step<
+    using type = typename aux::lower_bound_step<
         size_,pred_,T,begin<Sequence>
-        >::type type;
+        >::type;
 };
 
 #endif // BOOST_MPL_CFG_STRIPPED_DOWN_LOWER_BOUND_IMPL

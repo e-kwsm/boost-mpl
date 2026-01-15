@@ -67,14 +67,14 @@ template<
 struct iter_fold_if
 {
 
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
+    using first_ = typename begin<Sequence>::type;
+    using last_ = typename end<Sequence>::type;
 
-    typedef typename eval_if<
+    using backward_pred_ = typename eval_if<
           is_na<BackwardPredicate>
         , if_< is_na<BackwardOp>, always<false_>, always<true_> >
         , identity<BackwardPredicate>
-        >::type backward_pred_;
+        >::type;
 
 // cwpro8 doesn't like 'cut-off' type here (use typedef instead)
 #if !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003)) && !BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
@@ -98,10 +98,10 @@ struct iter_fold_if
 
 public:
 
-    typedef pair<
+    using type = pair<
           typename result_::state
         , typename result_::iterator
-        > type;
+        >;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(
           6

@@ -28,15 +28,15 @@ template<
 struct filter_view
 {
  private:    
-    typedef typename lambda<Predicate>::type pred_;
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
+    using pred_ = typename lambda<Predicate>::type;
+    using first_ = typename begin<Sequence>::type;
+    using last_ = typename end<Sequence>::type;
 
  public:
     struct tag;
-    typedef filter_view type;
-    typedef typename aux::next_filter_iter< first_,last_,pred_ >::type begin;
-    typedef aux::filter_iter< last_,last_,pred_ > end;
+    using type = filter_view;
+    using begin = typename aux::next_filter_iter< first_,last_,pred_ >::type;
+    using end = aux::filter_iter< last_,last_,pred_ >;
 };
 
 BOOST_MPL_AUX_NA_SPEC(2, filter_view)

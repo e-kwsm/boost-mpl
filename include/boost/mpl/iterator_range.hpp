@@ -27,10 +27,10 @@ template<
     >
 struct iterator_range
 {
-    typedef iterator_range_tag tag;
-    typedef iterator_range type;
-    typedef First begin;
-    typedef Last end;
+    using tag = iterator_range_tag;
+    using type = iterator_range;
+    using begin = First;
+    using end = Last;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,iterator_range,(First,Last))
 };

@@ -40,11 +40,11 @@ namespace boost { namespace mpl {
 template< typename Map, typename Key >
 struct m_at
 {
-    typedef aux::type_wrapper<Key> key_;
-    typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_VALUE_BY_KEY(
+    using key_ = aux::type_wrapper<Key>;
+    using type = __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_VALUE_BY_KEY(
           Map
         , BOOST_MPL_AUX_STATIC_CAST(key_*, 0)
-        ) ) type;
+        ) );
 };
 
 template<>
@@ -63,10 +63,10 @@ struct at_impl< aux::map_tag >
 template< typename Map, long order > 
 struct item_by_order_impl
 {
-    typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_ITEM_BY_ORDER(
+    using type = __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_ITEM_BY_ORDER(
           Map 
         , BOOST_MPL_AUX_STATIC_CAST(long_<order>*, 0)
-        ) ) type;
+        ) );
 };
 
 template< typename Map, long order >

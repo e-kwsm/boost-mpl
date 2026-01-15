@@ -29,7 +29,7 @@ struct push_back_impl< aux::vector_tag >
 {
     template< typename Vector, typename T > struct apply
     {
-        typedef v_item<T,Vector,0> type;
+        using type = v_item<T,Vector,0>;
     };
 };
 

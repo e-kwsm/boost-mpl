@@ -34,7 +34,7 @@ template< typename Dummy = na > struct list0;
 template<> struct list0<na>
     : l_end
 {
-    typedef l_end type;
+    using type = l_end;
 };
 
 }}

@@ -28,7 +28,7 @@ struct vector41
         , vector40< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39 >
         >
 {
-    typedef vector41 type;
+    using type = vector41;
 };
 
 template<
@@ -48,7 +48,7 @@ struct vector42
         , vector41< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40 >
         >
 {
-    typedef vector42 type;
+    using type = vector42;
 };
 
 template<
@@ -68,7 +68,7 @@ struct vector43
         , vector42< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41 >
         >
 {
-    typedef vector43 type;
+    using type = vector43;
 };
 
 template<
@@ -88,7 +88,7 @@ struct vector44
         , vector43< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42 >
         >
 {
-    typedef vector44 type;
+    using type = vector44;
 };
 
 template<
@@ -108,7 +108,7 @@ struct vector45
         , vector44< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43 >
         >
 {
-    typedef vector45 type;
+    using type = vector45;
 };
 
 template<
@@ -129,7 +129,7 @@ struct vector46
         , vector45< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44 >
         >
 {
-    typedef vector46 type;
+    using type = vector46;
 };
 
 template<
@@ -150,7 +150,7 @@ struct vector47
         , vector46< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45 >
         >
 {
-    typedef vector47 type;
+    using type = vector47;
 };
 
 template<
@@ -171,7 +171,7 @@ struct vector48
         , vector47< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46 >
         >
 {
-    typedef vector48 type;
+    using type = vector48;
 };
 
 template<
@@ -192,7 +192,7 @@ struct vector49
         , vector48< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47 >
         >
 {
-    typedef vector49 type;
+    using type = vector49;
 };
 
 template<
@@ -213,7 +213,7 @@ struct vector50
         , vector49< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48 >
         >
 {
-    typedef vector50 type;
+    using type = vector50;
 };
 
 }}

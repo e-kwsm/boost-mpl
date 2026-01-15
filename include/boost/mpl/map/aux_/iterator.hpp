@@ -58,25 +58,25 @@ struct next_order<Map,max_order,max_order>
 template< typename Map, long order, long max_order >
 struct m_iter
 {
-    typedef forward_iterator_tag category;
-    typedef typename item_by_order<Map,order>::type type;
+    using category = forward_iterator_tag;
+    using type = typename item_by_order<Map,order>::type;
 };
 
 template< typename Map, long max_order >
 struct m_iter<Map,max_order,max_order>
 {
-    typedef forward_iterator_tag category;
+    using category = forward_iterator_tag;
 };
 
 
 template< typename Map, long order, long max_order > 
 struct next< m_iter<Map,order,max_order> >
 {
-    typedef m_iter<
+    using type = m_iter<
           Map
         , next_order<Map,order+1,max_order>::value
         , max_order
-        > type;
+        >;
 };
 
 template< typename Map, long max_order > 

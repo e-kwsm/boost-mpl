@@ -126,7 +126,7 @@ template<
     >
 struct resolve_bind_arg
 {
-    typedef T type;
+    using type = T;
 };
 
 #   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
@@ -137,8 +137,8 @@ template<
     >
 struct replace_unnamed_arg
 {
-    typedef Arg next;
-    typedef T type;
+    using next = Arg;
+    using type = T;
 };
 
 template<
@@ -146,8 +146,8 @@ template<
     >
 struct replace_unnamed_arg< arg<-1>,Arg >
 {
-    typedef typename Arg::next next;
-    typedef Arg type;
+    using next = typename Arg::next;
+    using type = Arg;
 };
 
 #   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
@@ -157,7 +157,7 @@ template<
     >
 struct resolve_bind_arg< arg<N>,AUX778076_BIND_PARAMS(U) >
 {
-    typedef typename AUX778076_APPLY<mpl::arg<N>, AUX778076_BIND_PARAMS(U)>::type type;
+    using type = typename AUX778076_APPLY<mpl::arg<N>, AUX778076_BIND_PARAMS(U)>::type;
 };
 
 #if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
@@ -166,8 +166,8 @@ template<
     >
 struct resolve_bind_arg< bind<F,AUX778076_BIND_PARAMS(T)>,AUX778076_BIND_PARAMS(U) >
 {
-    typedef bind<F,AUX778076_BIND_PARAMS(T)> f_;
-    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
+    using f_ = bind<F,AUX778076_BIND_PARAMS(T)>;
+    using type = typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type;
 };
 #endif
 
@@ -390,17 +390,17 @@ struct BOOST_PP_CAT(bind,i_)<
     struct apply
     {
      private:
-        typedef mpl::arg<1> n1;
+        using n1 = mpl::arg<1>;
 #       define BOOST_PP_ITERATION_PARAMS_2 (3,(1, i_, <boost/mpl/bind.hpp>))
 #       include BOOST_PP_ITERATE()
 
-        typedef typename AUX778076_SPEC_NAME<
+        using f_ = typename AUX778076_SPEC_NAME<
               typename t1::type
             , BOOST_MPL_PP_EXT_PARAMS(2, BOOST_PP_INC(i_), t)
-            >::type f_;
+            >::type;
 
      public:
-        typedef typename f_::type type;
+        using type = typename f_::type;
     };
 };
 
@@ -421,10 +421,10 @@ struct BOOST_PP_CAT(bind,i_)
      private:
 #   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
-        typedef aux::replace_unnamed_arg< F,mpl::arg<1> > r0;
-        typedef typename r0::type a0;
-        typedef typename r0::next n1;
-        typedef typename aux::resolve_bind_arg<a0,AUX778076_BIND_PARAMS(U)>::type f_;
+        using r0 = aux::replace_unnamed_arg< F,mpl::arg<1> >;
+        using a0 = typename r0::type;
+        using n1 = typename r0::next;
+        using f_ = typename aux::resolve_bind_arg<a0,AUX778076_BIND_PARAMS(U)>::type;
         ///
 #   else
         typedef typename aux::resolve_bind_arg<F,AUX778076_BIND_PARAMS(U)>::type f_;
@@ -443,10 +443,10 @@ struct BOOST_PP_CAT(bind,i_)
     typename BOOST_PP_CAT(t,BOOST_PP_INC(i_))::type \
 /**/
 
-        typedef typename BOOST_PP_CAT(apply_wrap,i_)<
+        using type = typename BOOST_PP_CAT(apply_wrap,i_)<
               f_ 
             BOOST_PP_COMMA_IF(i_) BOOST_MPL_PP_REPEAT(i_, AUX778076_ARG, t)
-            >::type type;
+            >::type;
 
 #   undef AUX778076_ARG
     };
@@ -463,8 +463,8 @@ struct resolve_bind_arg<
       BOOST_PP_CAT(bind,i_)<F AUX778076_BIND_N_PARAMS(i_,T)>,AUX778076_BIND_PARAMS(U)
     >
 {
-    typedef BOOST_PP_CAT(bind,i_)<F AUX778076_BIND_N_PARAMS(i_,T)> f_;
-    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
+    using f_ = BOOST_PP_CAT(bind,i_)<F AUX778076_BIND_N_PARAMS(i_,T)>;
+    using type = typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type;
 };
 
 #else
@@ -536,10 +536,10 @@ struct bind_chooser<i_>
 #   define j_ BOOST_PP_FRAME_ITERATION(2)
 #   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
-        typedef aux::replace_unnamed_arg< BOOST_PP_CAT(T,j_),BOOST_PP_CAT(n,j_) > BOOST_PP_CAT(r,j_);
-        typedef typename BOOST_PP_CAT(r,j_)::type BOOST_PP_CAT(a,j_);
-        typedef typename BOOST_PP_CAT(r,j_)::next BOOST_PP_CAT(n,BOOST_PP_INC(j_));
-        typedef aux::resolve_bind_arg<BOOST_PP_CAT(a,j_), AUX778076_BIND_PARAMS(U)> BOOST_PP_CAT(t,j_);
+        using BOOST_PP_CAT(r,j_) = aux::replace_unnamed_arg< BOOST_PP_CAT(T,j_),BOOST_PP_CAT(n,j_) >;
+        using BOOST_PP_CAT(a,j_) = typename BOOST_PP_CAT(r,j_)::type;
+        using BOOST_PP_CAT(n,BOOST_PP_INC(j_)) = typename BOOST_PP_CAT(r,j_)::next;
+        using BOOST_PP_CAT(t,j_) = aux::resolve_bind_arg<BOOST_PP_CAT(a,j_), AUX778076_BIND_PARAMS(U)>;
         ///
 #   else
         typedef aux::resolve_bind_arg< BOOST_PP_CAT(T,j_),AUX778076_BIND_PARAMS(U)> BOOST_PP_CAT(t,j_);

@@ -25,7 +25,7 @@ struct clear_impl< aux::list_tag >
 {
     template< typename List > struct apply
     {
-        typedef l_end type;
+        using type = l_end;
     };
 };
 

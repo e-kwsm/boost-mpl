@@ -32,7 +32,7 @@ struct set_c<
         >
     : set0_c<T>
 {
-    typedef typename set0_c<T>::type type;
+    using type = typename set0_c<T>::type;
 };
 
 template<
@@ -45,7 +45,7 @@ struct set_c<
         >
     : set1_c< T,C0 >
 {
-    typedef typename set1_c< T,C0 >::type type;
+    using type = typename set1_c< T,C0 >::type;
 };
 
 template<
@@ -58,7 +58,7 @@ struct set_c<
         >
     : set2_c< T,C0,C1 >
 {
-    typedef typename set2_c< T,C0,C1 >::type type;
+    using type = typename set2_c< T,C0,C1 >::type;
 };
 
 template<
@@ -71,7 +71,7 @@ struct set_c<
         >
     : set3_c< T,C0,C1,C2 >
 {
-    typedef typename set3_c< T,C0,C1,C2 >::type type;
+    using type = typename set3_c< T,C0,C1,C2 >::type;
 };
 
 template<
@@ -84,7 +84,7 @@ struct set_c<
         >
     : set4_c< T,C0,C1,C2,C3 >
 {
-    typedef typename set4_c< T,C0,C1,C2,C3 >::type type;
+    using type = typename set4_c< T,C0,C1,C2,C3 >::type;
 };
 
 template<
@@ -97,7 +97,7 @@ struct set_c<
         >
     : set5_c< T,C0,C1,C2,C3,C4 >
 {
-    typedef typename set5_c< T,C0,C1,C2,C3,C4 >::type type;
+    using type = typename set5_c< T,C0,C1,C2,C3,C4 >::type;
 };
 
 template<
@@ -110,7 +110,7 @@ struct set_c<
         >
     : set6_c< T,C0,C1,C2,C3,C4,C5 >
 {
-    typedef typename set6_c< T,C0,C1,C2,C3,C4,C5 >::type type;
+    using type = typename set6_c< T,C0,C1,C2,C3,C4,C5 >::type;
 };
 
 template<
@@ -124,7 +124,7 @@ struct set_c<
         >
     : set7_c< T,C0,C1,C2,C3,C4,C5,C6 >
 {
-    typedef typename set7_c< T,C0,C1,C2,C3,C4,C5,C6 >::type type;
+    using type = typename set7_c< T,C0,C1,C2,C3,C4,C5,C6 >::type;
 };
 
 template<
@@ -138,7 +138,7 @@ struct set_c<
         >
     : set8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
 {
-    typedef typename set8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >::type type;
+    using type = typename set8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >::type;
 };
 
 template<
@@ -152,7 +152,7 @@ struct set_c<
         >
     : set9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
 {
-    typedef typename set9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >::type type;
+    using type = typename set9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >::type;
 };
 
 template<
@@ -166,7 +166,7 @@ struct set_c<
         >
     : set10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
 {
-    typedef typename set10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type type;
+    using type = typename set10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type;
 };
 
 template<
@@ -179,7 +179,7 @@ struct set_c<
         >
     : set11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
 {
-    typedef typename set11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >::type type;
+    using type = typename set11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >::type;
 };
 
 template<
@@ -192,7 +192,7 @@ struct set_c<
         >
     : set12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
 {
-    typedef typename set12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >::type type;
+    using type = typename set12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >::type;
 };
 
 template<
@@ -205,7 +205,7 @@ struct set_c<
         >
     : set13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
 {
-    typedef typename set13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >::type type;
+    using type = typename set13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >::type;
 };
 
 template<
@@ -221,7 +221,7 @@ struct set_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13
         >
 {
-    typedef typename set14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >::type type;
+    using type = typename set14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >::type;
 };
 
 template<
@@ -237,7 +237,7 @@ struct set_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14
         >
 {
-    typedef typename set15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >::type type;
+    using type = typename set15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >::type;
 };
 
 template<
@@ -254,7 +254,7 @@ struct set_c<
         , C15
         >
 {
-    typedef typename set16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >::type type;
+    using type = typename set16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >::type;
 };
 
 template<
@@ -271,7 +271,7 @@ struct set_c<
         , C15, C16
         >
 {
-    typedef typename set17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >::type type;
+    using type = typename set17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >::type;
 };
 
 template<
@@ -288,7 +288,7 @@ struct set_c<
         , C15, C16, C17
         >
 {
-    typedef typename set18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >::type type;
+    using type = typename set18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >::type;
 };
 
 template<
@@ -305,7 +305,7 @@ struct set_c<
         , C15, C16, C17, C18
         >
 {
-    typedef typename set19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >::type type;
+    using type = typename set19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >::type;
 };
 
 /// primary template (not a specialization!)
@@ -321,7 +321,7 @@ struct set_c
         , C15, C16, C17, C18, C19
         >
 {
-    typedef typename set20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >::type type;
+    using type = typename set20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >::type;
 };
 
 }}

@@ -22,8 +22,8 @@ struct list11_c
         , list10_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
         >
 {
-    typedef list11_c type;
-    typedef T value_type;
+    using type = list11_c;
+    using value_type = T;
 };
 
 template<
@@ -38,8 +38,8 @@ struct list12_c
         , list11_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
         >
 {
-    typedef list12_c type;
-    typedef T value_type;
+    using type = list12_c;
+    using value_type = T;
 };
 
 template<
@@ -54,8 +54,8 @@ struct list13_c
         , list12_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
         >
 {
-    typedef list13_c type;
-    typedef T value_type;
+    using type = list13_c;
+    using value_type = T;
 };
 
 template<
@@ -70,8 +70,8 @@ struct list14_c
         , list13_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >
         >
 {
-    typedef list14_c type;
-    typedef T value_type;
+    using type = list14_c;
+    using value_type = T;
 };
 
 template<
@@ -86,8 +86,8 @@ struct list15_c
         , list14_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >
         >
 {
-    typedef list15_c type;
-    typedef T value_type;
+    using type = list15_c;
+    using value_type = T;
 };
 
 template<
@@ -102,8 +102,8 @@ struct list16_c
         , list15_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >
         >
 {
-    typedef list16_c type;
-    typedef T value_type;
+    using type = list16_c;
+    using value_type = T;
 };
 
 template<
@@ -118,8 +118,8 @@ struct list17_c
         , list16_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >
         >
 {
-    typedef list17_c type;
-    typedef T value_type;
+    using type = list17_c;
+    using value_type = T;
 };
 
 template<
@@ -134,8 +134,8 @@ struct list18_c
         , list17_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >
         >
 {
-    typedef list18_c type;
-    typedef T value_type;
+    using type = list18_c;
+    using value_type = T;
 };
 
 template<
@@ -150,8 +150,8 @@ struct list19_c
         , list18_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >
         >
 {
-    typedef list19_c type;
-    typedef T value_type;
+    using type = list19_c;
+    using value_type = T;
 };
 
 template<
@@ -166,8 +166,8 @@ struct list20_c
         , list19_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >
         >
 {
-    typedef list20_c type;
-    typedef T value_type;
+    using type = list20_c;
+    using value_type = T;
 };
 
 }}

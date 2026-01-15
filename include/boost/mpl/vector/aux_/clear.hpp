@@ -29,7 +29,7 @@ struct clear_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
     {
-        typedef vector0<> type;
+        using type = vector0<>;
     };
 };
 

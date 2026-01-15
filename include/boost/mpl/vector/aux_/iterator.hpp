@@ -35,12 +35,12 @@ template<
     >
 struct v_iter
 {
-    typedef aux::v_iter_tag tag;
-    typedef random_access_iterator_tag category;
-    typedef typename v_at<Vector,n_>::type type;
+    using tag = aux::v_iter_tag;
+    using category = random_access_iterator_tag;
+    using type = typename v_at<Vector,n_>::type;
 
-    typedef Vector vector_;
-    typedef mpl::long_<n_> pos;
+    using vector_ = Vector;
+    using pos = mpl::long_<n_>;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     enum { 
@@ -64,7 +64,7 @@ template<
     >
 struct next< v_iter<Vector,n_> >
 {
-    typedef v_iter<Vector,(n_ + 1)> type;
+    using type = v_iter<Vector,(n_ + 1)>;
 };
 
 template<
@@ -73,7 +73,7 @@ template<
     >
 struct prior< v_iter<Vector,n_> >
 {
-    typedef v_iter<Vector,(n_ - 1)> type;
+    using type = v_iter<Vector,(n_ - 1)>;
 };
 
 template<
@@ -83,10 +83,10 @@ template<
     >
 struct advance< v_iter<Vector,n_>,Distance>
 {
-    typedef v_iter<
+    using type = v_iter<
           Vector
         , (n_ + BOOST_MPL_AUX_NESTED_VALUE_WKND(long, Distance))
-        > type;
+        >;
 };
 
 template< 

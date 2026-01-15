@@ -24,7 +24,7 @@ namespace boost { namespace mpl {
 namespace aux {
 template< typename T > struct tag_impl
 {
-    typedef typename T::tag type;
+    using type = typename T::tag;
 };
 }
 

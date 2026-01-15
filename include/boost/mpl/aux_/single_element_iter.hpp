@@ -36,16 +36,16 @@ struct sel_iter;
 template< typename T >
 struct sel_iter<T,0>
 {
-    typedef random_access_iterator_tag category;
-    typedef sel_iter<T,1> next;
-    typedef T type;
+    using category = random_access_iterator_tag;
+    using next = sel_iter<T,1>;
+    using type = T;
 };
 
 template< typename T >
 struct sel_iter<T,1>
 {
-    typedef random_access_iterator_tag category;
-    typedef sel_iter<T,0> prior;
+    using category = random_access_iterator_tag;
+    using prior = sel_iter<T,0>;
 };
 
 } // namespace aux
@@ -53,10 +53,10 @@ struct sel_iter<T,1>
 template< typename T, BOOST_MPL_AUX_NTTP_DECL(int, is_last_), typename Distance >
 struct advance< aux::sel_iter<T,is_last_>,Distance>
 {
-    typedef aux::sel_iter<
+    using type = aux::sel_iter<
           T
         , ( is_last_ + BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Distance) )
-        > type;
+        >;
 };
 
 template< 

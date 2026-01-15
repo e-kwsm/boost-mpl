@@ -26,11 +26,11 @@ struct push_front_impl< aux::list_tag >
 {
     template< typename List, typename T > struct apply
     {
-        typedef l_item<
+        using type = l_item<
               typename next<typename List::size>::type
             , T
             , typename List::type
-            > type;
+            >;
     };
 };
 

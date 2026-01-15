@@ -29,20 +29,20 @@ namespace boost { namespace mpl {
 template< typename Node >
 struct l_iter
 {
-    typedef aux::l_iter_tag tag;
-    typedef forward_iterator_tag category;
+    using tag = aux::l_iter_tag;
+    using category = forward_iterator_tag;
 };
 
 template< typename Node >
 struct deref< l_iter<Node> >
 {
-    typedef typename Node::item type;
+    using type = typename Node::item;
 };
 
 template< typename Node >
 struct next< l_iter<Node> >
 {
-    typedef l_iter< typename Node::next > type;
+    using type = l_iter< typename Node::next >;
 };
 
 #else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
@@ -61,8 +61,8 @@ struct l_iter
 
 template<> struct l_iter<l_end>
 {
-    typedef aux::l_iter_tag tag;
-    typedef forward_iterator_tag category;
+    using tag = aux::l_iter_tag;
+    using category = forward_iterator_tag;
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef na type;
     typedef l_iter next;

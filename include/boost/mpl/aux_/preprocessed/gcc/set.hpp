@@ -30,7 +30,7 @@ struct set<
         >
     : set0<  >
 {
-    typedef set0<  >::type type;
+    using type = set0<  >::type;
 };
 
 template<
@@ -42,7 +42,7 @@ struct set<
         >
     : set1<T0>
 {
-    typedef typename set1<T0>::type type;
+    using type = typename set1<T0>::type;
 };
 
 template<
@@ -54,7 +54,7 @@ struct set<
         >
     : set2< T0,T1 >
 {
-    typedef typename set2< T0,T1 >::type type;
+    using type = typename set2< T0,T1 >::type;
 };
 
 template<
@@ -66,7 +66,7 @@ struct set<
         >
     : set3< T0,T1,T2 >
 {
-    typedef typename set3< T0,T1,T2 >::type type;
+    using type = typename set3< T0,T1,T2 >::type;
 };
 
 template<
@@ -78,7 +78,7 @@ struct set<
         >
     : set4< T0,T1,T2,T3 >
 {
-    typedef typename set4< T0,T1,T2,T3 >::type type;
+    using type = typename set4< T0,T1,T2,T3 >::type;
 };
 
 template<
@@ -90,7 +90,7 @@ struct set<
         >
     : set5< T0,T1,T2,T3,T4 >
 {
-    typedef typename set5< T0,T1,T2,T3,T4 >::type type;
+    using type = typename set5< T0,T1,T2,T3,T4 >::type;
 };
 
 template<
@@ -103,7 +103,7 @@ struct set<
         >
     : set6< T0,T1,T2,T3,T4,T5 >
 {
-    typedef typename set6< T0,T1,T2,T3,T4,T5 >::type type;
+    using type = typename set6< T0,T1,T2,T3,T4,T5 >::type;
 };
 
 template<
@@ -116,7 +116,7 @@ struct set<
         >
     : set7< T0,T1,T2,T3,T4,T5,T6 >
 {
-    typedef typename set7< T0,T1,T2,T3,T4,T5,T6 >::type type;
+    using type = typename set7< T0,T1,T2,T3,T4,T5,T6 >::type;
 };
 
 template<
@@ -129,7 +129,7 @@ struct set<
         >
     : set8< T0,T1,T2,T3,T4,T5,T6,T7 >
 {
-    typedef typename set8< T0,T1,T2,T3,T4,T5,T6,T7 >::type type;
+    using type = typename set8< T0,T1,T2,T3,T4,T5,T6,T7 >::type;
 };
 
 template<
@@ -142,7 +142,7 @@ struct set<
         >
     : set9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >
 {
-    typedef typename set9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type type;
+    using type = typename set9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >::type;
 };
 
 template<
@@ -155,7 +155,7 @@ struct set<
         >
     : set10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >
 {
-    typedef typename set10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type type;
+    using type = typename set10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type;
 };
 
 template<
@@ -169,7 +169,7 @@ struct set<
         >
     : set11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >
 {
-    typedef typename set11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type type;
+    using type = typename set11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >::type;
 };
 
 template<
@@ -183,7 +183,7 @@ struct set<
         >
     : set12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >
 {
-    typedef typename set12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type type;
+    using type = typename set12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >::type;
 };
 
 template<
@@ -197,7 +197,7 @@ struct set<
         >
     : set13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >
 {
-    typedef typename set13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type type;
+    using type = typename set13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >::type;
 };
 
 template<
@@ -211,7 +211,7 @@ struct set<
         >
     : set14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >
 {
-    typedef typename set14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type type;
+    using type = typename set14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >::type;
 };
 
 template<
@@ -227,7 +227,7 @@ struct set<
           T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14
         >
 {
-    typedef typename set15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type type;
+    using type = typename set15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >::type;
 };
 
 template<
@@ -245,7 +245,7 @@ struct set<
         , T15
         >
 {
-    typedef typename set16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type type;
+    using type = typename set16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >::type;
 };
 
 template<
@@ -263,7 +263,7 @@ struct set<
         , T15, T16
         >
 {
-    typedef typename set17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type type;
+    using type = typename set17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >::type;
 };
 
 template<
@@ -281,7 +281,7 @@ struct set<
         , T15, T16, T17
         >
 {
-    typedef typename set18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type type;
+    using type = typename set18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >::type;
 };
 
 template<
@@ -299,7 +299,7 @@ struct set<
         , T15, T16, T17, T18
         >
 {
-    typedef typename set19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type type;
+    using type = typename set19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >::type;
 };
 
 /// primary template (not a specialization!)
@@ -316,7 +316,7 @@ struct set
         , T15, T16, T17, T18, T19
         >
 {
-    typedef typename set20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type type;
+    using type = typename set20< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19 >::type;
 };
 
 }}

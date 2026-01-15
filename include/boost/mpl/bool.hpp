@@ -23,9 +23,9 @@ BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
 template< bool C_ > struct bool_
 {
     BOOST_STATIC_CONSTANT(bool, value = C_);
-    typedef integral_c_tag tag;
-    typedef bool_ type;
-    typedef bool value_type;
+    using tag = integral_c_tag;
+    using type = bool_;
+    using value_type = bool;
     BOOST_CONSTEXPR operator bool() const { return this->value; }
 };
 

@@ -28,15 +28,15 @@ template<
 struct transform_view
 {
  private:
-    typedef typename lambda<F>::type f_;
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
+    using f_ = typename lambda<F>::type;
+    using first_ = typename begin<Sequence>::type;
+    using last_ = typename end<Sequence>::type;
  
  public:
     struct tag;
-    typedef transform_view type;
-    typedef aux::transform_iter< first_,last_,f_ > begin;
-    typedef aux::transform_iter< last_,last_,f_ > end;
+    using type = transform_view;
+    using begin = aux::transform_iter< first_,last_,f_ >;
+    using end = aux::transform_iter< last_,last_,f_ >;
 };
 
 BOOST_MPL_AUX_NA_SPEC(2, transform_view)

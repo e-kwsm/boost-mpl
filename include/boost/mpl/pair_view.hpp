@@ -65,10 +65,10 @@ template<
     >
 struct pair_iter
 {
-    typedef aux::pair_iter_tag tag;
-    typedef Category category;
-    typedef Iter1 first;
-    typedef Iter2 second;
+    using tag = aux::pair_iter_tag;
+    using category = Category;
+    using first = Iter1;
+    using second = Iter2;
     
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef pair< 
@@ -90,26 +90,26 @@ struct pair_iter
 template< typename Iter1, typename Iter2, typename C >
 struct deref< pair_iter<Iter1,Iter2,C> >
 {
-    typedef pair< 
+    using type = pair< 
           typename deref<Iter1>::type
         , typename deref<Iter2>::type
-        > type;
+        >;
 };
 
 template< typename Iter1, typename Iter2, typename C >
 struct next< pair_iter<Iter1,Iter2,C> >
 {
-    typedef typename mpl::next<Iter1>::type i1_;
-    typedef typename mpl::next<Iter2>::type i2_;
-    typedef pair_iter<i1_,i2_,C> type;
+    using i1_ = typename mpl::next<Iter1>::type;
+    using i2_ = typename mpl::next<Iter2>::type;
+    using type = pair_iter<i1_,i2_,C>;
 };
 
 template< typename Iter1, typename Iter2, typename C >
 struct prior< pair_iter<Iter1,Iter2,C> >
 {
-    typedef typename mpl::prior<Iter1>::type i1_;
-    typedef typename mpl::prior<Iter2>::type i2_;
-    typedef pair_iter<i1_,i2_,C> type;
+    using i1_ = typename mpl::prior<Iter1>::type;
+    using i2_ = typename mpl::prior<Iter2>::type;
+    using type = pair_iter<i1_,i2_,C>;
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
@@ -119,9 +119,9 @@ template<> struct advance_impl<aux::pair_iter_tag>
 {
     template< typename Iter, typename D > struct apply
     {
-        typedef typename mpl::advance< typename Iter::first,D >::type i1_;
-        typedef typename mpl::advance< typename Iter::second,D >::type i2_;
-        typedef pair_iter<i1_,i2_,typename Iter::category> type;
+        using i1_ = typename mpl::advance< typename Iter::first,D >::type;
+        using i2_ = typename mpl::advance< typename Iter::second,D >::type;
+        using type = pair_iter<i1_,i2_,typename Iter::category>;
     };
 };
 
@@ -130,10 +130,10 @@ template<> struct distance_impl<aux::pair_iter_tag>
     template< typename Iter1, typename Iter2 > struct apply
     {
         // agurt, 10/nov/04: MSVC 6.5 ICE-s on forwarding
-        typedef typename mpl::distance<
+        using type = typename mpl::distance<
               typename first<Iter1>::type
             , typename first<Iter2>::type
-            >::type type;
+            >::type;
     };
 };
 
@@ -144,22 +144,22 @@ template<
     >
 struct pair_view
 {
-    typedef nested_begin_end_tag tag;
+    using tag = nested_begin_end_tag;
 
-    typedef typename begin<Sequence1>::type iter1_;
-    typedef typename begin<Sequence2>::type iter2_;
-    typedef typename min<
+    using iter1_ = typename begin<Sequence1>::type;
+    using iter2_ = typename begin<Sequence2>::type;
+    using category_ = typename min<
           typename iterator_category<iter1_>::type
         , typename iterator_category<iter2_>::type
-        >::type category_;
+        >::type;
     
-    typedef pair_iter<iter1_,iter2_,category_> begin;
+    using begin = pair_iter<iter1_,iter2_,category_>;
     
-    typedef pair_iter<
+    using end = pair_iter<
           typename end<Sequence1>::type
         , typename end<Sequence2>::type
         , category_
-        > end;
+        >;
 };
 
 BOOST_MPL_AUX_NA_SPEC(2, pair_view)

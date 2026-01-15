@@ -31,14 +31,14 @@ template<
     >
 struct reverse_fold
 {
-    typedef typename aux::reverse_fold_impl<
+    using type = typename aux::reverse_fold_impl<
           ::boost::mpl::O1_size<Sequence>::value
         , typename begin<Sequence>::type
         , typename end<Sequence>::type
         , State
         , BackwardOp
         , ForwardOp
-        >::state type;
+        >::state;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,reverse_fold,(Sequence,State,BackwardOp))
 };

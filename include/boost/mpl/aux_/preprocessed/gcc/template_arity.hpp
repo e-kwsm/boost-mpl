@@ -12,7 +12,7 @@
 namespace boost { namespace mpl { namespace aux {
 template< int N > struct arity_tag
 {
-    typedef char (&type)[(unsigned)N + 1];
+    using type = char (&)[(unsigned)N + 1];
 };
 
 template<
@@ -91,7 +91,7 @@ struct template_arity
     BOOST_STATIC_CONSTANT(int, value  = (
           max_arity< template_arity_impl< F,1 >::value, template_arity_impl< F,2 >::value, template_arity_impl< F,3 >::value, template_arity_impl< F,4 >::value, template_arity_impl< F,5 >::value, template_arity_impl< F,6 >::value >::value
         ));
-    typedef mpl::int_<value> type;
+    using type = mpl::int_<value>;
 };
 
 }}}

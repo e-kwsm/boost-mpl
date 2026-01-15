@@ -23,8 +23,8 @@ template<
     >
 struct inserter
 {
-    typedef Sequence    state;
-    typedef Operation   operation;
+    using state = Sequence;
+    using operation = Operation;
 };
 
 }}

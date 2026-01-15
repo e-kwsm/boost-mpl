@@ -24,7 +24,7 @@ struct front_impl< aux::list_tag >
 {
     template< typename List > struct apply
     {
-        typedef typename List::item type;
+        using type = typename List::item;
     };
 };
 

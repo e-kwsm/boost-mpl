@@ -22,9 +22,9 @@ namespace boost { namespace mpl {
 template< int dummy_ = 0 >
 struct multiset0
 {
-    typedef aux::multiset_tag tag;
+    using tag = aux::multiset_tag;
 
-    typedef int_<1> count_;
+    using count_ = int_<1>;
     static char (& key_count(...) )[count_::value];
     static char (& ref_key_count(...) )[count_::value];
 };

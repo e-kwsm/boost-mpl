@@ -70,7 +70,7 @@ struct count_impl< aux::multiset_tag >
     template< typename Set, typename Key > struct apply
     {
         enum { msvc71_wknd_ = sizeof(Set::key_count(BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<Key>*,0))) - 1 };
-        typedef int_< msvc71_wknd_ > type;
+        using type = int_< msvc71_wknd_ >;
         BOOST_STATIC_CONSTANT(int, value = msvc71_wknd_);
     };
 };

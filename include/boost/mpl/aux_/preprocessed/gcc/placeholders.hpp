@@ -11,7 +11,7 @@
 // -- DO NOT modify by hand!
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg< -1 > _;
+using _ = arg< -1 >;
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
 
@@ -26,7 +26,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_;
 /// agurt, 17/mar/02: one more placeholder for the last 'apply#' 
 /// specialization
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<1> _1;
+using _1 = arg<1>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
@@ -39,7 +39,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_1;
 
 }}
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<2> _2;
+using _2 = arg<2>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
@@ -52,7 +52,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_2;
 
 }}
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<3> _3;
+using _3 = arg<3>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
@@ -65,7 +65,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_3;
 
 }}
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<4> _4;
+using _4 = arg<4>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
@@ -78,7 +78,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_4;
 
 }}
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<5> _5;
+using _5 = arg<5>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {
@@ -91,7 +91,7 @@ using BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::_5;
 
 }}
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-typedef arg<6> _6;
+using _6 = arg<6>;
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 namespace boost { namespace mpl {

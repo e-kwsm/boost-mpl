@@ -79,11 +79,11 @@ template< typename U, typename Base >
 struct prior_key_count
 {
     enum { msvc71_wknd_ = sizeof(Base::key_count(BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<U>*,0))) }; 
-    typedef int_< msvc71_wknd_ > count_;
+    using count_ = int_< msvc71_wknd_ >;
 #if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
     typedef typename aux::weighted_tag< BOOST_MPL_AUX_VALUE_WKND(count_)::value >::type type;
 #else
-    typedef char (&type)[count_::value];
+    using type = char (&)[count_::value];
 #endif
 };
 }
@@ -91,10 +91,10 @@ struct prior_key_count
 template< typename T, typename Base >
 struct ms_item
 {
-    typedef aux::multiset_tag tag;
+    using tag = aux::multiset_tag;
 
     enum { msvc71_wknd_ = sizeof(Base::key_count(BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<T>*,0))) + 1 };
-    typedef int_< msvc71_wknd_ > count_;
+    using count_ = int_< msvc71_wknd_ >;
 #if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
     static 
     typename aux::weighted_tag< BOOST_MPL_AUX_VALUE_WKND(count_)::value >::type

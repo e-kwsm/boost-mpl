@@ -22,8 +22,8 @@ struct vector21_c
         , vector20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >
         >
 {
-    typedef vector21_c type;
-    typedef T value_type;
+    using type = vector21_c;
+    using value_type = T;
 };
 
 template<
@@ -38,8 +38,8 @@ struct vector22_c
         , vector21_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20 >
         >
 {
-    typedef vector22_c type;
-    typedef T value_type;
+    using type = vector22_c;
+    using value_type = T;
 };
 
 template<
@@ -54,8 +54,8 @@ struct vector23_c
         , vector22_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21 >
         >
 {
-    typedef vector23_c type;
-    typedef T value_type;
+    using type = vector23_c;
+    using value_type = T;
 };
 
 template<
@@ -70,8 +70,8 @@ struct vector24_c
         , vector23_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22 >
         >
 {
-    typedef vector24_c type;
-    typedef T value_type;
+    using type = vector24_c;
+    using value_type = T;
 };
 
 template<
@@ -86,8 +86,8 @@ struct vector25_c
         , vector24_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23 >
         >
 {
-    typedef vector25_c type;
-    typedef T value_type;
+    using type = vector25_c;
+    using value_type = T;
 };
 
 template<
@@ -102,8 +102,8 @@ struct vector26_c
         , vector25_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24 >
         >
 {
-    typedef vector26_c type;
-    typedef T value_type;
+    using type = vector26_c;
+    using value_type = T;
 };
 
 template<
@@ -118,8 +118,8 @@ struct vector27_c
         , vector26_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25 >
         >
 {
-    typedef vector27_c type;
-    typedef T value_type;
+    using type = vector27_c;
+    using value_type = T;
 };
 
 template<
@@ -134,8 +134,8 @@ struct vector28_c
         , vector27_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26 >
         >
 {
-    typedef vector28_c type;
-    typedef T value_type;
+    using type = vector28_c;
+    using value_type = T;
 };
 
 template<
@@ -150,8 +150,8 @@ struct vector29_c
         , vector28_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27 >
         >
 {
-    typedef vector29_c type;
-    typedef T value_type;
+    using type = vector29_c;
+    using value_type = T;
 };
 
 template<
@@ -166,8 +166,8 @@ struct vector30_c
         , vector29_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28 >
         >
 {
-    typedef vector30_c type;
-    typedef T value_type;
+    using type = vector30_c;
+    using value_type = T;
 };
 
 }}

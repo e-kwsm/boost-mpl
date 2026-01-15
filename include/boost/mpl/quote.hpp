@@ -68,7 +68,7 @@ struct quote_impl
     && BOOST_WORKAROUND(__GNUC_MINOR__, BOOST_TESTED_AT(0)) \
     && BOOST_WORKAROUND(__GNUC_PATCHLEVEL__, BOOST_TESTED_AT(2))
 {
-    typedef typename T::type type;
+    using type = typename T::type;
 };
 # else 
     : T
@@ -79,7 +79,7 @@ struct quote_impl
 template< typename T >
 struct quote_impl<T,false>
 {
-    typedef T type;
+    using type = T;
 };
 
 #else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION

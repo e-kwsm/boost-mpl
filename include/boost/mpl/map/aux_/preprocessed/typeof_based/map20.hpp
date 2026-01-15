@@ -24,7 +24,7 @@ struct map11
         , map10< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9 >
         >
 {
-    typedef map11 type;
+    using type = map11;
 };
 
 template<
@@ -39,7 +39,7 @@ struct map12
         , map11< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10 >
         >
 {
-    typedef map12 type;
+    using type = map12;
 };
 
 template<
@@ -54,7 +54,7 @@ struct map13
         , map12< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11 >
         >
 {
-    typedef map13 type;
+    using type = map13;
 };
 
 template<
@@ -69,7 +69,7 @@ struct map14
         , map13< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12 >
         >
 {
-    typedef map14 type;
+    using type = map14;
 };
 
 template<
@@ -84,7 +84,7 @@ struct map15
         , map14< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13 >
         >
 {
-    typedef map15 type;
+    using type = map15;
 };
 
 template<
@@ -100,7 +100,7 @@ struct map16
         , map15< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14 >
         >
 {
-    typedef map16 type;
+    using type = map16;
 };
 
 template<
@@ -116,7 +116,7 @@ struct map17
         , map16< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15 >
         >
 {
-    typedef map17 type;
+    using type = map17;
 };
 
 template<
@@ -132,7 +132,7 @@ struct map18
         , map17< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16 >
         >
 {
-    typedef map18 type;
+    using type = map18;
 };
 
 template<
@@ -148,7 +148,7 @@ struct map19
         , map18< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17 >
         >
 {
-    typedef map19 type;
+    using type = map19;
 };
 
 template<
@@ -164,7 +164,7 @@ struct map20
         , map19< P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18 >
         >
 {
-    typedef map20 type;
+    using type = map20;
 };
 
 }}

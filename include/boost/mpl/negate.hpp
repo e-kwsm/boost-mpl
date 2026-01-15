@@ -28,7 +28,7 @@ template< typename Tag > struct negate_impl;
 
 template< typename T > struct negate_tag
 {
-    typedef typename T::tag type;
+    using type = typename T::tag;
 };
 
 template<

@@ -35,14 +35,14 @@ template<
     >
 struct transform_iter
 {
-    typedef Iterator base;
-    typedef forward_iterator_tag category;
-    typedef transform_iter< typename mpl::next<base>::type,LastIterator,F > next;
+    using base = Iterator;
+    using category = forward_iterator_tag;
+    using next = transform_iter< typename mpl::next<base>::type,LastIterator,F >;
     
-    typedef typename apply1<
+    using type = typename apply1<
           F
         , typename deref<base>::type
-        >::type type;
+        >::type;
 };
 
 template<
@@ -51,8 +51,8 @@ template<
     >
 struct transform_iter< LastIterator,LastIterator,F >
 {
-    typedef LastIterator base;
-    typedef forward_iterator_tag category;
+    using base = LastIterator;
+    using category = forward_iterator_tag;
 };
 
 #else

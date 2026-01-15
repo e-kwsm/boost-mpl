@@ -32,15 +32,15 @@ template<
     >
 struct range_c
 {
-    typedef aux::half_open_range_tag tag;
-    typedef T value_type;
-    typedef range_c type;
+    using tag = aux::half_open_range_tag;
+    using value_type = T;
+    using type = range_c;
 
-    typedef integral_c<T,Start> start;
-    typedef integral_c<T,Finish> finish;
+    using start = integral_c<T,Start>;
+    using finish = integral_c<T,Finish>;
 
-    typedef r_iter<start> begin;
-    typedef r_iter<finish> end;
+    using begin = r_iter<start>;
+    using end = r_iter<finish>;
 };
 
 }}

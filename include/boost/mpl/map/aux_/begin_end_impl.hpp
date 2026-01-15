@@ -26,12 +26,12 @@ struct begin_impl< aux::map_tag >
 {
     template< typename Map > struct apply
     {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter<
+        using max_order_ = typename next< typename Map::order >::type;
+        using type = m_iter<
               Map
             , next_order<Map,1,max_order_::value>::value
             , max_order_::value
-            > type;
+            >;
     };
 };
 
@@ -40,8 +40,8 @@ struct end_impl< aux::map_tag >
 {
     template< typename Map > struct apply
     {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter< Map,max_order_::value,max_order_::value > type;
+        using max_order_ = typename next< typename Map::order >::type;
+        using type = m_iter< Map,max_order_::value,max_order_::value >;
     };
 };
 

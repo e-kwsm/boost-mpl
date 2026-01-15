@@ -30,9 +30,9 @@ template<
     >
 struct begin
 {
-    typedef typename sequence_tag<Sequence>::type tag_;
-    typedef typename begin_impl< tag_ >
-        ::template apply< Sequence >::type type;
+    using tag_ = typename sequence_tag<Sequence>::type;
+    using type = typename begin_impl< tag_ >
+        ::template apply< Sequence >::type;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,begin,(Sequence))
 };
@@ -42,9 +42,9 @@ template<
     >
 struct end
 {
-    typedef typename sequence_tag<Sequence>::type tag_;
-    typedef typename end_impl< tag_ >
-        ::template apply< Sequence >::type type;
+    using tag_ = typename sequence_tag<Sequence>::type;
+    using type = typename end_impl< tag_ >
+        ::template apply< Sequence >::type;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,end,(Sequence))
 };

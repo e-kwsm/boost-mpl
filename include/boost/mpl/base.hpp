@@ -24,7 +24,7 @@ template<
     >
 struct base
 {
-    typedef typename T::base type;
+    using type = typename T::base;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,base,(T))
 };
 

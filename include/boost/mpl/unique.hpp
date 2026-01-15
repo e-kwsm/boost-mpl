@@ -36,15 +36,15 @@ struct unique_op
 {
     template< typename Pair, typename T > struct apply
     {
-        typedef typename Pair::first seq_;
-        typedef typename Pair::second prior_;
-        typedef typename eval_if<
+        using seq_ = typename Pair::first;
+        using prior_ = typename Pair::second;
+        using new_seq_ = typename eval_if<
               and_< is_not_na<prior_>, apply2<Predicate,prior_,T> >
             , identity<seq_>
             , apply2<Operation,seq_,T>
-            >::type new_seq_;
+            >::type;
 
-        typedef pair<new_seq_,T> type;
+        using type = pair<new_seq_,T>;
     };
 };
 

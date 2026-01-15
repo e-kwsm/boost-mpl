@@ -30,13 +30,13 @@ template<
     >
 struct fold
 {
-    typedef typename aux::fold_impl<
+    using type = typename aux::fold_impl<
           ::boost::mpl::O1_size<Sequence>::value
         , typename begin<Sequence>::type
         , typename end<Sequence>::type
         , State
         , ForwardOp
-        >::state type;
+        >::state;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,fold,(Sequence,State,ForwardOp))
 };

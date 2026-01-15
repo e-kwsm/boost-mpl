@@ -25,7 +25,7 @@ struct insert_impl< aux::multiset_tag >
 {
     template< typename Set, typename Key, typename unused_ > struct apply
     {
-        typedef ms_item<Key,Set> type;
+        using type = ms_item<Key,Set>;
     };
 };
 

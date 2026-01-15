@@ -35,17 +35,17 @@ struct select_max
     template< typename OldIterator, typename Iterator >
     struct apply
     {
-        typedef typename apply2<
+        using condition_ = typename apply2<
               Predicate
             , typename deref<OldIterator>::type
             , typename deref<Iterator>::type
-            >::type condition_;
+            >::type;
 
-        typedef typename if_<
+        using type = typename if_<
               condition_
             , Iterator
             , OldIterator
-            >::type type;
+            >::type;
     };
 };
 

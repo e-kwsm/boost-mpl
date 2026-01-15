@@ -28,7 +28,7 @@ template<
     >
 struct next
 {
-    typedef typename T::next type;
+    using type = typename T::next;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,next,(T))
 };
 
@@ -37,7 +37,7 @@ template<
     >
 struct prior
 {
-    typedef typename T::prior type;
+    using type = typename T::prior;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,prior,(T))
 };
 

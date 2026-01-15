@@ -22,8 +22,8 @@ namespace boost { namespace mpl {
 template< typename T > struct vector0_c
     : vector0<>
 {
-    typedef vector0_c type;
-    typedef T value_type;
+    using type = vector0_c;
+    using value_type = T;
 };
 
 }}

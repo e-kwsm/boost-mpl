@@ -22,8 +22,8 @@ struct list1_c
         , l_end
         >
 {
-    typedef list1_c type;
-    typedef T value_type;
+    using type = list1_c;
+    using value_type = T;
 };
 
 template<
@@ -37,8 +37,8 @@ struct list2_c
         , list1_c< T,C1 >
         >
 {
-    typedef list2_c type;
-    typedef T value_type;
+    using type = list2_c;
+    using value_type = T;
 };
 
 template<
@@ -52,8 +52,8 @@ struct list3_c
         , list2_c< T,C1,C2 >
         >
 {
-    typedef list3_c type;
-    typedef T value_type;
+    using type = list3_c;
+    using value_type = T;
 };
 
 template<
@@ -67,8 +67,8 @@ struct list4_c
         , list3_c< T,C1,C2,C3 >
         >
 {
-    typedef list4_c type;
-    typedef T value_type;
+    using type = list4_c;
+    using value_type = T;
 };
 
 template<
@@ -82,8 +82,8 @@ struct list5_c
         , list4_c< T,C1,C2,C3,C4 >
         >
 {
-    typedef list5_c type;
-    typedef T value_type;
+    using type = list5_c;
+    using value_type = T;
 };
 
 template<
@@ -97,8 +97,8 @@ struct list6_c
         , list5_c< T,C1,C2,C3,C4,C5 >
         >
 {
-    typedef list6_c type;
-    typedef T value_type;
+    using type = list6_c;
+    using value_type = T;
 };
 
 template<
@@ -112,8 +112,8 @@ struct list7_c
         , list6_c< T,C1,C2,C3,C4,C5,C6 >
         >
 {
-    typedef list7_c type;
-    typedef T value_type;
+    using type = list7_c;
+    using value_type = T;
 };
 
 template<
@@ -127,8 +127,8 @@ struct list8_c
         , list7_c< T,C1,C2,C3,C4,C5,C6,C7 >
         >
 {
-    typedef list8_c type;
-    typedef T value_type;
+    using type = list8_c;
+    using value_type = T;
 };
 
 template<
@@ -142,8 +142,8 @@ struct list9_c
         , list8_c< T,C1,C2,C3,C4,C5,C6,C7,C8 >
         >
 {
-    typedef list9_c type;
-    typedef T value_type;
+    using type = list9_c;
+    using value_type = T;
 };
 
 template<
@@ -157,8 +157,8 @@ struct list10_c
         , list9_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
         >
 {
-    typedef list10_c type;
-    typedef T value_type;
+    using type = list10_c;
+    using value_type = T;
 };
 
 }}

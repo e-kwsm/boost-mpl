@@ -22,7 +22,7 @@ struct map1
         , map0<  >
         >
 {
-    typedef map1 type;
+    using type = map1;
 };
 
 template<
@@ -35,7 +35,7 @@ struct map2
         , map1<P0>
         >
 {
-    typedef map2 type;
+    using type = map2;
 };
 
 template<
@@ -48,7 +48,7 @@ struct map3
         , map2< P0,P1 >
         >
 {
-    typedef map3 type;
+    using type = map3;
 };
 
 template<
@@ -61,7 +61,7 @@ struct map4
         , map3< P0,P1,P2 >
         >
 {
-    typedef map4 type;
+    using type = map4;
 };
 
 template<
@@ -74,7 +74,7 @@ struct map5
         , map4< P0,P1,P2,P3 >
         >
 {
-    typedef map5 type;
+    using type = map5;
 };
 
 template<
@@ -88,7 +88,7 @@ struct map6
         , map5< P0,P1,P2,P3,P4 >
         >
 {
-    typedef map6 type;
+    using type = map6;
 };
 
 template<
@@ -102,7 +102,7 @@ struct map7
         , map6< P0,P1,P2,P3,P4,P5 >
         >
 {
-    typedef map7 type;
+    using type = map7;
 };
 
 template<
@@ -116,7 +116,7 @@ struct map8
         , map7< P0,P1,P2,P3,P4,P5,P6 >
         >
 {
-    typedef map8 type;
+    using type = map8;
 };
 
 template<
@@ -130,7 +130,7 @@ struct map9
         , map8< P0,P1,P2,P3,P4,P5,P6,P7 >
         >
 {
-    typedef map9 type;
+    using type = map9;
 };
 
 template<
@@ -144,7 +144,7 @@ struct map10
         , map9< P0,P1,P2,P3,P4,P5,P6,P7,P8 >
         >
 {
-    typedef map10 type;
+    using type = map10;
 };
 
 }}

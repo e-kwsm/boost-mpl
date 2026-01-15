@@ -33,7 +33,7 @@ template<
     >
 struct if_c
 {
-    typedef T1 type;
+    using type = T1;
 };
 
 template<
@@ -42,7 +42,7 @@ template<
     >
 struct if_c<false,T1,T2>
 {
-    typedef T2 type;
+    using type = T2;
 };
 
 // agurt, 05/sep/04: nondescriptive parameter names for the sake of DigitalMars
@@ -56,7 +56,7 @@ struct if_
 {
  private:
     // agurt, 02/jan/03: two-step 'type' definition for the sake of aCC 
-    typedef if_c<
+    using almost_type_ = if_c<
 #if defined(BOOST_MPL_CFG_BCC_INTEGRAL_CONSTANTS)
           BOOST_MPL_AUX_VALUE_WKND(T1)::value
 #else
@@ -64,10 +64,10 @@ struct if_
 #endif
         , T2
         , T3
-        > almost_type_;
+        >;
  
  public:
-    typedef typename almost_type_::type type;
+    using type = typename almost_type_::type;
     
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,if_,(T1,T2,T3))
 };

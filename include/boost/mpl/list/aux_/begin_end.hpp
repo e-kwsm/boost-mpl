@@ -26,7 +26,7 @@ struct begin_impl< aux::list_tag >
 {
     template< typename List > struct apply
     {
-        typedef l_iter<typename List::type> type;
+        using type = l_iter<typename List::type>;
     };
 };
 
@@ -35,7 +35,7 @@ struct end_impl< aux::list_tag >
 {
     template< typename > struct apply
     {
-        typedef l_iter<l_end> type;
+        using type = l_iter<l_end>;
     };
 };
 

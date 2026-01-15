@@ -30,11 +30,11 @@ template< typename Dummy = na > struct vector0;
 template<> struct vector0<na>
 {
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-    typedef aux::vector_tag tag;
-    typedef vector0         type;
-    typedef long_<32768>    lower_bound_;
-    typedef lower_bound_    upper_bound_;
-    typedef long_<0>        size;
+    using tag = aux::vector_tag;
+    using type = vector0;
+    using lower_bound_ = long_<32768>;
+    using upper_bound_ = lower_bound_;
+    using size = long_<0>;
 
     static aux::type_wrapper<void_> item_(...);
 #else

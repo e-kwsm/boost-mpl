@@ -25,7 +25,7 @@ struct back_impl< aux::half_open_range_tag >
 {
     template< typename Range > struct apply
     {
-        typedef typename prior< typename Range::finish >::type type;
+        using type = typename prior< typename Range::finish >::type;
     };
 };
 

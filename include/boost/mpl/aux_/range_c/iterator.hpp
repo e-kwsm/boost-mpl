@@ -29,9 +29,9 @@ namespace boost { namespace mpl {
 // theoretically will work on any discrete numeric type
 template< typename N > struct r_iter
 {
-    typedef aux::r_iter_tag tag;
-    typedef random_access_iterator_tag category;
-    typedef N type;
+    using tag = aux::r_iter_tag;
+    using category = random_access_iterator_tag;
+    using type = N;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef r_iter< typename mpl::next<N>::type > next;
@@ -46,7 +46,7 @@ template<
     >
 struct next< r_iter<N> >
 {
-    typedef r_iter< typename mpl::next<N>::type > type;
+    using type = r_iter< typename mpl::next<N>::type >;
 };
 
 template<
@@ -54,7 +54,7 @@ template<
     >
 struct prior< r_iter<N> >
 {
-    typedef r_iter< typename mpl::prior<N>::type > type;
+    using type = r_iter< typename mpl::prior<N>::type >;
 };
 
 #endif
@@ -64,12 +64,12 @@ template<> struct advance_impl<aux::r_iter_tag>
 {
     template< typename Iter, typename Dist > struct apply
     {
-        typedef typename deref<Iter>::type n_;
+        using n_ = typename deref<Iter>::type;
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
         typedef typename plus_impl<integral_c_tag,integral_c_tag>
             ::template apply<n_,Dist>::type m_;
 #else
-        typedef typename plus<n_,Dist>::type m_;
+        using m_ = typename plus<n_,Dist>::type;
 #endif
         // agurt, 10/nov/04: to be generic, the code have to do something along
         // the lines below...
@@ -81,12 +81,12 @@ template<> struct advance_impl<aux::r_iter_tag>
         //
         // ... meanwhile:
         
-        typedef integral_c< 
+        using result_ = integral_c< 
               typename aux::value_type_wknd<n_>::type
             , BOOST_MPL_AUX_VALUE_WKND(m_)::value 
-            > result_;
+            >;
         
-        typedef r_iter<result_> type;
+        using type = r_iter<result_>;
     };
 };
 

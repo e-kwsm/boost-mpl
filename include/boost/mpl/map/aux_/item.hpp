@@ -37,18 +37,18 @@ template< typename Key, typename T, typename Base >
 struct m_item
     : Base
 {
-    typedef Key         key_;
-    typedef pair<Key,T> item;
-    typedef Base        base;
-    typedef m_item      type;
+    using key_ = Key;
+    using item = pair<Key,T>;
+    using base = Base;
+    using type = m_item;
     
-    typedef typename next< typename Base::size >::type  size;
-    typedef typename next< typename Base::order >::type order;
+    using size = typename next< typename Base::size >::type;
+    using order = typename next< typename Base::order >::type;
 
 #if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
     typedef typename aux::weighted_tag<BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value>::type order_tag_;
 #else
-    typedef char (&order_tag_)[BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value];
+    using order_tag_ = char (&)[BOOST_MPL_AUX_MSVC_VALUE_WKND(order)::value];
 #endif
 
     BOOST_MPL_AUX_MAP_OVERLOAD( aux::type_wrapper<T>, VALUE_BY_KEY, m_item, aux::type_wrapper<Key>* );
@@ -61,12 +61,12 @@ template< typename Key, typename Base >
 struct m_mask
     : Base
 {
-    typedef void_   key_;
-    typedef Base    base;
-    typedef m_mask  type;
+    using key_ = void_;
+    using base = Base;
+    using type = m_mask;
 
-    typedef typename prior< typename Base::size >::type  size;
-    typedef typename x_order_impl<Base,Key>::type key_order_;
+    using size = typename prior< typename Base::size >::type;
+    using key_order_ = typename x_order_impl<Base,Key>::type;
     
     BOOST_MPL_AUX_MAP_OVERLOAD( aux::type_wrapper<void_>, VALUE_BY_KEY, m_mask, aux::type_wrapper<Key>* );
     BOOST_MPL_AUX_MAP_OVERLOAD( aux::type_wrapper<void_>, ITEM_BY_ORDER, m_mask, key_order_* );

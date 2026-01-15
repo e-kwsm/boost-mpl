@@ -33,11 +33,11 @@ template<
 struct v_item
     : Base
 {
-    typedef typename Base::upper_bound_ index_;
-    typedef typename next<index_>::type upper_bound_;
-    typedef typename next<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_item type;
+    using index_ = typename Base::upper_bound_;
+    using upper_bound_ = typename next<index_>::type;
+    using size = typename next<typename Base::size>::type;
+    using base = Base;
+    using type = v_item;
 
     // agurt 10/sep/04: MWCW <= 9.3 workaround here and below; the compiler
     // breaks if using declaration comes _before_ the new overload
@@ -52,11 +52,11 @@ template<
 struct v_item<T,Base,1>
     : Base
 {
-    typedef typename prior<typename Base::lower_bound_>::type index_;
-    typedef index_ lower_bound_;
-    typedef typename next<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_item type;
+    using index_ = typename prior<typename Base::lower_bound_>::type;
+    using lower_bound_ = index_;
+    using size = typename next<typename Base::size>::type;
+    using base = Base;
+    using type = v_item;
 
     static aux::type_wrapper<T> item_(index_);
     using Base::item_;
@@ -70,11 +70,11 @@ template<
 struct v_mask
     : Base
 {
-    typedef typename prior<typename Base::upper_bound_>::type index_;
-    typedef index_ upper_bound_;
-    typedef typename prior<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_mask type;
+    using index_ = typename prior<typename Base::upper_bound_>::type;
+    using upper_bound_ = index_;
+    using size = typename prior<typename Base::size>::type;
+    using base = Base;
+    using type = v_mask;
 
     static aux::type_wrapper<void_> item_(index_);
     using Base::item_;
@@ -86,11 +86,11 @@ template<
 struct v_mask<Base,1>
     : Base
 {
-    typedef typename Base::lower_bound_ index_;
-    typedef typename next<index_>::type lower_bound_;
-    typedef typename prior<typename Base::size>::type size;
-    typedef Base base;
-    typedef v_mask type;
+    using index_ = typename Base::lower_bound_;
+    using lower_bound_ = typename next<index_>::type;
+    using size = typename prior<typename Base::size>::type;
+    using base = Base;
+    using type = v_mask;
 
     static aux::type_wrapper<void_> item_(index_);
     using Base::item_;

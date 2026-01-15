@@ -53,11 +53,11 @@ namespace boost { namespace mpl {
 
 template< typename Dummy = na > struct map0
 {
-    typedef map0            type;
-    typedef aux::map_tag    tag;
-    typedef void_           key_;
-    typedef long_<1>        order;
-    typedef long_<0>        size;
+    using type = map0;
+    using tag = aux::map_tag;
+    using key_ = void_;
+    using order = long_<1>;
+    using size = long_<0>;
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
     BOOST_MPL_AUX_MAP0_OVERLOAD( aux::type_wrapper<void_>, VALUE_BY_KEY, map0<>, void const volatile* );

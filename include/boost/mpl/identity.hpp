@@ -24,7 +24,7 @@ template<
     >
 struct identity
 {
-    typedef T type;
+    using type = T;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1, identity, (T))
 };
 
@@ -33,7 +33,7 @@ template<
     >
 struct make_identity
 {
-    typedef identity<T> type;
+    using type = identity<T>;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1, make_identity, (T))
 };
 

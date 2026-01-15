@@ -29,7 +29,7 @@ struct pop_back_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
     {
-        typedef v_mask<Vector,0> type;
+        using type = v_mask<Vector,0>;
     };
 };
 

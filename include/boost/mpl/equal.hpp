@@ -49,11 +49,11 @@ struct equal_pred
         >
     struct apply
     {
-        typedef typename and_< 
+        using type = typename and_< 
               not_< is_same<Iterator1,LastIterator1> >
             , not_< is_same<Iterator2,LastIterator2> >
             , aux::iter_apply2<Predicate,Iterator1,Iterator2>
-            >::type type;
+            >::type;
     };
 };
 
@@ -64,28 +64,28 @@ template<
     >
 struct equal_impl
 {
-    typedef typename begin<Sequence1>::type first1_;
-    typedef typename begin<Sequence2>::type first2_;
-    typedef typename end<Sequence1>::type last1_;
-    typedef typename end<Sequence2>::type last2_;
+    using first1_ = typename begin<Sequence1>::type;
+    using first2_ = typename begin<Sequence2>::type;
+    using last1_ = typename end<Sequence1>::type;
+    using last2_ = typename end<Sequence2>::type;
 
-    typedef aux::iter_fold_if_impl<
+    using fold_ = aux::iter_fold_if_impl<
           first1_
         , first2_
         , next<>
         , protect< aux::equal_pred<Predicate,last1_,last2_> >
         , void_
         , always<false_>
-        > fold_;
+        >;
 
-    typedef typename fold_::iterator iter1_;
-    typedef typename fold_::state iter2_;
-    typedef and_<
+    using iter1_ = typename fold_::iterator;
+    using iter2_ = typename fold_::state;
+    using result_ = and_<
           is_same<iter1_,last1_>
         , is_same<iter2_,last2_>
-        > result_;
+        >;
 
-    typedef typename result_::type type;
+    using type = typename result_::type;
 };
 
 

@@ -31,14 +31,14 @@ template<
     >
 struct find_if
 {
-    typedef typename iter_fold_if<
+    using result_ = typename iter_fold_if<
           Sequence
         , void
         , mpl::arg<1> // ignore
         , protect< aux::find_if_pred<Predicate> >
-        >::type result_;
+        >::type;
 
-    typedef typename second<result_>::type type;
+    using type = typename second<result_>::type;
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,find_if,(Sequence,Predicate))
 };

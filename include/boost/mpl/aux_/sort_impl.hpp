@@ -42,7 +42,7 @@ struct quick_sort_pred
 {
     template< typename T > struct apply
     {
-        typedef typename apply2<Pred,T,Pivot>::type type;
+        using type = typename apply2<Pred,T,Pivot>::type;
     };
 };
 
@@ -52,8 +52,8 @@ template<
     >
 struct quick_sort_impl
 {
-    typedef typename begin<Seq>::type pivot;
-    typedef typename partition<
+    using pivot = typename begin<Seq>::type;
+    using partitioned = typename partition<
           iterator_range< 
               typename next<pivot>::type
             , typename end<Seq>::type
@@ -61,15 +61,15 @@ struct quick_sort_impl
         , protect< aux::quick_sort_pred< Pred, typename deref<pivot>::type > >
         , back_inserter< vector<> >
         , back_inserter< vector<> >
-        >::type partitioned;
+        >::type;
 
-    typedef typename quick_sort< typename partitioned::first, Pred >::type part1;
-    typedef typename quick_sort< typename partitioned::second, Pred >::type part2;
+    using part1 = typename quick_sort< typename partitioned::first, Pred >::type;
+    using part2 = typename quick_sort< typename partitioned::second, Pred >::type;
 
-    typedef joint_view< 
+    using type = joint_view< 
               joint_view< part1, single_view< typename deref<pivot>::type > >
             , part2
-            > type;
+            >;
 };
 
 template< 
@@ -93,12 +93,12 @@ template <
     >
 struct sort_impl
 {
-    typedef typename quick_sort< 
+    using result_ = typename quick_sort< 
           Sequence
         , typename if_na<Pred,less<> >::type
-        >::type result_;
+        >::type;
         
-    typedef typename copy<result_,In>::type type;
+    using type = typename copy<result_,In>::type;
 };
 
 template <
@@ -108,12 +108,12 @@ template <
     >
 struct reverse_sort_impl
 {
-    typedef typename quick_sort< 
+    using result_ = typename quick_sort< 
           Sequence
         , typename if_na<Pred,less<> >::type
-        >::type result_;
+        >::type;
         
-    typedef typename reverse_copy<result_,In>::type type;
+    using type = typename reverse_copy<result_,In>::type;
 };
 
 }}}

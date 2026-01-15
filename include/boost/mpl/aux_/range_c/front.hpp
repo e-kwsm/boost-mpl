@@ -24,7 +24,7 @@ struct front_impl< aux::half_open_range_tag >
 {
     template< typename Range > struct apply
     {
-        typedef typename Range::start type;
+        using type = typename Range::start;
     };
 };
 

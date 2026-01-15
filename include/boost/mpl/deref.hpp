@@ -27,7 +27,7 @@ template<
 struct deref
 {
 #if !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-    typedef typename Iterator::type type;
+    using type = typename Iterator::type;
 #else
     typedef typename aux::msvc_type<Iterator>::type type;
 #endif
