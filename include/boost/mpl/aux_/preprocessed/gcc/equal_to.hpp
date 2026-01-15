@@ -32,7 +32,7 @@ template<> struct equal_to_impl< na,na >
 {
     template< typename U1, typename U2 > struct apply
     {
-        typedef apply type;
+        using type = apply;
         BOOST_STATIC_CONSTANT(int, value  = 0);
     };
 };
@@ -41,7 +41,7 @@ template< typename Tag > struct equal_to_impl< na,Tag >
 {
     template< typename U1, typename U2 > struct apply
     {
-        typedef apply type;
+        using type = apply;
         BOOST_STATIC_CONSTANT(int, value  = 0);
     };
 };
@@ -50,14 +50,14 @@ template< typename Tag > struct equal_to_impl< Tag,na >
 {
     template< typename U1, typename U2 > struct apply
     {
-        typedef apply type;
+        using type = apply;
         BOOST_STATIC_CONSTANT(int, value  = 0);
     };
 };
 
 template< typename T > struct equal_to_tag
 {
-    typedef typename T::tag type;
+    using type = typename T::tag;
 };
 
 template<
