@@ -79,7 +79,7 @@ struct for_each_impl<false>
         
         typedef typename mpl::next<Iterator>::type iter;
         for_each_impl<boost::is_same<iter,LastIterator>::value>
-            ::execute( static_cast<iter*>(0), static_cast<LastIterator*>(0), static_cast<TransformFunc*>(0), f);
+            ::execute( static_cast<iter*>(BOOST_NULLPTR), static_cast<LastIterator*>(BOOST_NULLPTR), static_cast<TransformFunc*>(BOOST_NULLPTR), f);
     }
 };
 
@@ -94,7 +94,7 @@ template<
     >
 BOOST_MPL_CFG_GPU_ENABLED
 inline
-void for_each(F f, Sequence* = 0, TransformOp* = 0)
+void for_each(F f, Sequence* = BOOST_NULLPTR, TransformOp* = BOOST_NULLPTR)
 {
     BOOST_MPL_ASSERT(( is_sequence<Sequence> ));
 
@@ -102,7 +102,7 @@ void for_each(F f, Sequence* = 0, TransformOp* = 0)
     typedef typename end<Sequence>::type last;
 
     aux::for_each_impl< boost::is_same<first,last>::value >
-        ::execute(static_cast<first*>(0), static_cast<last*>(0), static_cast<TransformOp*>(0), f);
+        ::execute(static_cast<first*>(BOOST_NULLPTR), static_cast<last*>(BOOST_NULLPTR), static_cast<TransformOp*>(BOOST_NULLPTR), f);
 }
 
 template<
@@ -111,7 +111,7 @@ template<
     >
 BOOST_MPL_CFG_GPU_ENABLED
 inline
-void for_each(F f, Sequence* = 0)
+void for_each(F f, Sequence* = BOOST_NULLPTR)
 {
   // jfalcou: fully qualifying this call so it doesnt clash with phoenix::for_each
   // ons ome compilers -- done on 02/28/2011

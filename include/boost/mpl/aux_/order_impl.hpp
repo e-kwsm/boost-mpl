@@ -49,7 +49,7 @@ template< typename Seq, typename Key > struct x_order_impl
     : long_< 
           sizeof( BOOST_MPL_AUX_OVERLOAD_CALL_ORDER_BY_KEY(
               Seq
-            , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<Key>*, 0)
+            , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<Key>*, BOOST_NULLPTR)
             ) )
         >
 {

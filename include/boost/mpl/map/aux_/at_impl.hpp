@@ -43,7 +43,7 @@ struct m_at
     typedef aux::type_wrapper<Key> key_;
     typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_VALUE_BY_KEY(
           Map
-        , BOOST_MPL_AUX_STATIC_CAST(key_*, 0)
+        , BOOST_MPL_AUX_STATIC_CAST(key_*, BOOST_NULLPTR)
         ) ) type;
 };
 
@@ -65,7 +65,7 @@ struct item_by_order_impl
 {
     typedef __typeof__( BOOST_MPL_AUX_OVERLOAD_CALL_ITEM_BY_ORDER(
           Map 
-        , BOOST_MPL_AUX_STATIC_CAST(long_<order>*, 0)
+        , BOOST_MPL_AUX_STATIC_CAST(long_<order>*, BOOST_NULLPTR)
         ) ) type;
 };
 

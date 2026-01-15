@@ -47,7 +47,7 @@ struct has_key_impl< aux::set_tag >
         : bool_< 
               ( sizeof( BOOST_MPL_AUX_OVERLOAD_CALL_IS_MASKED(
                     Set
-                  , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<T>*, 0)
+                  , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<T>*, BOOST_NULLPTR)
                   ) ) == sizeof(aux::no_tag) )
             >
     {
